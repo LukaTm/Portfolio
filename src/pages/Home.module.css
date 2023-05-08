@@ -1,61 +1,68 @@
-body {
+.home {
     height: 100vh;
-    background-image: url("./pic.png");
-    background-repeat: no-repeat;
+    background-image: url("../pic.png");
     background-size: cover;
     background-position: right center;
     overflow: hidden;
+    color: aliceblue;
 }
 
-* {
+.home * {
     box-sizing: border-box;
 }
 
-header {
+.home header {
     display: flex;
-    background-color: red;
     width: 100%;
     height: 50px;
     justify-content: flex-end;
     align-items: center;
-    margin-top: 15px;
     padding-right: 280px;
 }
 
-header > * {
-    margin-left: 50px;
+.home header > * {
+    margin-left: 80px;
+}
+
+.active {
+    background-color: red;
 }
 
 @media (max-width: 1300px) {
-    header {
+    .home header {
         padding-right: 150px;
     }
 }
 
 @media (max-width: 1000px) {
-    header {
+    .home header {
         padding-left: 50px;
-        padding-right: 100px;
+        padding-right: 75px;
     }
 }
 
 @media (max-width: 768px) {
-    header {
+    .home header {
         justify-content: space-evenly;
         padding: 0px;
     }
-    header > * {
+    .home header > * {
         margin-left: 10px;
     }
 }
 
 @media (max-width: 480px) {
-    header {
+    .home header {
         padding-left: 15px;
         padding-right: 15px;
     }
 }
 
-.App {
-    color: aliceblue;
+.home footer {
+    background-color: rgb(52, 4, 61);
+    height: 50px;
+    width: 100%;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0;
 }

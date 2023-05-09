@@ -1,10 +1,17 @@
 .home {
+    min-height: 100vh;
     height: 100%;
     background-image: url("../pic.png");
     background-size: cover;
     background-position: right center;
     overflow: auto;
     color: aliceblue;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 .default,
@@ -86,4 +93,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: sticky;
+    bottom: 0;
 }

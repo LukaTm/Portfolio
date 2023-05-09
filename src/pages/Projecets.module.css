@@ -1,0 +1,51 @@
+.section {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 960px;
+    justify-content: center;
+}
+
+.section > * {
+    background-color: red;
+    /* flex-grow, flex-shrink, flex-basis */
+    flex: 1 1 47%;
+    max-width: 400px;
+    margin: 7.5px;
+}
+
+@media (max-width: 750px) {
+    .section {
+        display: grid;
+        grid-template-columns: minmax(400px, 1fr);
+        grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+
+.rock {
+    background-image: url("./rps.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.calc {
+    background-image: url("./calc.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: white;
+}
+
+.todo {
+    background-image: url("./todo.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: white;
+}

@@ -55,11 +55,9 @@ function MainHeader({ children }) {
                 </NavLink>
             </header>
             <main>{children}</main>
-            <footer>
-                <div>
-                    Developed by Marus Luka Copyright 2023 Github that is true
-                    yo I dont know how but its true you also linkdin or smth
-                </div>
+            <footer className={styles.footer}>
+                Developed by Marus Luka Copyright 2023 Github that is true yo I
+                dont know how but its true you also linkdin or smth
             </footer>
         </div>
     );

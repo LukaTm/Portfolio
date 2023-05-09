@@ -1,9 +1,9 @@
 .home {
-    height: 100vh;
+    height: 100%;
     background-image: url("../pic.png");
     background-size: cover;
     background-position: right center;
-    overflow: hidden;
+    overflow: auto;
     color: aliceblue;
 }
 
@@ -79,11 +79,11 @@
     }
 }
 
-.home footer {
+.home .footer {
     background-color: rgb(52, 4, 61);
     height: 50px;
     width: 100%;
-    align-items: flex-end;
-    position: absolute;
-    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

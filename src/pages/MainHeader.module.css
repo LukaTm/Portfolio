@@ -4,6 +4,8 @@
     background-image: url("../pic.png");
     background-size: cover;
     background-position: right center;
+    /* background image fixed so it doesnt try to fit scrollable content */
+    background-attachment: fixed;
     overflow: auto;
     color: aliceblue;
     display: flex;

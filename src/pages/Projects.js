@@ -9,16 +9,29 @@ function Projects() {
 
             <div className={styles.container}>
                 <section className={styles.section}>
-                    <div className={styles.rock}>
-                        <div className={styles.button}>Button</div>
+                    <div className={styles.project_container}>
+                        <div className={styles.rock}>
+                            <div className={styles.button}>Button</div>
+                        </div>
                     </div>
-                    <div className={styles.calc}>
-                        <div className={styles.button}>Button</div>
+
+                    <div className={styles.project_container}>
+                        <div className={styles.calc}>
+                            <div className={styles.button}>Button</div>
+                        </div>
                     </div>
-                    <div></div>
-                    <div></div>
-                    <div className={styles.todo}>
-                        <div className={styles.button}>Button</div>
+
+                    <div className={styles.project_container}>
+                        <div></div>
+                    </div>
+
+                    <div className={styles.project_container}>
+                        <div></div>
+                    </div>
+                    <div className={styles.project_container}>
+                        <div className={styles.todo}>
+                            <div className={styles.button}>Button</div>
+                        </div>
                     </div>
                 </section>
             </div>

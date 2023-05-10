@@ -1,8 +1,20 @@
+.title {
+    display: flex;
+    justify-content: center;
+}
+
 .container {
     display: flex;
     height: 100%;
     width: 100%;
     justify-content: center;
+}
+
+.project_container {
+    margin: 20px;
+    padding-bottom: 200px;
+    border: 5px solid rgb(250, 234, 234);
+    border-radius: 7px;
 }
 
 .section {
@@ -11,10 +23,11 @@
     padding: 30px;
     justify-content: center;
     position: relative;
-    box-sizing: border-box;
+    padding-left: 150px;
+    padding-right: 150px;
 }
 
-.section > * {
+.section > div > * {
     background-color: red;
     position: relative;
     /* flex-grow, flex-shrink, flex-basis */
@@ -26,7 +39,7 @@
     font-size: 2fr;
 }
 
-.section > *::after {
+.section > div > *::after {
     content: "";
     position: absolute;
     bottom: -65px;
@@ -37,27 +50,48 @@
     font-size: 1vw;
 }
 
-.section > div:first-child::after {
+@media (max-width: 630px) {
+    .button {
+        bottom: -65px;
+        padding: 6px 17px;
+        font-size: 0.8em;
+    }
+    .section > div > *::after {
+        height: 65px;
+        bottom: -65x;
+    }
+
+    .section > div > * {
+        flex-shrink: 1;
+        max-width: 100%;
+        min-width: calc((100vw - 0px) - 85px);
+        min-height: calc((100vw - 0px) / 2 - 33px);
+        flex-basis: 100%;
+        font-size: 3vw;
+    }
+}
+
+.section > div > div:first-child::after {
     content: "Rock";
     color: black;
 }
 
-.section > div:nth-child(2):after {
+.section > div > div:nth-child(2):after {
     content: "Calculator";
     color: black;
 }
 
-.section > div:nth-child(3)::after {
+.section > div > div:nth-child(3)::after {
     content: "Spotify to Youtube";
     color: black;
 }
 
-.section > div:nth-child(4)::after {
+.section > div > div:nth-child(4)::after {
     content: "React Native App";
     color: black;
 }
 
-.section > div:nth-child(5)::after {
+.section > div > div:nth-child(5)::after {
     content: "Todo app";
     color: black;
 }
@@ -72,32 +106,6 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-}
-
-.title {
-    display: flex;
-    justify-content: center;
-}
-
-@media (max-width: 630px) {
-    .button {
-        bottom: -50px;
-        padding: 6px 17px;
-        font-size: 0.8em;
-    }
-    .section > *::after {
-        height: 50px;
-        bottom: -50px;
-    }
-
-    .section > * {
-        flex-shrink: 1;
-        max-width: 100%;
-        min-width: calc((100vw - 40px) / 2);
-        min-height: calc((100vw - 40px) / 2 * 0.99);
-        flex-basis: 100%;
-        font-size: 3vw;
-    }
 }
 
 .rock {

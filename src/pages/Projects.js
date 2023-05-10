@@ -10,28 +10,40 @@ function Projects() {
             <div className={styles.container}>
                 <section className={styles.section}>
                     <div className={styles.project_container}>
-                        <div className={styles.rock}>
-                            <div className={styles.button}>Button</div>
+                        <div className={styles.rock}></div>
+                        <div className={styles.btn}>Demo</div>
+                        <div className={styles.description}>
+                            This is a rock paper scissors
                         </div>
                     </div>
 
                     <div className={styles.project_container}>
-                        <div className={styles.calc}>
-                            <div className={styles.button}>Button</div>
+                        <div className={styles.calc}></div>
+                        <div className={styles.btn}>Demo</div>
+                        <div className={styles.description}>
+                            This is a calculator
+                        </div>
+                    </div>
+
+                    <div className={styles.project_container}>
+                        <div>h</div>
+                        <div className={styles.btn}>Demo</div>
+                        <div className={styles.description}>
+                            This is something also
                         </div>
                     </div>
 
                     <div className={styles.project_container}>
                         <div></div>
-                    </div>
-
-                    <div className={styles.project_container}>
-                        <div></div>
-                    </div>
-                    <div className={styles.project_container}>
-                        <div className={styles.todo}>
-                            <div className={styles.button}>Button</div>
+                        <div className={styles.btn}>Demo</div>
+                        <div className={styles.description}>
+                            This is something
                         </div>
+                    </div>
+                    <div className={styles.project_container}>
+                        <div className={styles.todo}></div>
+                        <div className={styles.btn}>Demo</div>
+                        <div className={styles.description}>This is a Todo</div>
                     </div>
                 </section>
             </div>

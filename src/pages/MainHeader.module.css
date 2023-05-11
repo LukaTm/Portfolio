@@ -18,7 +18,7 @@ main {
 
 .default,
 .active {
-    color: white;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     position: relative;
 }
@@ -78,6 +78,46 @@ main {
     }
     .home header > * {
         margin-left: 10px;
+    }
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    left: 0;
+    padding: 1.6rem;
+    top: 20px;
+    background-color: aliceblue;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.dropdown_logo {
+    display: none;
+    cursor: pointer;
+    position: relative;
+}
+
+@media (max-width: 500px) {
+    /* HERE */
+    .dropdown_logo {
+        display: block;
+        background-color: rgb(99, 68, 28);
+    }
+    /* .dropdown_logo:focus ~ .dropdown {
+        display: block;
+    } */
+    .dropdown_logo:focus ~ .dropdown,
+    .dropdown:active {
+        display: block;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .header_visible {
+        display: none;
     }
 }
 

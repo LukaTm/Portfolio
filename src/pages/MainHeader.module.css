@@ -18,7 +18,7 @@ main {
 
 .default,
 .active {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     position: relative;
 }
@@ -31,7 +31,7 @@ main {
     height: 3px;
     bottom: -3px;
     left: 0;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     transform: scaleX(0);
     transition: transform 0.2s ease-in-out;
 }
@@ -118,6 +118,18 @@ main {
 
     .header_visible {
         display: none;
+    }
+
+    .default::after,
+    .active::after {
+        background-color: rgb(0, 0, 0);
+    }
+
+    .default,
+    .active {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        position: relative;
     }
 }
 

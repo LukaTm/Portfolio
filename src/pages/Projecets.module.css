@@ -19,6 +19,12 @@
     border-radius: 7px;
     justify-content: center;
     align-items: center;
+    /* box-shadow: 10px 17px 10px 0 rgba(255, 255, 255, 0.5),
+        -15px 0px 10px 0 rgba(255, 255, 255, 0.5),
+        inset 15px 0px 10px 0 rgba(0, 0, 0, 0.5); */
+
+    /* box-shadow: h-shadow v-shadow blur spread color */
+    box-shadow: 1px 4px 8px -1px rgb(255, 252, 252);
 }
 
 .btn {
@@ -31,6 +37,7 @@
     padding: 10px 20px;
     align-items: flex-start;
     max-width: 100px;
+    text-decoration: none;
 }
 
 .description {

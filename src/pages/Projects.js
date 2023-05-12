@@ -11,7 +11,14 @@ function Projects() {
                 <section className={styles.section}>
                     <div className={styles.project_container}>
                         <div className={styles.rock}></div>
-                        <div className={styles.btn}>Demo</div>
+                        <a
+                            className={styles.btn}
+                            href="https://example.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Demo
+                        </a>
                         <div className={styles.description}>
                             This is a rock paper scissors
                         </div>
@@ -19,7 +26,14 @@ function Projects() {
 
                     <div className={styles.project_container}>
                         <div className={styles.calc}></div>
-                        <div className={styles.btn}>Demo</div>
+                        <a
+                            className={styles.btn}
+                            href="https://lukatm.github.io/Calculator-Project/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Demo
+                        </a>
                         <div className={styles.description}>
                             This is a calculator
                         </div>
@@ -27,7 +41,14 @@ function Projects() {
 
                     <div className={styles.project_container}>
                         <div>h</div>
-                        <div className={styles.btn}>Demo</div>
+                        <a
+                            className={styles.btn}
+                            href="https://example.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Demo
+                        </a>
                         <div className={styles.description}>
                             This is something also
                         </div>
@@ -35,14 +56,28 @@ function Projects() {
 
                     <div className={styles.project_container}>
                         <div></div>
-                        <div className={styles.btn}>Demo</div>
+                        <a
+                            className={styles.btn}
+                            href="https://example.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Demo
+                        </a>
                         <div className={styles.description}>
                             This is something
                         </div>
                     </div>
                     <div className={styles.project_container}>
                         <div className={styles.todo}></div>
-                        <div className={styles.btn}>Demo</div>
+                        <a
+                            className={styles.btn}
+                            href="https://example.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Demo
+                        </a>
                         <div className={styles.description}>This is a Todo</div>
                     </div>
                 </section>

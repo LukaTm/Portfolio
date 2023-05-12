@@ -1,0 +1,178 @@
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+}
+
+section > div {
+    display: flex;
+    flex-direction: column;
+    min-width: 180px;
+    max-width: 180px;
+    margin: 10px;
+    height: 130px;
+    border-radius: 5px;
+    border: 3px solid rgb(147, 154, 196);
+    padding: 0px;
+    align-items: center;
+    max-width: calc(25% - 20px);
+    margin: 10px;
+}
+
+.outside_container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+@media (max-width: 290px) {
+    section > div {
+        min-width: calc(100vw - 110px);
+    }
+}
+
+@media (max-width: 190px) {
+    section {
+        font-size: calc(1vw * 7);
+    }
+}
+
+.skill_container {
+    padding: 13px;
+}
+
+.html {
+    background-image: url("../skills_photos/html.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.javascript {
+    background-image: url("../skills_photos/js.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.css {
+    background-image: url("../skills_photos/css.svg");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.express {
+    background-image: url("../skills_photos/express.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.node {
+    background-image: url("../skills_photos/nodejs.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.react {
+    background-image: url("../skills_photos/react.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.redux {
+    background-image: url("../skills_photos/redux.webp");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.git {
+    background-image: url("../skills_photos/git.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.webpack {
+    background-image: url("../skills_photos/webpack.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.vsscode {
+    background-image: url("../skills_photos/vsscode.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.restful {
+    background-image: url("../skills_photos/rest.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.mongoose {
+    background-image: url("../skills_photos/mongoose.png");
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    height: 100%;
+}

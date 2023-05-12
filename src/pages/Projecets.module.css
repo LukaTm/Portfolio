@@ -45,7 +45,7 @@
     font-size: 1.2em;
 }
 
-.section {
+.project_section {
     display: flex;
     flex-wrap: wrap;
     padding: 30px;
@@ -55,7 +55,7 @@
     padding-right: 150px;
 }
 
-.section > div > :first-child {
+.project_section > div > :first-child {
     background-color: red;
     position: relative;
     /* flex-grow, flex-shrink, flex-basis */
@@ -67,7 +67,7 @@
     font-size: 2fr;
 }
 
-.section > div > :first-child::after {
+.project_section > div > :first-child::after {
     content: "";
     position: absolute;
     bottom: -65px;
@@ -84,12 +84,12 @@
         padding: 6px 17px;
         font-size: 0.8em;
     }
-    .section > div > :first-child::after {
+    .project_section > div > :first-child::after {
         height: 65px;
         bottom: -65x;
     }
 
-    .section > div > :first-child {
+    .project_section > div > :first-child {
         flex-shrink: 1;
         max-width: 100%;
         min-width: calc((100vw - 0px) - 85px);

@@ -8,7 +8,7 @@ function Projects() {
             </div>
 
             <div className={styles.container}>
-                <section className={styles.section}>
+                <section className={styles.project_section}>
                     <div className={styles.project_container}>
                         <div className={styles.rock}></div>
                         <a

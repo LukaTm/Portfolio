@@ -13,7 +13,7 @@ function About() {
             </div>
             <div>My Skills</div>
             <div className={styles.outside_container}>
-                <section>
+                <section className={styles.section_container}>
                     <div class={styles.skill_container}>
                         <div class={styles.html}></div>
                         <div>HTML5</div>

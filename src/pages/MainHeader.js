@@ -61,8 +61,29 @@ function MainHeader({ children }) {
             </div>
             <main>{children}</main>
             <footer className={styles.footer}>
-                Developed by Marus Luka Copyright 2023 Github that is true yo I
-                dont know how but its true you also linkdin or smth
+                <div className={styles.left}>
+                    <div>Developed by Marus Luka</div>
+                </div>
+                <div className={styles.right}>
+                    <div className={styles.github_container}>
+                        <a
+                            href="https://github.com/LukaTm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <div class={styles.github_link}></div>
+                        </a>
+                    </div>
+                    <div>
+                        <a
+                            href="https://github.com/LukaTm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <div className={styles.linkedin_link}></div>
+                        </a>
+                    </div>
+                </div>
             </footer>
         </div>
     );

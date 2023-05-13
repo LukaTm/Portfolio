@@ -12,11 +12,13 @@
     flex-direction: column;
     border-radius: 7px;
     border: 4px solid rgb(157, 98, 187);
+    font-weight: 500;
     min-width: 180px;
     max-width: 180px;
     margin: 25px;
     height: 130px;
-    padding: 0px;
+    padding-top: 9px;
+    padding-bottom: 6px;
     align-items: center;
     /* box-shadow: h-shadow v-shadow blur spread color */
     box-shadow: 2px 3px 5px 0 rgb(104, 99, 99);
@@ -43,10 +45,6 @@
     .section_container {
         font-size: calc(1vw * 7);
     }
-}
-
-.skill_container {
-    padding: 13px;
 }
 
 .html {

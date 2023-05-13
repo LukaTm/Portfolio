@@ -15,8 +15,8 @@
     flex-direction: column;
     margin: 20px;
     padding-bottom: 200px;
-    border: 5px solid rgb(250, 234, 234);
-    border-radius: 7px;
+    border: 9px solid rgb(226, 200, 248);
+    border-radius: 10px;
     justify-content: center;
     align-items: center;
     /* box-shadow: 10px 17px 10px 0 rgba(255, 255, 255, 0.5),
@@ -24,7 +24,7 @@
         inset 15px 0px 10px 0 rgba(0, 0, 0, 0.5); */
 
     /* box-shadow: h-shadow v-shadow blur spread color */
-    box-shadow: 1px 4px 8px -1px rgb(255, 252, 252);
+    box-shadow: 2px 4px 15px 2px rgb(77, 71, 71);
 }
 
 .btn {
@@ -78,7 +78,7 @@
     font-size: 1vw;
 }
 
-@media (max-width: 630px) {
+@media (max-width: 750px) {
     .button {
         bottom: -65px;
         padding: 6px 17px;
@@ -92,8 +92,8 @@
     .project_section > div > :first-child {
         flex-shrink: 1;
         max-width: 100%;
-        min-width: calc((100vw - 0px) - 85px);
-        min-height: calc((100vw - 0px) / 2 - 33px);
+        min-width: calc((100vw - 0px) - 205px);
+        min-height: calc((100vw - 0px) / 2 - 73px);
         flex-basis: 100%;
         font-size: 3vw;
     }

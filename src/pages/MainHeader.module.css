@@ -1,7 +1,7 @@
 .home {
     min-height: 100vh;
     height: 100%;
-    background-image: url("../pic.png");
+    /* background-image: url("../pic.png"); */
     background-size: cover;
     background-position: right center;
     /* background image fixed so it doesnt try to fit scrollable content */
@@ -10,6 +10,12 @@
     color: aliceblue;
     display: flex;
     flex-direction: column;
+}
+
+body {
+    position: relative;
+    background: linear-gradient(to right, #916181 0%, #9b5353 100%);
+    color: white;
 }
 
 main {
@@ -144,14 +150,14 @@ main {
 
 .home .footer {
     display: flex;
-    background-color: rgb(52, 4, 61);
+    background-color: rgb(95, 12, 70);
     height: 50px;
     width: 100%;
     font-weight: bold;
     align-items: center;
     position: sticky;
     bottom: 0;
-    padding: 30px;
+    padding: 20px;
 }
 
 .left {
@@ -173,8 +179,8 @@ main {
     background-image: url("../skills_photos/github.png");
     background-size: cover;
     background-position: center center;
-    height: 25px;
-    width: 25px;
+    height: 23px;
+    width: 23px;
     cursor: pointer;
 }
 
@@ -183,8 +189,8 @@ main {
     background-image: url("../skills_photos/linkedin.png");
     background-size: cover;
     background-position: center center;
-    height: 25px;
-    width: 25px;
+    height: 23px;
+    width: 23px;
     cursor: pointer;
 }
 

@@ -71,7 +71,7 @@ function MainHeader({ children }) {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <div class={styles.github_link}></div>
+                            <div className={styles.github_link}></div>
                         </a>
                     </div>
                     <div>

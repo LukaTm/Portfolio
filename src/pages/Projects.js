@@ -1,6 +1,33 @@
+import React, { useEffect } from "react";
 import styles from "./Projecets.module.css";
 
 function Projects() {
+    useEffect(() => {
+        const projectContainers = document.querySelectorAll(
+            `.${styles.project_container}`
+        );
+
+        function revealProject() {
+            projectContainers.forEach((container) => {
+                const containerTop = container.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (containerTop < windowHeight - 30) {
+                    container.classList.add(styles.visible);
+                } else {
+                    container.classList.remove(styles.visible);
+                }
+            });
+        }
+
+        window.addEventListener("scroll", revealProject);
+        revealProject();
+
+        return () => {
+            window.removeEventListener("scroll", revealProject);
+        };
+    }, []);
+
     return (
         <div>
             <div className={styles.title}>
@@ -9,7 +36,9 @@ function Projects() {
 
             <div className={styles.container}>
                 <section className={styles.project_section}>
-                    <div className={styles.project_container}>
+                    <div
+                        className={`${styles.project_container} ${styles.visible}`}
+                    >
                         <div className={styles.rock}></div>
                         <a
                             className={styles.btn}
@@ -24,11 +53,13 @@ function Projects() {
                         </div>
                     </div>
 
-                    <div className={styles.project_container}>
+                    <div
+                        className={`${styles.project_container} ${styles.visible}`}
+                    >
                         <div className={styles.calc}></div>
                         <a
                             className={styles.btn}
-                            href="https://lukatm.github.io/Calculator-Project/"
+                            href="https://example.com"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -39,7 +70,9 @@ function Projects() {
                         </div>
                     </div>
 
-                    <div className={styles.project_container}>
+                    <div
+                        className={`${styles.project_container} ${styles.visible}`}
+                    >
                         <div>h</div>
                         <a
                             className={styles.btn}
@@ -54,7 +87,9 @@ function Projects() {
                         </div>
                     </div>
 
-                    <div className={styles.project_container}>
+                    <div
+                        className={`${styles.project_container} ${styles.visible}`}
+                    >
                         <div></div>
                         <a
                             className={styles.btn}
@@ -68,7 +103,10 @@ function Projects() {
                             This is something
                         </div>
                     </div>
-                    <div className={styles.project_container}>
+
+                    <div
+                        className={`${styles.project_container} ${styles.visible}`}
+                    >
                         <div className={styles.todo}></div>
                         <a
                             className={styles.btn}

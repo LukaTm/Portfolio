@@ -4,9 +4,11 @@ import { NavLink } from "react-router-dom";
 
 function DropDown() {
     return (
-        <div>
+        <div className={styles.dropdown_container}>
             <div className={styles.dropdown_logo} tabIndex="0">
-                Dropdown
+                <div className={styles.line}></div>
+                <div className={styles.line}></div>
+                <div className={styles.line}></div>
             </div>
             <div className={styles.dropdown}>
                 <header>

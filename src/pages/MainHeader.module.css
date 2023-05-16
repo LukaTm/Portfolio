@@ -92,9 +92,10 @@ main {
 .dropdown {
     display: none;
     position: absolute;
-    left: 0;
-    padding: 1.6rem;
-    top: 20px;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 200px;
     background-color: aliceblue;
     border-radius: 0.25rem;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
@@ -105,23 +106,74 @@ main {
 .dropdown_logo {
     display: none;
     cursor: pointer;
+}
+
+.dropdown ul {
+    list-style: none;
+}
+
+.dropdown ul li {
+    margin: 10px;
+}
+
+.dropdown_container {
+    display: none;
+    align-self: flex-end;
+    background-color: #916181;
+    padding: 10px;
+    z-index: 2;
     position: relative;
 }
 
 @media (max-width: 500px) {
-    /* HERE */
-    .dropdown_logo {
+    .dropdown_container {
         display: block;
-        background-color: rgb(99, 68, 28);
     }
-    /* .dropdown_logo:focus ~ .dropdown {
-        display: block;
-    } */
+
+    .dropdown_logo {
+        width: 27px;
+        height: 19px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+    }
+
+    .line {
+        height: 3px;
+        background-color: rgb(255, 255, 255);
+    }
     .dropdown_logo:focus ~ .dropdown,
     .dropdown:active {
         display: block;
-        transform: translateY(0);
-        pointer-events: auto;
+    }
+
+    .dropdown::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        width: 3px;
+        height: 30px;
+        background-color: black;
+        border-radius: 5px;
+        transform: rotate(45deg);
+    }
+
+    .dropdown::after {
+        content: "";
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        width: 3px;
+        height: 30px;
+        background-color: black;
+        border-radius: 5px;
+        transform: rotate(-45deg);
+    }
+
+    .dropdown > * {
+        margin-top: 78px;
     }
 
     .header_visible {
@@ -137,7 +189,6 @@ main {
     .active {
         color: rgb(0, 0, 0);
         text-decoration: none;
-        position: relative;
     }
 }
 
@@ -157,7 +208,7 @@ main {
     align-items: center;
     position: sticky;
     bottom: 0;
-    padding: 20px;
+    padding: 26px;
 }
 
 .left {

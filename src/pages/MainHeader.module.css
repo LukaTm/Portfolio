@@ -90,7 +90,6 @@ main {
 }
 
 .dropdown {
-    display: none;
     position: absolute;
     right: 0;
     top: 0;
@@ -143,10 +142,10 @@ main {
         height: 3px;
         background-color: rgb(255, 255, 255);
     }
-    .dropdown_logo:focus ~ .dropdown,
+    /* .dropdown_logo:focus ~ .dropdown,
     .dropdown:active {
         display: block;
-    }
+    } */
 
     .dropdown::before {
         content: "";

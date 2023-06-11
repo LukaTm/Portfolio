@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    /* background: linear-gradient(
+        to right,
+        rgb(126, 125, 125) 0%,
+        rgb(66, 66, 66) 20%,
+        rgb(0, 0, 0) 100%
+    ); */
+    background: linear-gradient(141deg, #969699, #1e1e22);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+element.style {
+    will-change: opacity, transform;
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
+        rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+}
+
+.particle-wrapper {
+    top: 0;
+    position: absolute;
+    width: 700px;
+    height: 310px;
+}
+
+.particle1 {
+    position: absolute;
+    top: 90px;
+    right: 159px;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    background-color: #323235;
+    opacity: 0.4;
+    /* -webkit-transform: rotate(51deg);
+    -ms-transform: rotate(51deg);
+    transform: rotate(51deg); */
+}
+.particle2 {
+    position: absolute;
+    top: 200px;
+    right: 600px;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background-color: #323235;
+    opacity: 0.3;
+    /* -webkit-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    transform: rotate(20deg); */
+}
+
+.particle3 {
+    position: absolute;
+    top: 94px;
+    right: 624px;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    background-color: #323235;
+    opacity: 0.4;
+    /* -webkit-transform: rotate(-17deg);
+    -ms-transform: rotate(-17deg);
+    transform: rotate(-17deg); */
+}
+
+.particle4 {
+    position: absolute;
+    top: 64px;
+    right: 428px;
+    width: 15px;
+    height: 15px;
+    border-radius: 5px;
+    background-color: #000;
+    opacity: 0.2;
+    /* -webkit-transform: rotate(26deg);
+    -ms-transform: rotate(26deg);
+    transform: rotate(26deg); */
+}
+.particle5 {
+    position: absolute;
+    top: 203px;
+    right: 448px;
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    background-color: #323235;
+    opacity: 0.2;
+    /* -webkit-transform: rotate(-11deg);
+    -ms-transform: rotate(-11deg);
+    transform: rotate(-11deg); */
+}
+
+.particle6 {
+    position: absolute;
+    top: 251px;
+    right: 262px;
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    background-color: #323235;
+    opacity: 0.2;
+    /* -webkit-transform: rotate(14deg);
+    -ms-transform: rotate(14deg);
+    transform: rotate(14deg); */
+}
+
+.particle7 {
+    position: absolute;
+    top: 213px;
+    right: 104px;
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    background-color: #323235;
+    opacity: 0.2;
+    /* -webkit-transform: rotate(-14deg);
+    -ms-transform: rotate(-14deg);
+    transform: rotate(-14deg); */
+}
+
+.particle8 {
+    position: absolute;
+    top: 111px;
+    right: 64px;
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    background-color: #323235;
+    opacity: 0.15;
+    /* -webkit-transform: rotate(17deg);
+    -ms-transform: rotate(17deg);
+    transform: rotate(17deg); */
+}
+
+/* @media screen and (max-width: 991px) .particle-wrapper {
+    width: 100%;
+} */

@@ -45,10 +45,13 @@ function DropDown() {
 
     const handleMouseMove = (event) => {
         const container = dropdownBtnRef.current;
+        // Coordinates and WIDTH | HEIGHT
         const containerRect = container.getBoundingClientRect();
+        // CENTER
         const containerCenterX = containerRect.left + containerRect.width / 2;
         const containerCenterY = containerRect.top + containerRect.height / 2;
 
+        // X and Y CLIENT coordinates
         const offsetX = (event.clientX - containerCenterX) * 0.07; // Adjust the sensitivity by changing the multiplication value
         const offsetY = (event.clientY - containerCenterY) * 0.07;
 
@@ -68,9 +71,11 @@ function DropDown() {
                 className={styles.dropdown_container}
                 id={isDropdownOpen ? styles.active : ""}
                 onMouseMove={handleMouseMove}
+                onMouseOut={() => setCursorPosition({ x: 0, y: 0 })}
                 onClick={handleDropdownClick}
                 ref={dropdownBtnRef}
                 style={{
+                    // (tx, ty, tz)
                     transform: `translate3d(${cursorPosition.x}px, ${cursorPosition.y}px, 0)`,
                 }}
             >

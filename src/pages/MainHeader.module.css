@@ -1,3 +1,20 @@
+@font-face {
+    font-family: my-custom-font;
+    src: url(../fonts/Heebo-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: my-custom-font2;
+    src: url(../fonts/Kanit-Medium.ttf);
+}
+@font-face {
+    font-family: my-custom-font3;
+    src: url(../fonts/PressStart2P-Regular.ttf);
+}
+@font-face {
+    font-family: my-custom-font4;
+    src: url(../fonts/SecularOne-Regular.ttf);
+}
+
 .home {
     min-height: 100vh;
     height: 100%;
@@ -7,15 +24,31 @@
     /* background image fixed so it doesnt try to fit scrollable content */
     background-attachment: fixed;
     overflow: auto;
-    color: aliceblue;
+    /* color: aliceblue; */
+    color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
 }
 
 body {
     position: relative;
-    background: linear-gradient(to right, #916181 0%, #9b5353 100%);
-    color: white;
+    /* background: linear-gradient(to right, #916181 0%, #9b5353 100%); */
+}
+
+h1 {
+    /* background: linear-gradient(
+        to right,
+        rgb(126, 125, 125) 0%,
+        rgb(66, 66, 66) 20%,
+        rgb(0, 0, 0) 100%
+    ); */
+
+    background: linear-gradient(141deg, #969699, #1e1e22);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 4em;
+    font-family: my-custom-font2;
+    font-weight: 700;
 }
 
 main {
@@ -24,7 +57,7 @@ main {
 
 .default,
 .active {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     text-decoration: none;
     position: relative;
     font-weight: 500;
@@ -38,10 +71,10 @@ main {
     height: 3px;
     bottom: -3px;
     left: 0;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     transform: scaleX(0);
     transition: transform 0.2s ease-in-out;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .default:hover::after,
@@ -63,7 +96,7 @@ main {
 }
 
 .home header > * {
-    margin-left: 80px;
+    margin-left: 60px;
 }
 
 @media (max-width: 1300px) {
@@ -79,7 +112,7 @@ main {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 660px) {
     .home header {
         justify-content: space-evenly;
         padding: 0px;
@@ -90,6 +123,7 @@ main {
 }
 
 .dropdown {
+    display: none;
     position: absolute;
     right: 0;
     top: 0;
@@ -141,10 +175,13 @@ main {
 }
 
 @media (max-width: 500px) {
+    .dropdown {
+        display: block;
+    }
     .dropdown_container {
         display: block;
         position: absolute;
-        box-shadow: 0px 8px 48px 0px rgba(0, 0, 0, 0.185);
+        box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.233);
         margin-top: 10px;
         margin-right: 12px;
     }

@@ -8,9 +8,11 @@ function Projects() {
         );
 
         function revealProject() {
+            const windowHeight = window.innerHeight;
+
             projectContainers.forEach((container) => {
+                // CALCULATES TO THE TOP OF THE VIEWPORT
                 const containerTop = container.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
 
                 if (containerTop < windowHeight - 30) {
                     container.classList.add(styles.visible);
@@ -20,11 +22,18 @@ function Projects() {
             });
         }
 
+        function handleResize() {
+            revealProject();
+        }
+
         window.addEventListener("scroll", revealProject);
+        window.addEventListener("resize", handleResize);
         revealProject();
 
+        // CLEANUP
         return () => {
             window.removeEventListener("scroll", revealProject);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
@@ -82,9 +91,7 @@ function Projects() {
                         >
                             Demo
                         </a>
-                        <div className={styles.description}>
-                            This is something also
-                        </div>
+                        <div className={styles.description}>TIC TAC TOE</div>
                     </div>
 
                     <div
@@ -116,7 +123,7 @@ function Projects() {
                         >
                             Demo
                         </a>
-                        <div className={styles.description}>This is a Todo</div>
+                        <div className={styles.description}>Todo List</div>
                     </div>
                 </section>
             </div>

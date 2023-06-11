@@ -15,7 +15,8 @@
     flex-direction: column;
     margin: 20px;
     padding-bottom: 200px;
-    border: 9px solid rgb(199, 199, 199);
+    /* border: px solid rgb(199, 199, 199); */
+    background-color: rgba(112, 66, 126, 0.8);
     border-radius: 10px;
     justify-content: center;
     align-items: center;

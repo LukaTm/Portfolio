@@ -1,24 +1,58 @@
 import styles from "./MainHeader.module.css";
+import { useEffect, useRef, useState } from "react";
 
 import { NavLink } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import {
+    FiHome,
+    FiUser,
+    FiInfo,
+    FiBriefcase,
+    FiFolder,
+    FiFile,
+} from "react-icons/fi";
+import { Icon, InlineIcon } from "@iconify/react";
+import homeIcon from "@iconify-icons/ri/home-4-line";
+import userIcon from "@iconify-icons/ri/user-line";
+import briefcaseIcon from "@iconify-icons/ri/briefcase-line";
+import folderIcon from "@iconify-icons/ri/folder-line";
+import fileIcon from "@iconify-icons/ri/file-line";
 
 function DropDown() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const dropdownBtnRef = useRef(null);
+    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
+    // IS OPEN
     const handleDropdownClick = () => {
         setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const closeDropdown = () => {
+        setIsDropdownOpen(false);
     };
 
     const handleClickOutside = (event) => {
         if (
             dropdownRef.current &&
             // is not in current container
-            !dropdownRef.current.contains(event.target)
+            !dropdownRef.current.contains(event.target) &&
+            !dropdownBtnRef.current.contains(event.target)
         ) {
             setIsDropdownOpen(false);
         }
+    };
+
+    const handleMouseMove = (event) => {
+        const container = dropdownBtnRef.current;
+        const containerRect = container.getBoundingClientRect();
+        const containerCenterX = containerRect.left + containerRect.width / 2;
+        const containerCenterY = containerRect.top + containerRect.height / 2;
+
+        const offsetX = (event.clientX - containerCenterX) * 0.07; // Adjust the sensitivity by changing the multiplication value
+        const offsetY = (event.clientY - containerCenterY) * 0.07;
+
+        setCursorPosition({ x: offsetX, y: offsetY });
     };
 
     useEffect(() => {
@@ -29,18 +63,34 @@ function DropDown() {
     }, []);
 
     return (
-        <div className={styles.dropdown_container} ref={dropdownRef}>
+        <div>
             <div
-                className={styles.dropdown_logo}
+                className={styles.dropdown_container}
+                id={isDropdownOpen ? styles.active : ""}
+                onMouseMove={handleMouseMove}
                 onClick={handleDropdownClick}
-                tabIndex="0"
+                ref={dropdownBtnRef}
+                style={{
+                    transform: `translate3d(${cursorPosition.x}px, ${cursorPosition.y}px, 0)`,
+                }}
             >
-                <div className={styles.line}></div>
-                <div className={styles.line}></div>
-                <div className={styles.line}></div>
+                <div
+                    className={styles.dropdown_logo}
+                    onClick={handleDropdownClick}
+                    tabIndex="0"
+                >
+                    <div className={styles.line}></div>
+                    <div className={styles.line}></div>
+                    <div className={styles.line}></div>
+                </div>
             </div>
+
             {isDropdownOpen && (
-                <div className={styles.dropdown}>
+                <div ref={dropdownRef} className={styles.dropdown}>
+                    <div
+                        className={styles.closeBtn}
+                        onClick={closeDropdown}
+                    ></div>
                     <header>
                         <ul>
                             <li>
@@ -52,7 +102,7 @@ function DropDown() {
                                     ]}
                                     to="/"
                                 >
-                                    Home
+                                    <Icon icon={homeIcon} /> Home
                                 </NavLink>
                             </li>
                             <li>
@@ -64,7 +114,7 @@ function DropDown() {
                                     ]}
                                     to="/about"
                                 >
-                                    About
+                                    <FiUser /> About
                                 </NavLink>
                             </li>
                             <li>
@@ -74,9 +124,9 @@ function DropDown() {
                                             ? styles.active
                                             : styles.default,
                                     ]}
-                                    to="/expierience"
+                                    to="/experience"
                                 >
-                                    Expierience
+                                    <Icon icon={briefcaseIcon} /> Experience
                                 </NavLink>
                             </li>
                             <li>
@@ -88,7 +138,7 @@ function DropDown() {
                                     ]}
                                     to="/projects"
                                 >
-                                    Projects
+                                    <FiFolder /> Projects
                                 </NavLink>
                             </li>
                             <li>
@@ -100,7 +150,7 @@ function DropDown() {
                                     ]}
                                     to="/resume"
                                 >
-                                    Resume
+                                    <FiFile /> Resume
                                 </NavLink>
                             </li>
                         </ul>

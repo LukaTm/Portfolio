@@ -1,12 +1,13 @@
+import React, { useEffect, useRef, useState } from "react";
+import AnimatedHeader from "./AnimatedHeader";
+
 function Home() {
     return (
         <div>
             {/* <Link to="/about">About</Link> */}
 
             <h1> HI THERE!</h1>
-            <h2> Fullstack Developer</h2>
-
-            <h2>I am </h2>
+            <AnimatedHeader text="Full Stack Developer" />
             <div>
                 LASSLDLASLLAS l slaLd al lsa lsal dsal dad lal sal lasl dlal
                 dlsa as l lal dla l dl ll al alasd aslj dsa hd aushd sklau hlka

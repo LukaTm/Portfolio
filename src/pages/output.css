@@ -609,6 +609,14 @@ video {
   visibility: visible;
 }
 
+.-z-10 {
+  z-index: -10;
+}
+
+.-z-0 {
+  z-index: 0;
+}
+
 .flex {
   display: flex;
 }
@@ -656,6 +664,8 @@ h1 {
   background: linear-gradient(141deg, #969699, #1e1e22);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-top: 80px;
+  margin-bottom: 150px;
 }
 
 element.style {
@@ -669,17 +679,24 @@ element.style {
           transform-style: preserve-3d;
 }
 
-.particle-wrapper {
+.particle-outside-wrapper {
   top: 0;
+  left: 0;
+  width: 100%;
+  height: 870px;
   position: absolute;
-  width: 700px;
-  height: 310px;
+}
+
+.particle-wrapper {
+  position: relative;
+  width: 100%;
+  height: 870px;
 }
 
 .particle1 {
   position: absolute;
   top: 90px;
-  right: 159px;
+  right: 259px;
   width: 20px;
   height: 20px;
   border-radius: 6px;
@@ -693,7 +710,7 @@ element.style {
 .particle2 {
   position: absolute;
   top: 200px;
-  right: 600px;
+  right: 700px;
   width: 24px;
   height: 24px;
   border-radius: 6px;
@@ -707,7 +724,7 @@ element.style {
 .particle3 {
   position: absolute;
   top: 94px;
-  right: 624px;
+  right: 724px;
   width: 9px;
   height: 9px;
   border-radius: 2px;
@@ -721,7 +738,7 @@ element.style {
 .particle4 {
   position: absolute;
   top: 64px;
-  right: 428px;
+  right: 528px;
   width: 15px;
   height: 15px;
   border-radius: 5px;
@@ -735,7 +752,7 @@ element.style {
 .particle5 {
   position: absolute;
   top: 203px;
-  right: 448px;
+  right: 548px;
   width: 12px;
   height: 12px;
   border-radius: 4px;
@@ -749,7 +766,7 @@ element.style {
 .particle6 {
   position: absolute;
   top: 251px;
-  right: 262px;
+  right: 362px;
   width: 12px;
   height: 12px;
   border-radius: 4px;
@@ -763,7 +780,7 @@ element.style {
 .particle7 {
   position: absolute;
   top: 213px;
-  right: 104px;
+  right: 204px;
   width: 9px;
   height: 9px;
   border-radius: 2px;
@@ -777,7 +794,7 @@ element.style {
 .particle8 {
   position: absolute;
   top: 111px;
-  right: 64px;
+  right: 164px;
   width: 11px;
   height: 11px;
   border-radius: 3px;

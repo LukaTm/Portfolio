@@ -59,50 +59,16 @@ function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
         );
     };
 
-    let scrollbarHovered = useRef(false);
-    const handleMouseLeave = () => {
-        // Check if the related target is inside the container
-        if (!scrollbarHovered) {
-            setMouseLeave(true);
-            setMouseEnter(false);
-        }
-    };
-
-    function checkScrollbarHover(event) {
-        const element = event.target;
-        const containerElement = containerRef.current;
-
-        if (
-            element.id === document.documentElement ||
-            element === document.body
-        ) {
-            // Mouse cursor is over the scrollbar or outside the document body
-            scrollbarHovered.current = true;
-        } else if (!containerElement.contains(element)) {
-            // Mouse cursor is outside the container element
-            console.log("balss");
-            scrollbarHovered.current = false;
-            setMouseLeave(true);
-            setMouseEnter(false);
-        }
-    }
-
-    // Event listener for mousemove event
-    window.addEventListener("mousemove", checkScrollbarHover);
-
     return (
         <div
             className={`${styles.home} ${darkMode ? "dark" : ""}`}
-            onMouseLeave={() => {
-                handleMouseLeave();
-            }}
             ref={containerRef}
             onMouseEnter={() => {
                 setMouseLeave(false);
                 setMouseEnter(true);
                 setTimeout(() => {
                     setMouseEnter(false);
-                }, 100);
+                }, 200);
             }}
         >
             {/* <DarkModeToggle /> */}

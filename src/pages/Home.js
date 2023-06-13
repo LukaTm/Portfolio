@@ -21,7 +21,7 @@ function reducer(state, action) {
         case "MOVE_PARTICLE":
             return state.map((particle) =>
                 particle.id === action.id
-                    ? { id: particle.id, x: action.x, y: action.y }
+                    ? { ...particle, x: action.x, y: action.y }
                     : particle
             );
 
@@ -82,62 +82,25 @@ function Home({ mouseLeave, mouseEnter }) {
     const blocksContainer = useRef(null);
     const [isScrooling, setIsScrooling] = useState(false);
     const [multiplier, setMultiplier] = useState(0.1);
-    // const particleContainerRef = useRef(null);
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [offsetXTwo, setOffsetXTwo] = useState(0);
+    const [offsetYTwo, setOffsetYTwo] = useState(0);
+    const [secondOffsetX, setSecondOffsetX] = useState(0);
+    const [secondOffsetY, setSecondOffsetY] = useState(0);
 
     useEffect(() => {
-        if (mouseLeave) {
-            dispatch({
-                type: "RESET_PARTICLES",
-                x: 0,
-                y: 0,
-            });
-        }
-    }, [mouseLeave]);
+        if (scrollPosition <= 50) setMultiplier(0.1);
+        if (scrollPosition <= 100) setMultiplier(0.15);
+        if (scrollPosition <= 150) setMultiplier(0.2);
+        if (scrollPosition <= 200) setMultiplier(0.25);
+        if (scrollPosition <= 250) setMultiplier(0.3);
+        if (scrollPosition <= 300) setMultiplier(0.35);
 
-    const scrollPosition = window.scrollY;
-    const offsetXTwo = scrollPosition * multiplier; // Adjust the sensitivity by changing the multiplication value
-    const offsetYTwo = scrollPosition * multiplier;
-    // 4-8 PARTICLES
-
-    const secondOffsetX = scrollPosition * multiplier; // Adjust the sensitivity by changing the multiplication value
-    const secondOffsetY = scrollPosition * multiplier;
-
-    console.log(scrollPosition);
-    useEffect(() => {
-        if (scrollPosition < 50) setMultiplier(0.1);
-        if (scrollPosition < 100) setMultiplier(0.15);
-        if (scrollPosition < 150) setMultiplier(0.2);
-        if (scrollPosition < 200) setMultiplier(0.25);
-        if (scrollPosition < 250) setMultiplier(0.3);
-        if (scrollPosition < 300) setMultiplier(0.35);
-    }, [scrollPosition]);
-    function moveParticles() {
-        setIsScrooling(true);
-        // SCROOL POSITION
-
-        // CALCULATES TO THE TOP OF THE VIEWPORT
-        // const containerRect = blocksContainer.current.getBoundingClientRect();
-        // const containerTop =
-        //     blocksContainer.current.getBoundingClientRect().top;
-        // const containerCenterX = containerRect.left + containerRect.width / 2;
-        // const containerCenterY = containerRect.top + containerRect.height / 2;
-
-        dispatch({
-            type: "MOVE_ALL_PARTICLES_TWO",
-            x: offsetXTwo,
-            y: offsetYTwo,
-        });
-        dispatch({
-            type: "MOVE_ALL_PARTICLES_ONE",
-            x: secondOffsetX,
-            y: secondOffsetY,
-        });
-        setTimeout(() => {
-            setIsScrooling(false);
-        }, 500);
-    }
-
-    window.addEventListener("scroll", moveParticles);
+        setOffsetXTwo(scrollPosition * multiplier);
+        setOffsetYTwo(scrollPosition * multiplier);
+        setSecondOffsetX(scrollPosition * multiplier);
+        setSecondOffsetY(scrollPosition * multiplier);
+    }, [scrollPosition, multiplier]);
 
     const handleMouseMove = (event) => {
         const container = blocksContainer.current;
@@ -168,6 +131,36 @@ function Home({ mouseLeave, mouseEnter }) {
         });
     };
 
+    useEffect(() => {
+        function moveParticles() {
+            setScrollPosition(window.scrollY);
+            setIsScrooling(true);
+        }
+
+        function updateParticles() {
+            dispatch({
+                type: "MOVE_ALL_PARTICLES_TWO",
+                x: offsetXTwo,
+                y: offsetYTwo,
+            });
+            dispatch({
+                type: "MOVE_ALL_PARTICLES_ONE",
+                x: secondOffsetX,
+                y: secondOffsetY,
+            });
+            setTimeout(() => {
+                setIsScrooling(false);
+            }, 500);
+        }
+
+        window.addEventListener("scroll", moveParticles);
+        updateParticles();
+
+        return () => {
+            window.removeEventListener("scroll", moveParticles);
+        };
+    }, [secondOffsetX, secondOffsetY, offsetXTwo, offsetYTwo]);
+
     // Accessing the x and y coordinates for each particle
     const particle1 = particlePositions.find((particle) => particle.id === 1);
     const particle2 = particlePositions.find((particle) => particle.id === 2);
@@ -186,11 +179,10 @@ function Home({ mouseLeave, mouseEnter }) {
                 onMouseMove={handleMouseMove}
             >
                 {/* <Link to="/about">About</Link> */}
-
                 <div>
                     <div className="particle-container relative flex justify-center items-center flex-col">
                         {/* div.particle$*8 */}
-                        <h1> Hi, I'm Markuss.</h1>
+                        <h1>Hi, I'm Markuss</h1>
                         <AnimatedHeader
                             className="font-semibold"
                             text="Full Stack Developer"
@@ -217,12 +209,12 @@ function Home({ mouseLeave, mouseEnter }) {
                                 }px, 0) rotate(20deg) ${`scale(${
                                     1 + multiplier
                                 })`}`,
-                                // transition:
-                                //     mouseLeave || mouseEnter
-                                //         ? "transform 700ms"
-                                //         : isScrooling
-                                //         ? "transform 200ms"
-                                //         : "none",
+                                transition:
+                                    mouseLeave || mouseEnter
+                                        ? "transform 700ms"
+                                        : isScrooling
+                                        ? "transform 200ms"
+                                        : "none",
                             }}
                         ></div>
 
@@ -257,12 +249,12 @@ function Home({ mouseLeave, mouseEnter }) {
                             style={{
                                 // (tx, ty, tz)
                                 transform: `translate3d(${particle4.x}px, ${particle4.y}px, 0) rotate(26deg)`,
-                                // transition:
-                                //     mouseLeave || mouseEnter
-                                //         ? "transform 700ms"
-                                //         : isScrooling
-                                //         ? "transform 200ms"
-                                //         : "none",
+                                transition:
+                                    mouseLeave || mouseEnter
+                                        ? "transform 700ms"
+                                        : isScrooling
+                                        ? "transform 200ms"
+                                        : "none",
                             }}
                         ></div>
                         <div
@@ -270,12 +262,12 @@ function Home({ mouseLeave, mouseEnter }) {
                             style={{
                                 // (tx, ty, tz)
                                 transform: `translate3d(${particle5.x}px, ${particle5.y}px, 0) rotate(35deg)`,
-                                // transition:
-                                //     mouseLeave || mouseEnter
-                                //         ? "transform 700ms"
-                                //         : isScrooling
-                                //         ? "transform 200ms"
-                                //         : "none",
+                                transition:
+                                    mouseLeave || mouseEnter
+                                        ? "transform 700ms"
+                                        : isScrooling
+                                        ? "transform 200ms"
+                                        : "none",
                             }}
                         ></div>
                         <div
@@ -283,12 +275,12 @@ function Home({ mouseLeave, mouseEnter }) {
                             style={{
                                 // (tx, ty, tz)
                                 transform: `translate3d(${particle6.x}px, ${particle6.y}px, 0) rotate(14deg)`,
-                                // transition:
-                                //     mouseLeave || mouseEnter
-                                //         ? "transform 700ms"
-                                //         : isScrooling
-                                //         ? "transform 200ms"
-                                //         : "none",
+                                transition:
+                                    mouseLeave || mouseEnter
+                                        ? "transform 700ms"
+                                        : isScrooling
+                                        ? "transform 200ms"
+                                        : "none",
                             }}
                         ></div>
                         <div
@@ -296,12 +288,12 @@ function Home({ mouseLeave, mouseEnter }) {
                             style={{
                                 // (tx, ty, tz)
                                 transform: `translate3d(${particle7.x}px, ${particle7.y}px, 0) rotate(-26deg)`,
-                                // transition:
-                                //     mouseLeave || mouseEnter
-                                //         ? "transform 700ms"
-                                //         : isScrooling
-                                //         ? "transform 200ms"
-                                //         : "none",
+                                transition:
+                                    mouseLeave || mouseEnter
+                                        ? "transform 700ms"
+                                        : isScrooling
+                                        ? "transform 200ms"
+                                        : "none",
                             }}
                         ></div>
                         <div
@@ -309,12 +301,12 @@ function Home({ mouseLeave, mouseEnter }) {
                             style={{
                                 // (tx, ty, tz)
                                 transform: `translate3d(${particle8.x}px, ${particle8.y}px, 0) rotate(-49deg)`,
-                                // transition:
-                                //     mouseLeave || mouseEnter
-                                //         ? "transform 700ms"
-                                //         : isScrooling
-                                //         ? "transform 200ms"
-                                //         : "none",
+                                transition:
+                                    mouseLeave || mouseEnter
+                                        ? "transform 700ms"
+                                        : isScrooling
+                                        ? "transform 200ms"
+                                        : "none",
                             }}
                         ></div>
                     </div>

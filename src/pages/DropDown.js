@@ -89,7 +89,6 @@ function DropDown() {
                     <div className={styles.line}></div>
                 </div>
             </div>
-
             {isDropdownOpen && (
                 <div ref={dropdownRef} className={styles.dropdown}>
                     <div

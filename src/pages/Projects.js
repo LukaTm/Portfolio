@@ -40,7 +40,7 @@ function Projects() {
     return (
         <div>
             <div className={styles.title}>
-                <h1>Projects</h1>
+                <h3 className={styles.h3}>Projects</h3>
             </div>
 
             <div className={styles.container}>
@@ -55,7 +55,7 @@ function Projects() {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            Demo
+                            <span className={styles.project_text}>Demo</span>
                         </a>
                         <div className={styles.description}>
                             This is a rock paper scissors

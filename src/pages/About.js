@@ -11,7 +11,10 @@ function About() {
                 tenetur voluptatum ratione exercitationem odit architecto,
                 ducimus laborum pariatur dicta fuga placeat facere dolore.
             </div>
-            <div>My Skills</div>
+
+            <div className={styles.my_skills}>
+                <span>My Skills</span>
+            </div>
             <div className={styles.outside_container}>
                 <section className={styles.section_container}>
                     <div className={styles.skill_container}>

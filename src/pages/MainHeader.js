@@ -1,19 +1,128 @@
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./MainHeader.module.css";
 
 import { NavLink } from "react-router-dom";
 
 import DropDown from "./DropDown";
 
-function MainHeader({ children }) {
-    return (
-        <div className={styles.home}>
-            {/* <Link to="/about">About</Link> */}
-            {/* <NavLink
-                className={(navData) => (navData.isActive ? styles.active : "")}
-                to="/about"
+import { IoMoonOutline } from "react-icons/io5";
+import { FiSun } from "react-icons/fi";
+
+function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
+    const [darkModeClick, setDarkModeClick] = useState(false);
+    const [isClickable, setIsClickable] = useState(true);
+    const [logo, setLogo] = useState(<IoMoonOutline />);
+    const [darkMode, setDarkMode] = useState(false);
+    const containerRef = useRef(null);
+
+    const toggleDarkMode = () => {
+        setDarkModeClick((prevDarkMode) => !prevDarkMode);
+    };
+    const handleClick = () => {
+        if (isClickable) {
+            setIsClickable(false);
+
+            setTimeout(() => {
+                setIsClickable(true);
+            }, 200);
+        }
+    };
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLogo(darkModeClick ? <FiSun /> : <IoMoonOutline />);
+        }, 70);
+
+        return () => clearTimeout(timer);
+    }, [darkModeClick]);
+
+    const DarkModeToggle = () => {
+        useEffect(() => {
+            const isDarkMode = localStorage.getItem("darkMode") === "true";
+            setDarkMode(isDarkMode);
+        }, []);
+
+        const toggleDarkMode = () => {
+            const newDarkMode = !darkMode;
+            setDarkMode(newDarkMode);
+            localStorage.setItem("darkMode", newDarkMode);
+            document.documentElement.classList.toggle("dark");
+        };
+
+        return (
+            <button
+                className="px-4 py-2 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                onClick={toggleDarkMode}
             >
-                About
-            </NavLink> */}
+                {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
+        );
+    };
+
+    let scrollbarHovered = useRef(false);
+    const handleMouseLeave = () => {
+        // Check if the related target is inside the container
+        if (!scrollbarHovered) {
+            setMouseLeave(true);
+            setMouseEnter(false);
+        }
+    };
+
+    function checkScrollbarHover(event) {
+        const element = event.target;
+        const containerElement = containerRef.current;
+
+        if (
+            element.id === document.documentElement ||
+            element === document.body
+        ) {
+            // Mouse cursor is over the scrollbar or outside the document body
+            scrollbarHovered.current = true;
+        } else if (!containerElement.contains(element)) {
+            // Mouse cursor is outside the container element
+            console.log("balss");
+            scrollbarHovered.current = false;
+            setMouseLeave(true);
+            setMouseEnter(false);
+        }
+    }
+
+    // Event listener for mousemove event
+    window.addEventListener("mousemove", checkScrollbarHover);
+
+    return (
+        <div
+            className={`${styles.home} ${darkMode ? "dark" : ""}`}
+            onMouseLeave={() => {
+                handleMouseLeave();
+            }}
+            ref={containerRef}
+            onMouseEnter={() => {
+                setMouseLeave(false);
+                setMouseEnter(true);
+                setTimeout(() => {
+                    setMouseEnter(false);
+                }, 100);
+            }}
+        >
+            {/* <DarkModeToggle /> */}
+            <div
+                className={`${styles.dark_mode_container} ${
+                    darkModeClick ? styles.dark_mode_active : ""
+                } `}
+                style={{ pointerEvents: isClickable ? "auto" : "none" }}
+                onClick={() => {
+                    toggleDarkMode();
+                    handleClick();
+                }}
+            >
+                <div
+                    className={`${styles.dark_mode_logo} dark:bg-black`}
+                    tabIndex="0"
+                >
+                    {logo}
+                </div>
+            </div>
             <DropDown />
             <div className={styles.header_visible}>
                 <header>
@@ -59,6 +168,7 @@ function MainHeader({ children }) {
                     </NavLink>
                 </header>
             </div>
+            {/*  ALL THE CHILDREN  */}
             <main>{children}</main>
             <footer className={styles.footer}>
                 <div className={styles.left}>
@@ -68,6 +178,7 @@ function MainHeader({ children }) {
                     <div className={styles.github_container}>
                         <a
                             href="https://github.com/LukaTm"
+                            // OPEN IN NEW TAB
                             target="_blank"
                             rel="noopener noreferrer"
                         >

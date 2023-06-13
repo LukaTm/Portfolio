@@ -4,8 +4,14 @@ module.exports = {
     theme: {
         extend: {},
     },
+    plugins: [
+        require("tailwindcss"),
+        require("autoprefixer"),
+        require("flowbite/plugin"),
+    ],
+
+    darkMode: "class",
     // corePlugins: {
     //     preflight: false, // Disable default styles
     // },
-    plugins: [],
 };

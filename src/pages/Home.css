@@ -2,152 +2,132 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: my-custom-font;
+    src: url(../fonts/Heebo-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: my-custom-font2;
+    src: url(../fonts/Kanit-Medium.ttf);
+}
+@font-face {
+    font-family: my-custom-font3;
+    src: url(../fonts/PressStart2P-Regular.ttf);
+}
+@font-face {
+    font-family: my-custom-font4;
+    src: url(../fonts/SecularOne-Regular.ttf);
+}
+@font-face {
+    font-family: my-custom-font5;
+    src: url(../fonts/Inter-VariableFont_slnt_wght.ttf);
+}
+
 h1 {
-    /* background: linear-gradient(
-        to right,
-        rgb(126, 125, 125) 0%,
-        rgb(66, 66, 66) 20%,
-        rgb(0, 0, 0) 100%
-    ); */
     background: linear-gradient(141deg, #969699, #1e1e22);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-top: 80px;
-    margin-bottom: 150px;
+    font-size: 4em;
+    /* font-family: my-custom-font2; */
+    font-family: my-custom-font5;
+    font-weight: 700;
+    margin-top: 185px;
 }
 
-element.style {
-    will-change: opacity, transform;
-    opacity: 1;
-    transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
-        rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-    transform-style: preserve-3d;
+h2 {
+    margin-top: 10px;
+    font-size: 1.5em;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-.particle-outside-wrapper {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 870px;
-    position: absolute;
-}
-
-.particle-wrapper {
-    position: relative;
-    width: 100%;
-    height: 870px;
+.particle-container {
+    width: 800px;
+    height: 500px;
 }
 
 .particle1 {
     position: absolute;
-    top: 90px;
-    right: 259px;
-    width: 20px;
-    height: 20px;
+    top: 150px;
+    right: 110px;
+    width: 30px;
+    height: 30px;
     border-radius: 6px;
     background-color: #323235;
     opacity: 0.4;
-    /* -webkit-transform: rotate(51deg);
-    -ms-transform: rotate(51deg);
-    transform: rotate(51deg); */
 }
 .particle2 {
     position: absolute;
-    top: 200px;
-    right: 700px;
-    width: 24px;
-    height: 24px;
+    top: 284px;
+    right: 759px;
+    width: 32px;
+    height: 32px;
     border-radius: 6px;
     background-color: #323235;
     opacity: 0.3;
-    /* -webkit-transform: rotate(20deg);
-    -ms-transform: rotate(20deg);
-    transform: rotate(20deg); */
 }
 
 .particle3 {
     position: absolute;
-    top: 94px;
-    right: 724px;
-    width: 9px;
-    height: 9px;
+    top: 160px;
+    right: 815px;
+    width: 13px;
+    height: 13px;
     border-radius: 2px;
     background-color: #323235;
     opacity: 0.4;
-    /* -webkit-transform: rotate(-17deg);
-    -ms-transform: rotate(-17deg);
-    transform: rotate(-17deg); */
 }
 
 .particle4 {
     position: absolute;
-    top: 64px;
-    right: 528px;
-    width: 15px;
-    height: 15px;
-    border-radius: 5px;
+    top: 120px;
+    right: 515px;
+    width: 21px;
+    height: 21px;
+    border-radius: 7px;
     background-color: #000;
     opacity: 0.2;
-    /* -webkit-transform: rotate(26deg);
-    -ms-transform: rotate(26deg);
-    transform: rotate(26deg); */
 }
 .particle5 {
     position: absolute;
-    top: 203px;
-    right: 548px;
-    width: 12px;
-    height: 12px;
+    top: 320px;
+    right: 550px;
+    width: 18px;
+    height: 18px;
     border-radius: 4px;
     background-color: #323235;
     opacity: 0.2;
-    /* -webkit-transform: rotate(-11deg);
-    -ms-transform: rotate(-11deg);
-    transform: rotate(-11deg); */
 }
 
 .particle6 {
     position: absolute;
-    top: 251px;
-    right: 362px;
-    width: 12px;
-    height: 12px;
+    top: 380px;
+    right: 270px;
+    width: 16px;
+    height: 16px;
     border-radius: 4px;
     background-color: #323235;
     opacity: 0.2;
-    /* -webkit-transform: rotate(14deg);
-    -ms-transform: rotate(14deg);
-    transform: rotate(14deg); */
 }
 
 .particle7 {
     position: absolute;
-    top: 213px;
-    right: 204px;
-    width: 9px;
-    height: 9px;
+    top: 335px;
+    right: 30px;
+    width: 15px;
+    height: 15px;
     border-radius: 2px;
     background-color: #323235;
     opacity: 0.2;
-    /* -webkit-transform: rotate(-14deg);
-    -ms-transform: rotate(-14deg);
-    transform: rotate(-14deg); */
 }
 
 .particle8 {
     position: absolute;
-    top: 111px;
-    right: 164px;
-    width: 11px;
-    height: 11px;
+    top: 185px;
+    right: 0;
+    width: 18px;
+    height: 18px;
     border-radius: 3px;
     background-color: #323235;
     opacity: 0.15;
-    /* -webkit-transform: rotate(17deg);
-    -ms-transform: rotate(17deg);
-    transform: rotate(17deg); */
 }
-
-/* @media screen and (max-width: 991px) .particle-wrapper {
-    width: 100%;
-} */

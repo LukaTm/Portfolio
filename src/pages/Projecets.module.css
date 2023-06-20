@@ -44,7 +44,6 @@
     display: flex;
     flex-direction: column;
     margin: 20px;
-    padding-bottom: 80px;
     /* border: px solid rgb(199, 199, 199); */
     background: linear-gradient(
         161deg,
@@ -59,11 +58,16 @@
 
     /* box-shadow: h-shadow v-shadow blur spread color */
     box-shadow: 2px 2px 15px 2px rgb(209, 205, 205);
-    padding: 5px 5px 80px 5px;
+    padding: 5px 5px 60px 5px;
 
     opacity: 0;
     transform: translateY(40px);
     transition: opacity 1s, transform 1s;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .project_container:hover:not(:hover) {
@@ -73,10 +77,6 @@
 .project_container:hover {
     transform: scale(1.03);
     transition: transform 500ms;
-}
-.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .btn {
@@ -113,6 +113,8 @@
 .project_section {
     display: flex;
     flex-wrap: wrap;
+    /* flex-grow, flex-shrink, flex-basis */
+    flex: 0 0 80%;
     padding: 10px;
     justify-content: center;
     position: relative;
@@ -121,18 +123,28 @@
 .project_section > div > :first-child {
     position: relative;
     /* flex-grow, flex-shrink, flex-basis */
+    /* min-width: 340px;
+    min-height: 440px; */
     flex: 0 0 40%;
-    min-width: 340px;
-    min-height: 200px;
+    /* min-width: 340px;
+    min-height: 200px; */
     margin: 33px;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 550px) {
     .button {
         bottom: -65px;
         padding: 6px 17px;
         font-size: 0.8em;
     }
+
+    h1 {
+        font-size: 11vw;
+    }
+    h2 {
+        font-size: 4.3vw;
+    }
+
     .project_section > div > :first-child::after {
         height: 65px;
         bottom: -65x;
@@ -141,8 +153,8 @@
     .project_section > div > :first-child {
         flex-shrink: 1;
         max-width: 100%;
-        min-width: calc((100vw - 0px) - 205px);
-        min-height: calc((100vw - 0px) / 2 - 73px);
+        min-width: calc(100vw - 220px);
+        min-height: calc(100vw / 2 + 40px);
         flex-basis: 100%;
         font-size: 3vw;
     }
@@ -153,32 +165,115 @@
         font-size: 1.1em;
     }
 }
+@media (max-width: 435px) {
+    .project_section > div > :first-child {
+        flex-shrink: 1;
+        max-width: 100%;
+        min-width: 210px;
+        min-height: 250px;
+        flex-basis: 100%;
+        font-size: 3vw;
+    }
+}
+@media (max-width: 415px) {
+    h2 {
+        font-size: 1.1em;
+    }
+}
+@media (max-width: 340px) {
+    h2 {
+        font-size: 5vw;
+    }
+    .h3 {
+        font-size: 11vw;
+    }
+}
+@media (max-width: 210px) {
+    h1 {
+        font-size: 1.4em;
+    }
+    h2 {
+        font-size: 0.7em;
+    }
+    .h3 {
+        font-size: 1.4em;
+    }
+}
+
+@media (max-width: 328px) {
+    .project_container {
+        width: calc(100vw - 45px);
+    }
+    .project_section > div > :first-child {
+        flex-shrink: 1;
+        max-width: 100%;
+        min-width: calc(100% - 70px);
+        min-height: 250px;
+        flex-basis: 100%;
+        font-size: 3vw;
+    }
+}
+@media (max-width: 308px) {
+    .project_container {
+        width: calc(100vw - 45px);
+    }
+    .project_section > div > :first-child {
+        flex-shrink: 1;
+        max-width: 100%;
+        min-width: 180px;
+        min-height: 250px;
+        flex-basis: 100%;
+        font-size: 3vw;
+    }
+}
+@media (max-width: 242px) {
+    .project_container {
+        min-width: 190px;
+    }
+}
 
 .rock {
-    background-image: url("./rps.png");
+    background-image: url("../photos/rock.png");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    max-width: 100%;
-    max-height: 100%;
+    min-width: 330px;
+    min-height: 320px;
 }
 
 .calc {
-    background-image: url("./calc.png");
+    background-image: url("../photos/calc.png");
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     background-color: white;
-    max-width: 100%;
-    max-height: 100%;
+    min-width: 340px;
+    min-height: 300px;
 }
 
 .todo {
-    background-image: url("./todo.png");
+    background-image: url("../photos/todo.png");
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
     background-color: white;
-    max-width: 100%;
-    max-height: 100%;
+    min-width: 330px;
+    min-height: 320px;
+}
+
+.tic_tac {
+    background-image: url("../photos/tictactoe.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-width: 330px;
+    min-height: 320px;
+}
+.charades {
+    background-image: url("../photos/charades.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-width: 330px;
+    min-height: 320px;
 }

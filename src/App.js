@@ -1,12 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 
-import About from "./pages/About";
 import Home from "./pages/Home";
-import Expierience from "./pages/Experience";
 import MainHeader from "./pages/MainHeader";
 import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
 import { useState } from "react";
+import Skills from "./pages/Skills";
 
 function App() {
     const [mouseLeave, setMouseLeave] = useState(false);
@@ -20,10 +19,9 @@ function App() {
                         <Home mouseLeave={mouseLeave} mouseEnter={mouseEnter} />
                     }
                 />
-                <Route path="/about" element={<About />} />
-                <Route path="/expierience" element={<Expierience />} />
-                <Route path="/projects" element={<Projects />} />
+                <Route path="/skills" element={<Skills />} />
                 <Route path="/resume" element={<Resume />} />
+                {/* ADD NON EXISTING ROUTE */}
             </Routes>
         </MainHeader>
     );

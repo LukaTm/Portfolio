@@ -2,7 +2,11 @@
 module.exports = {
     content: ["./src/**/*.{html,js}"],
     theme: {
-        extend: {},
+        extend: {
+            boxShadow: {
+                custom: "1px 1px 10px 2px rgb(11, 20, 44)",
+            },
+        },
     },
     plugins: [
         require("tailwindcss"),

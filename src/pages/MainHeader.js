@@ -7,6 +7,7 @@ import DropDown from "./DropDown";
 
 import { IoMoonOutline } from "react-icons/io5";
 import { FiSun } from "react-icons/fi";
+import DarkModeToggle from "./DarkModeToggle";
 
 function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
     const [darkModeClick, setDarkModeClick] = useState(false);
@@ -15,9 +16,6 @@ function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
     const [darkMode, setDarkMode] = useState(false);
     const containerRef = useRef(null);
 
-    const toggleDarkMode = () => {
-        setDarkModeClick((prevDarkMode) => !prevDarkMode);
-    };
     const handleClick = () => {
         if (isClickable) {
             setIsClickable(false);
@@ -30,71 +28,54 @@ function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setLogo(darkModeClick ? <FiSun /> : <IoMoonOutline />);
+            setLogo(
+                darkModeClick ? (
+                    <div className={styles.sun_container}>
+                        <FiSun />
+                    </div>
+                ) : (
+                    <div className={styles.moon_container}>
+                        <IoMoonOutline />
+                    </div>
+                )
+            );
         }, 70);
 
         return () => clearTimeout(timer);
     }, [darkModeClick]);
 
-    const DarkModeToggle = () => {
-        useEffect(() => {
-            const isDarkMode = localStorage.getItem("darkMode") === "true";
-            setDarkMode(isDarkMode);
-        }, []);
-
-        const toggleDarkMode = () => {
-            const newDarkMode = !darkMode;
-            setDarkMode(newDarkMode);
-            localStorage.setItem("darkMode", newDarkMode);
-            document.documentElement.classList.toggle("dark");
-        };
-
-        return (
-            <button
-                className="px-4 py-2 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
-                onClick={toggleDarkMode}
-            >
-                {darkMode ? "Light Mode" : "Dark Mode"}
-            </button>
-        );
-    };
-
     return (
         <div
-            className={`${styles.home} ${darkMode ? "dark" : ""}`}
+            className={`${styles.home} ${"dark:bg-gray-800"}`}
             ref={containerRef}
             onMouseEnter={() => {
                 setMouseLeave(false);
                 setMouseEnter(true);
-                setTimeout(() => {
-                    setMouseEnter(false);
-                }, 200);
             }}
         >
-            {/* <DarkModeToggle /> */}
-            <div
-                className={`${styles.dark_mode_container} ${
-                    darkModeClick ? styles.dark_mode_active : ""
-                } `}
-                style={{ pointerEvents: isClickable ? "auto" : "none" }}
-                onClick={() => {
-                    toggleDarkMode();
-                    handleClick();
-                }}
-            >
-                <div
-                    className={`${styles.dark_mode_logo} dark:bg-black`}
-                    tabIndex="0"
-                >
-                    {logo}
-                </div>
-            </div>
+            <DarkModeToggle
+                logo={logo}
+                isClickable={isClickable}
+                handleClick={handleClick}
+                darkModeClick={darkModeClick}
+                setDarkModeClick={setDarkModeClick}
+                setDarkMode={setDarkMode}
+                darkMode={darkMode}
+            />
             <DropDown />
             <div className={styles.header_visible}>
                 <header>
                     <NavLink
                         className={(navData) => [
-                            navData.isActive ? styles.active : styles.default,
+                            `
+                        dark:text-slate-50
+                        dark:after:bg-white
+                            ${
+                                navData.isActive
+                                    ? `${styles.active} `
+                                    : `${styles.default} `
+                            }
+                        `,
                         ]}
                         to="/"
                     >
@@ -102,31 +83,32 @@ function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
                     </NavLink>
                     <NavLink
                         className={(navData) => [
-                            navData.isActive ? styles.active : styles.default,
+                            `
+                        dark:text-slate-50
+                        dark:after:bg-white
+                            ${
+                                navData.isActive
+                                    ? `${styles.active} `
+                                    : `${styles.default} `
+                            }
+                        `,
                         ]}
-                        to="/about"
+                        to="/skills"
                     >
-                        About
+                        Skills
                     </NavLink>
+
                     <NavLink
                         className={(navData) => [
-                            navData.isActive ? styles.active : styles.default,
-                        ]}
-                        to="/expierience"
-                    >
-                        Expierience
-                    </NavLink>
-                    <NavLink
-                        className={(navData) => [
-                            navData.isActive ? styles.active : styles.default,
-                        ]}
-                        to="/projects"
-                    >
-                        Projects
-                    </NavLink>
-                    <NavLink
-                        className={(navData) => [
-                            navData.isActive ? styles.active : styles.default,
+                            `
+                        dark:text-slate-50
+                        dark:after:bg-white
+                            ${
+                                navData.isActive
+                                    ? `${styles.active} `
+                                    : `${styles.default} `
+                            }
+                        `,
                         ]}
                         to="/resume"
                     >
@@ -136,9 +118,11 @@ function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
             </div>
             {/*  ALL THE CHILDREN  */}
             <main>{children}</main>
-            <footer className={styles.footer}>
+            <footer
+                className={`${styles.footer} dark:!bg-slate-900 dark:!text-white`}
+            >
                 <div className={styles.left}>
-                    <div>Developed by Marus Luka</div>
+                    <div>Developed by Markuss Luka</div>
                 </div>
                 <div className={styles.right}>
                     <div className={styles.github_container}>
@@ -148,7 +132,11 @@ function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <div className={styles.github_link}></div>
+                            <div
+                                className={`${styles.github_link} ${
+                                    darkMode && styles.dark_github
+                                }`}
+                            ></div>
                         </a>
                     </div>
                     <div>
@@ -157,7 +145,11 @@ function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <div className={styles.linkedin_link}></div>
+                            <div
+                                className={`${styles.linkedin_link} ${
+                                    darkMode && styles.white_linkedin
+                                }`}
+                            ></div>
                         </a>
                     </div>
                 </div>

@@ -19,6 +19,7 @@ import fileIcon from "@iconify-icons/ri/file-line";
 
 function DropDown() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [closingDropdown, setClosingDropdown] = useState(false);
     const dropdownRef = useRef(null);
     const dropdownBtnRef = useRef(null);
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -30,17 +31,6 @@ function DropDown() {
 
     const closeDropdown = () => {
         setIsDropdownOpen(false);
-    };
-
-    const handleClickOutside = (event) => {
-        if (
-            dropdownRef.current &&
-            // is not in current container
-            !dropdownRef.current.contains(event.target) &&
-            !dropdownBtnRef.current.contains(event.target)
-        ) {
-            setIsDropdownOpen(false);
-        }
     };
 
     const handleMouseMove = (event) => {
@@ -59,6 +49,20 @@ function DropDown() {
     };
 
     useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (
+                dropdownRef.current &&
+                // is not in current container
+                !dropdownRef.current.contains(event.target) &&
+                !dropdownBtnRef.current.contains(event.target)
+            ) {
+                setTimeout(() => {
+                    closeDropdown();
+                }, 400);
+                setClosingDropdown(true);
+            }
+        };
+
         window.addEventListener("click", handleClickOutside);
         return () => {
             window.removeEventListener("click", handleClickOutside);
@@ -66,13 +70,16 @@ function DropDown() {
     }, []);
 
     return (
-        <div>
+        <div className={isDropdownOpen && styles.darker_background}>
             <div
-                className={styles.dropdown_container}
+                className={`${styles.dropdown_container} dark:bg-slate-700 `}
                 id={isDropdownOpen ? styles.active : ""}
                 onMouseMove={handleMouseMove}
                 onMouseOut={() => setCursorPosition({ x: 0, y: 0 })}
-                onClick={handleDropdownClick}
+                onClick={() => {
+                    handleDropdownClick();
+                    setClosingDropdown();
+                }}
                 ref={dropdownBtnRef}
                 style={{
                     // (tx, ty, tz)
@@ -81,84 +88,122 @@ function DropDown() {
             >
                 <div
                     className={styles.dropdown_logo}
-                    onClick={handleDropdownClick}
+                    onClick={() => {
+                        handleDropdownClick();
+                        setClosingDropdown();
+                    }}
                     tabIndex="0"
                 >
-                    <div className={styles.line}></div>
-                    <div className={styles.line}></div>
-                    <div className={styles.line}></div>
+                    <div className={`${styles.line} dark:bg-white`}></div>
+                    <div className={`${styles.line} dark:bg-white`}></div>
+                    <div className={`${styles.line} dark:bg-white`}></div>
                 </div>
             </div>
             {isDropdownOpen && (
-                <div ref={dropdownRef} className={styles.dropdown}>
+                <div
+                    ref={dropdownRef}
+                    className={`${styles.dropdown} ${
+                        !closingDropdown ? "" : styles.closing
+                    } dark:bg-slate-800 dark:shadow-md dark:shadow-slate-900 `}
+                >
                     <div
-                        className={styles.closeBtn}
-                        onClick={closeDropdown}
-                    ></div>
-                    <header>
-                        <ul>
+                        onClick={() => {
+                            setTimeout(() => {
+                                closeDropdown();
+                            }, 500);
+                            setClosingDropdown(true);
+                        }}
+                        className={`${styles.closeBtnContainer} dark:rounded-xl dark:hover:bg-slate-700`}
+                    >
+                        <div className="relative w-full h-full dark:hover:bg-slate-700 dark:rounded-xl">
+                            <div
+                                className={`${styles.closeBtn} dark:after:bg-white dark:before:bg-white`}
+                            ></div>
+                        </div>
+                    </div>
+                    <div className="flex flex-col justify-center  ">
+                        <ul className="flex flex-col items-center">
                             <li>
                                 <NavLink
                                     className={(navData) => [
                                         navData.isActive
-                                            ? styles.active
-                                            : styles.default,
+                                            ? `${styles.active} dark:after:bg-white`
+                                            : `${styles.default} dark:after:bg-white`,
                                     ]}
                                     to="/"
                                 >
-                                    <Icon icon={homeIcon} /> Home
+                                    <div className="inline-flex justify-center items-center dark:text-white ">
+                                        <Icon icon={homeIcon} /> Home
+                                    </div>
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink
-                                    className={(navData) => [
-                                        navData.isActive
-                                            ? styles.active
-                                            : styles.default,
-                                    ]}
-                                    to="/about"
-                                >
-                                    <FiUser /> About
-                                </NavLink>
+                                <div>
+                                    <NavLink
+                                        className={(navData) => [
+                                            navData.isActive
+                                                ? `${styles.active} dark:after:bg-white`
+                                                : `${styles.default} dark:after:bg-white`,
+                                        ]}
+                                        to="/skills"
+                                    >
+                                        <div className="inline-flex justify-center items-center dark:text-white">
+                                            <FiUser /> Skills
+                                        </div>
+                                    </NavLink>
+                                </div>
                             </li>
                             <li>
-                                <NavLink
-                                    className={(navData) => [
-                                        navData.isActive
-                                            ? styles.active
-                                            : styles.default,
-                                    ]}
-                                    to="/experience"
-                                >
-                                    <Icon icon={briefcaseIcon} /> Experience
-                                </NavLink>
+                                <div>
+                                    <NavLink
+                                        className={(navData) => [
+                                            navData.isActive
+                                                ? `${styles.active} dark:after:bg-white`
+                                                : `${styles.default} dark:after:bg-white`,
+                                        ]}
+                                        to="/experience"
+                                    >
+                                        <div className="justify-center items-center inline-flex dark:text-white">
+                                            <Icon icon={briefcaseIcon} />{" "}
+                                            Experience
+                                        </div>
+                                    </NavLink>
+                                </div>
                             </li>
                             <li>
-                                <NavLink
-                                    className={(navData) => [
-                                        navData.isActive
-                                            ? styles.active
-                                            : styles.default,
-                                    ]}
-                                    to="/projects"
-                                >
-                                    <FiFolder /> Projects
-                                </NavLink>
+                                <div>
+                                    <NavLink
+                                        className={(navData) => [
+                                            navData.isActive
+                                                ? `${styles.active} dark:after:bg-white`
+                                                : `${styles.default} dark:after:bg-white`,
+                                        ]}
+                                        to="/projects"
+                                    >
+                                        <div className="inline-flex justify-center items-center dark:text-white ">
+                                            <FiFolder /> Projects
+                                        </div>
+                                    </NavLink>
+                                </div>
                             </li>
                             <li>
-                                <NavLink
-                                    className={(navData) => [
-                                        navData.isActive
-                                            ? styles.active
-                                            : styles.default,
-                                    ]}
-                                    to="/resume"
-                                >
-                                    <FiFile /> Resume
-                                </NavLink>
+                                <div>
+                                    <NavLink
+                                        className={(navData) => [
+                                            navData.isActive
+                                                ? `${styles.active} dark:after:bg-white`
+                                                : `${styles.default} dark:after:bg-white`,
+                                        ]}
+                                        to="/resume"
+                                    >
+                                        <div className="inline-flex justify-center items-center dark:text-white">
+                                            <FiFile /> Resume
+                                        </div>
+                                    </NavLink>
+                                </div>
                             </li>
                         </ul>
-                    </header>
+                    </div>
                 </div>
             )}
         </div>

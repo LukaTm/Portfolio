@@ -1,121 +1,24 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import styles from "./MainHeader.module.css";
 
-import { NavLink } from "react-router-dom";
-
-import DropDown from "./DropDown";
-
-import { IoMoonOutline } from "react-icons/io5";
-import { FiSun } from "react-icons/fi";
-import DarkModeToggle from "./DarkModeToggle";
-
-function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
-    const [darkModeClick, setDarkModeClick] = useState(false);
-    const [isClickable, setIsClickable] = useState(true);
-    const [logo, setLogo] = useState(<IoMoonOutline />);
-    const [darkMode, setDarkMode] = useState(false);
+function MainHeader({
+    children,
+    setMouseLeave,
+    setMouseEnter,
+    darkMode,
+    isDropdownOpen,
+}) {
     const containerRef = useRef(null);
-
-    const handleClick = () => {
-        if (isClickable) {
-            setIsClickable(false);
-
-            setTimeout(() => {
-                setIsClickable(true);
-            }, 200);
-        }
-    };
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setLogo(
-                darkModeClick ? (
-                    <div className={styles.sun_container}>
-                        <FiSun />
-                    </div>
-                ) : (
-                    <div className={styles.moon_container}>
-                        <IoMoonOutline />
-                    </div>
-                )
-            );
-        }, 70);
-
-        return () => clearTimeout(timer);
-    }, [darkModeClick]);
 
     return (
         <div
-            className={`${styles.home} ${"dark:bg-gray-800"}`}
+            className={`${styles.home} dark:bg-gray-800 ${styles.dark_mode_active} `}
             ref={containerRef}
             onMouseEnter={() => {
                 setMouseLeave(false);
                 setMouseEnter(true);
             }}
         >
-            <DarkModeToggle
-                logo={logo}
-                isClickable={isClickable}
-                handleClick={handleClick}
-                darkModeClick={darkModeClick}
-                setDarkModeClick={setDarkModeClick}
-                setDarkMode={setDarkMode}
-                darkMode={darkMode}
-            />
-            <DropDown />
-            <div className={styles.header_visible}>
-                <header>
-                    <NavLink
-                        className={(navData) => [
-                            `
-                        dark:text-slate-50
-                        dark:after:bg-white
-                            ${
-                                navData.isActive
-                                    ? `${styles.active} `
-                                    : `${styles.default} `
-                            }
-                        `,
-                        ]}
-                        to="/"
-                    >
-                        Home
-                    </NavLink>
-                    <NavLink
-                        className={(navData) => [
-                            `
-                        dark:text-slate-50
-                        dark:after:bg-white
-                            ${
-                                navData.isActive
-                                    ? `${styles.active} `
-                                    : `${styles.default} `
-                            }
-                        `,
-                        ]}
-                        to="/skills"
-                    >
-                        Skills
-                    </NavLink>
-
-                    <NavLink
-                        className={(navData) => [
-                            `
-                        dark:text-slate-50
-                        dark:after:bg-white
-                            ${
-                                navData.isActive
-                                    ? `${styles.active} `
-                                    : `${styles.default} `
-                            }
-                        `,
-                        ]}
-                        to="/resume"
-                    >
-                        Resume
-                    </NavLink>
-                </header>
-            </div>
             {/*  ALL THE CHILDREN  */}
             <main>{children}</main>
             <footer
@@ -141,7 +44,7 @@ function MainHeader({ children, setDarkToggle, setMouseLeave, setMouseEnter }) {
                     </div>
                     <div>
                         <a
-                            href="https://github.com/LukaTm"
+                            href="https://www.linkedin.com/in/markuss-luka%C5%A1ins-890180282/"
                             target="_blank"
                             rel="noopener noreferrer"
                         >

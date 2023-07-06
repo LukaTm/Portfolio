@@ -1,36 +1,20 @@
 import styles from "./MainHeader.module.css";
 import { useEffect, useRef, useState } from "react";
-
 import { NavLink } from "react-router-dom";
-import {
-    FiHome,
-    FiUser,
-    FiInfo,
-    FiBriefcase,
-    FiFolder,
-    FiFile,
-} from "react-icons/fi";
-import { Icon, InlineIcon } from "@iconify/react";
+import { FiUser, FiFile } from "react-icons/fi";
+import { Icon } from "@iconify/react";
 import homeIcon from "@iconify-icons/ri/home-4-line";
-import userIcon from "@iconify-icons/ri/user-line";
-import briefcaseIcon from "@iconify-icons/ri/briefcase-line";
-import folderIcon from "@iconify-icons/ri/folder-line";
-import fileIcon from "@iconify-icons/ri/file-line";
 
-function DropDown() {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+function DropDown({ isDropdownOpen, setIsDropdownOpen }) {
     const [closingDropdown, setClosingDropdown] = useState(false);
     const dropdownRef = useRef(null);
     const dropdownBtnRef = useRef(null);
+    const elementRef = useRef(null);
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
     // IS OPEN
     const handleDropdownClick = () => {
         setIsDropdownOpen(!isDropdownOpen);
-    };
-
-    const closeDropdown = () => {
-        setIsDropdownOpen(false);
     };
 
     const handleMouseMove = (event) => {
@@ -48,6 +32,11 @@ function DropDown() {
         setCursorPosition({ x: offsetX, y: offsetY });
     };
 
+    const CloseDropdown = () => {
+        setIsDropdownOpen(false);
+        setClosingDropdown(true);
+    };
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (
@@ -57,8 +46,8 @@ function DropDown() {
                 !dropdownBtnRef.current.contains(event.target)
             ) {
                 setTimeout(() => {
-                    closeDropdown();
-                }, 400);
+                    setIsDropdownOpen(false);
+                }, 300);
                 setClosingDropdown(true);
             }
         };
@@ -67,10 +56,10 @@ function DropDown() {
         return () => {
             window.removeEventListener("click", handleClickOutside);
         };
-    }, []);
+    }, [setIsDropdownOpen]);
 
     return (
-        <div className={isDropdownOpen && styles.darker_background}>
+        <div>
             <div
                 className={`${styles.dropdown_container} dark:bg-slate-700 `}
                 id={isDropdownOpen ? styles.active : ""}
@@ -79,6 +68,7 @@ function DropDown() {
                 onClick={() => {
                     handleDropdownClick();
                     setClosingDropdown();
+                    setIsDropdownOpen(true);
                 }}
                 ref={dropdownBtnRef}
                 style={{
@@ -109,8 +99,8 @@ function DropDown() {
                     <div
                         onClick={() => {
                             setTimeout(() => {
-                                closeDropdown();
-                            }, 500);
+                                setIsDropdownOpen(false);
+                            }, 350);
                             setClosingDropdown(true);
                         }}
                         className={`${styles.closeBtnContainer} dark:rounded-xl dark:hover:bg-slate-700`}
@@ -125,6 +115,10 @@ function DropDown() {
                         <ul className="flex flex-col items-center">
                             <li>
                                 <NavLink
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        CloseDropdown();
+                                    }}
                                     className={(navData) => [
                                         navData.isActive
                                             ? `${styles.active} dark:after:bg-white`
@@ -140,6 +134,10 @@ function DropDown() {
                             <li>
                                 <div>
                                     <NavLink
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            CloseDropdown();
+                                        }}
                                         className={(navData) => [
                                             navData.isActive
                                                 ? `${styles.active} dark:after:bg-white`
@@ -153,42 +151,14 @@ function DropDown() {
                                     </NavLink>
                                 </div>
                             </li>
+
                             <li>
                                 <div>
                                     <NavLink
-                                        className={(navData) => [
-                                            navData.isActive
-                                                ? `${styles.active} dark:after:bg-white`
-                                                : `${styles.default} dark:after:bg-white`,
-                                        ]}
-                                        to="/experience"
-                                    >
-                                        <div className="justify-center items-center inline-flex dark:text-white">
-                                            <Icon icon={briefcaseIcon} />{" "}
-                                            Experience
-                                        </div>
-                                    </NavLink>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <NavLink
-                                        className={(navData) => [
-                                            navData.isActive
-                                                ? `${styles.active} dark:after:bg-white`
-                                                : `${styles.default} dark:after:bg-white`,
-                                        ]}
-                                        to="/projects"
-                                    >
-                                        <div className="inline-flex justify-center items-center dark:text-white ">
-                                            <FiFolder /> Projects
-                                        </div>
-                                    </NavLink>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <NavLink
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            CloseDropdown();
+                                        }}
                                         className={(navData) => [
                                             navData.isActive
                                                 ? `${styles.active} dark:after:bg-white`

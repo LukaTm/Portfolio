@@ -51,17 +51,17 @@ h2 {
     right: 190px;
     width: 30px;
     height: 30px;
-    border-radius: 6px;
+    border-radius: 8px;
     background-color: #323235;
     opacity: 0.4;
 }
 .particle2 {
     position: absolute;
-    top: 284px;
-    right: 839px;
+    top: 340px;
+    right: 849px;
     width: 32px;
     height: 32px;
-    border-radius: 6px;
+    border-radius: 8px;
     background-color: #323235;
     opacity: 0.3;
 }
@@ -72,7 +72,7 @@ h2 {
     right: 895px;
     width: 13px;
     height: 13px;
-    border-radius: 2px;
+    border-radius: 4px;
     background-color: #323235;
     opacity: 0.4;
 }
@@ -90,7 +90,7 @@ h2 {
 .particle5 {
     position: absolute;
     top: 320px;
-    right: 630px;
+    right: 665px;
     width: 18px;
     height: 18px;
     border-radius: 4px;
@@ -115,9 +115,9 @@ h2 {
     right: 110px;
     width: 15px;
     height: 15px;
-    border-radius: 2px;
+    border-radius: 4px;
     background-color: #323235;
-    opacity: 0.2;
+    opacity: 0.3;
 }
 
 .particle8 {
@@ -126,7 +126,7 @@ h2 {
     right: 80px;
     width: 18px;
     height: 18px;
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: #323235;
     opacity: 0.15;
 }

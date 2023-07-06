@@ -3,6 +3,8 @@ import "./output.css";
 import AnimatedHeader from "./AnimatedHeader";
 import Projects from "./Projects";
 
+import Header from "./Header";
+
 // Define initial state for the particle positions
 const initialState = [
     { id: 1, x: 0, y: 0 },
@@ -159,17 +161,26 @@ function reducer(state, action) {
             return state;
     }
 }
-function Home({ mouseLeave, mouseEnter }) {
+function Home({
+    mouseLeave,
+    mouseEnter,
+    setDarkMode,
+    darkMode,
+    handleClick,
+    logo,
+    darkModeClick,
+    setDarkModeClick,
+    isClickable,
+    transitioned,
+    isDropdownOpen,
+    setIsDropdownOpen,
+}) {
     // Use the useReducer hook to manage particle positions
     const [particlePositions, dispatch] = useReducer(reducer, initialState);
     const blocksContainer = useRef(null);
     const [isScrooling, setIsScrooling] = useState(false);
     const [multiplier, setMultiplier] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(0);
-    const [offsetXTwo, setOffsetXTwo] = useState(0);
-    const [offsetYTwo, setOffsetYTwo] = useState(0);
-    const [secondOffsetX, setSecondOffsetX] = useState(0);
-    const [secondOffsetY, setSecondOffsetY] = useState(0);
 
     const [firstParticleX, setFirstParticleX] = useState(0);
     const [secondParticleX, setSecondParticleX] = useState(0);
@@ -201,7 +212,6 @@ function Home({ mouseLeave, mouseEnter }) {
             });
             setRunOnce(false);
         }
-        console.log(opacities);
 
         const changeParticleOpacity = (newOpacity) => {
             const containers = document.querySelectorAll('[class^="particle"]');
@@ -209,39 +219,42 @@ function Home({ mouseLeave, mouseEnter }) {
                 particle.style.opacity = opacities[index] - newOpacity;
             });
         };
+
+        const updateParticleStyles = (newOpacity, particleScale) => {
+            changeParticleOpacity(newOpacity);
+            setParticleScale(particleScale);
+        };
+
         if (scrollPosition <= 50) {
+            updateParticleStyles(0.03, 1.1);
             setMultiplier(0.35);
-            setParticleScale(1.1);
-            changeParticleOpacity(0.03);
         } else if (scrollPosition <= 100) {
+            updateParticleStyles(0.04, 1.16);
             setMultiplier(0.4);
-            setParticleScale(1.16);
-            changeParticleOpacity(0.04);
         } else if (scrollPosition <= 150) {
+            updateParticleStyles(0.05, 1.2);
             setMultiplier(0.45);
-            setParticleScale(1.2);
-            changeParticleOpacity(0.05);
         } else if (scrollPosition <= 200) {
+            changeParticleOpacity(0.06);
             setParticleScale(1.25);
-            changeParticleOpacity(0.06);
         } else if (scrollPosition <= 250) {
+            changeParticleOpacity(0.07);
             setParticleScale(1.3);
-            changeParticleOpacity(0.07);
         } else if (scrollPosition <= 300) {
-            setParticleScale(1.35);
             changeParticleOpacity(0.06);
+            setParticleScale(1.35);
         } else if (scrollPosition <= 350) {
-            setParticleScale(1.4);
             changeParticleOpacity(0.07);
+            setParticleScale(1.4);
         } else if (scrollPosition <= 400) {
-            setParticleScale(1.45);
             changeParticleOpacity(0.08);
+            setParticleScale(1.45);
         } else if (scrollPosition <= 450) {
+            changeParticleOpacity(0.09);
             setParticleScale(1.5);
-            changeParticleOpacity(0.09);
         } else if (scrollPosition <= 500) {
-            setParticleScale(1.55);
             changeParticleOpacity(0.09);
+            setParticleScale(1.55);
         } else if (scrollPosition <= 550) {
             changeParticleOpacity(0.1);
             setParticleScale(1.6);
@@ -251,33 +264,39 @@ function Home({ mouseLeave, mouseEnter }) {
         } else if (scrollPosition <= 650) {
             changeParticleOpacity(0.12);
             setParticleScale(1.75);
+        } else if (scrollPosition <= 660) {
+            changeParticleOpacity(0.13);
+        } else if (scrollPosition <= 670) {
+            changeParticleOpacity(0.14);
+        } else if (scrollPosition <= 680) {
+            changeParticleOpacity(0.15);
+        } else if (scrollPosition <= 690) {
+            changeParticleOpacity(0.16);
         } else if (scrollPosition <= 700) {
-            // changeParticleOpacity(0.13);
-            // setParticleScale(1.85);
-            dispatch({
-                type: "MOVE_ALL_PARTICLES",
-                x: 0,
-                y: 0,
-            });
+            changeParticleOpacity(0.17);
+        } else if (scrollPosition <= 710) {
+            changeParticleOpacity(0.18);
+        } else if (scrollPosition <= 720) {
+            changeParticleOpacity(0.19);
+        } else if (scrollPosition <= 730) {
+            changeParticleOpacity(0.2);
+        } else if (scrollPosition <= 740) {
+            changeParticleOpacity(0.21);
+        } else if (scrollPosition <= 750) {
+            changeParticleOpacity(0.22);
+        } else if (scrollPosition <= 760) {
+            changeParticleOpacity(0.23);
+        } else if (scrollPosition <= 770) {
+            changeParticleOpacity(0.24);
         } else {
-            // dispatch({
-            //     type: "MOVE_ALL_PARTICLES",
-            //     x: 0,
-            //     y: 0,
-            // });
-            changeParticleOpacity(0.4);
+            changeParticleOpacity(0.5);
         }
-
-        setOffsetXTwo(scrollPosition * multiplier);
-        setOffsetYTwo(scrollPosition * multiplier);
-        setSecondOffsetX(-scrollPosition * multiplier);
-        setSecondOffsetY(-scrollPosition * multiplier);
 
         setFirstParticleX(scrollPosition * multiplier);
         setSecondParticleX(-scrollPosition * multiplier);
         setThirdParticleX(-scrollPosition * multiplier);
         setFourthParticleX(-scrollPosition * multiplier);
-        setSeventhParticleX(scrollPosition * multiplier);
+        setSeventhParticleX(scrollPosition * multiplier * 0.3);
         setEightParticleX(scrollPosition * multiplier);
 
         setFirstParticleY(-scrollPosition * multiplier);
@@ -289,6 +308,7 @@ function Home({ mouseLeave, mouseEnter }) {
         setSeventhParticleY(scrollPosition * multiplier);
     }, [scrollPosition, multiplier, opacities, runOnce]);
 
+    // ----------------------------------
     useEffect(() => {
         function moveParticles() {
             setScrollPosition(window.scrollY);
@@ -296,49 +316,52 @@ function Home({ mouseLeave, mouseEnter }) {
         }
 
         function updateParticles() {
-            dispatch({
-                type: "FIRST_PARTICLE",
-                x: firstParticleX,
-                y: firstParticleY,
+            const particleUpdates = [
+                {
+                    type: "FIRST_PARTICLE",
+                    x: firstParticleX,
+                    y: firstParticleY,
+                },
+                {
+                    type: "SECOND_PARTICLE",
+                    x: secondParticleX,
+                    y: secondParticleY,
+                },
+                {
+                    type: "THIRD_PARTICLE",
+                    x: thirdParticleX,
+                    y: thirdParticleY,
+                },
+                {
+                    type: "FOURTH_PARTICLE",
+                    x: fourthParticleX,
+                    y: fourthParticleY,
+                },
+                {
+                    type: "FIFTH_PARTICLE",
+                    x: fifthParticleX,
+                    y: fifthParticleY,
+                },
+                {
+                    type: "SIXTH_PARTICLE",
+                    x: sixthParticleX,
+                    y: sixthParticleY,
+                },
+                {
+                    type: "SEVENTH_PARTICLE",
+                    x: seventhParticleX,
+                    y: seventhParticleY,
+                },
+                {
+                    type: "EIGHT_PARTICLE",
+                    x: eightParticleX,
+                    y: eightParticleY,
+                },
+            ];
+
+            particleUpdates.forEach((update) => {
+                dispatch(update);
             });
-            dispatch({
-                type: "SECOND_PARTICLE",
-                x: secondParticleX,
-                y: secondParticleY,
-            });
-            dispatch({
-                type: "THIRD_PARTICLE",
-                x: thirdParticleX,
-                y: thirdParticleY,
-            });
-            dispatch({
-                type: "FOURTH_PARTICLE",
-                x: fourthParticleX,
-                y: fourthParticleY,
-            });
-            dispatch({
-                type: "FIFTH_PARTICLE",
-                x: fifthParticleX,
-                y: fifthParticleY,
-            });
-            dispatch({
-                type: "SIXTH_PARTICLE",
-                x: sixthParticleX,
-                y: sixthParticleY,
-            });
-            dispatch({
-                type: "SEVENTH_PARTICLE",
-                x: seventhParticleX,
-                y: seventhParticleY,
-            });
-            dispatch({
-                type: "EIGHT_PARTICLE",
-                x: eightParticleX,
-                y: eightParticleY,
-            });
-            setTimeout(() => {
-                setIsScrooling(false);
-            }, 500);
         }
 
         window.addEventListener("scroll", moveParticles);
@@ -377,78 +400,53 @@ function Home({ mouseLeave, mouseEnter }) {
 
         // X and Y CLIENT coordinates
         const offsetX1 =
-            (event.clientX - containerCenterX) * 0.02 + firstParticleX;
+            (event.clientX - containerCenterX) * 0.029 + firstParticleX;
         const offsetY1 =
-            (event.clientY - containerCenterY) * 0.02 + firstParticleY;
+            (event.clientY - containerCenterY) * 0.029 + firstParticleY + 39;
         const offsetX2 =
-            (event.clientX - containerCenterX) * 0.02 + secondParticleX;
+            (event.clientX - containerCenterX) * 0.029 + secondParticleX;
         const offsetY2 =
-            (event.clientY - containerCenterY) * 0.02 + secondParticleY;
+            (event.clientY - containerCenterY) * 0.029 + secondParticleY + 39;
         const offsetX3 =
-            (event.clientX - containerCenterX) * 0.02 + thirdParticleX;
+            (event.clientX - containerCenterX) * 0.008 + thirdParticleX;
         const offsetY3 =
-            (event.clientY - containerCenterY) * 0.02 + thirdParticleY;
+            (event.clientY - containerCenterY) * 0.008 + thirdParticleY + 10;
         const offsetX4 =
-            (event.clientX - containerCenterX) * 0.02 + fourthParticleX;
+            (event.clientX - containerCenterX) * 0.014 + fourthParticleX;
         const offsetY4 =
-            (event.clientY - containerCenterY) * 0.02 + fourthParticleY;
+            (event.clientY - containerCenterY) * 0.014 + fourthParticleY + 18;
         const offsetX5 =
-            (event.clientX - containerCenterX) * 0.02 + fifthParticleX;
+            (event.clientX - containerCenterX) * 0.009 + fifthParticleX;
         const offsetY5 =
-            (event.clientY - containerCenterY) * 0.02 + fifthParticleY;
+            (event.clientY - containerCenterY) * 0.009 + fifthParticleY + 12;
         const offsetX6 =
-            (event.clientX - containerCenterX) * 0.02 + sixthParticleX;
+            (event.clientX - containerCenterX) * 0.014 + sixthParticleX + 1;
         const offsetY6 =
-            (event.clientY - containerCenterY) * 0.02 + sixthParticleY;
+            (event.clientY - containerCenterY) * 0.014 + sixthParticleY + 18;
         const offsetX7 =
-            (event.clientX - containerCenterX) * 0.02 + seventhParticleX;
+            (event.clientX - containerCenterX) * 0.005 + seventhParticleX;
         const offsetY7 =
-            (event.clientY - containerCenterY) * 0.02 + seventhParticleY;
+            (event.clientY - containerCenterY) * 0.005 + seventhParticleY + 6;
         const offsetX8 =
-            (event.clientX - containerCenterX) * 0.02 + eightParticleX;
+            (event.clientX - containerCenterX) * 0.014 + eightParticleX;
         const offsetY8 =
-            (event.clientY - containerCenterY) * 0.02 + eightParticleY;
+            (event.clientY - containerCenterY) * 0.014 + eightParticleY + 18;
 
-        dispatch({
-            type: "FIRST_PARTICLE",
-            x: offsetX1,
-            y: offsetY1,
-        });
-        dispatch({
-            type: "SECOND_PARTICLE",
-            x: offsetX2,
-            y: offsetY2,
-        });
-        dispatch({
-            type: "THIRD_PARTICLE",
-            x: offsetX3,
-            y: offsetY3,
-        });
-        dispatch({
-            type: "FOURTH_PARTICLE",
-            x: offsetX4,
-            y: offsetY4,
-        });
-        dispatch({
-            type: "FIFTH_PARTICLE",
-            x: offsetX5,
-            y: offsetY5,
-        });
-        dispatch({
-            type: "SIXTH_PARTICLE",
-            x: offsetX6,
-            y: offsetY6,
-        });
-        dispatch({
-            type: "SEVENTH_PARTICLE",
-            x: offsetX7,
-            y: offsetY7,
-        });
-        dispatch({
-            type: "EIGHT_PARTICLE",
-            x: offsetX8,
-            y: offsetY8,
-        });
+        const dispatchParticles = (offsetX, offsetY, particle) => {
+            dispatch({
+                type: particle,
+                x: offsetX,
+                y: offsetY,
+            });
+        };
+        dispatchParticles(offsetX1, offsetY1, "FIRST_PARTICLE");
+        dispatchParticles(offsetX2, offsetY2, "SECOND_PARTICLE");
+        dispatchParticles(offsetX3, offsetY3, "THIRD_PARTICLE");
+        dispatchParticles(offsetX4, offsetY4, "FOURTH_PARTICLE");
+        dispatchParticles(offsetX5, offsetY5, "FIFTH_PARTICLE");
+        dispatchParticles(offsetX6, offsetY6, "SIXTH_PARTICLE");
+        dispatchParticles(offsetX7, offsetY7, "SEVENTH_PARTICLE");
+        dispatchParticles(offsetX8, offsetY8, "EIGHT_PARTICLE");
     };
 
     // Accessing the x and y coordinates for each particle
@@ -464,16 +462,27 @@ function Home({ mouseLeave, mouseEnter }) {
     return (
         <React.Fragment>
             <div
-                className="w-full flex items-center flex-col"
+                // className="w-full flex items-center flex-col "
                 ref={blocksContainer}
                 onMouseMove={handleMouseMove}
             >
-                <div className="mt-24">
+                <Header
+                    logo={logo}
+                    isClickable={isClickable}
+                    handleClick={handleClick}
+                    darkModeClick={darkModeClick}
+                    setDarkModeClick={setDarkModeClick}
+                    setDarkMode={setDarkMode}
+                    darkMode={darkMode}
+                    transitioned={transitioned}
+                    isDropdownOpen={isDropdownOpen}
+                    setIsDropdownOpen={setIsDropdownOpen}
+                ></Header>
+                <div className="flex w-full flex-col items-center">
                     <div
                         id="particle-container"
                         className=" relative flex justify-center items-center flex-col"
                     >
-                        {/* div.particle$*8 */}
                         <h1
                             className={
                                 "dark:bg-gradient-to-br from-white to-slate-200"
@@ -493,10 +502,8 @@ function Home({ mouseLeave, mouseEnter }) {
                                 transition: mouseLeave
                                     ? "transform 700ms"
                                     : isScrooling
-                                    ? "transform 200ms"
-                                    : mouseEnter
-                                    ? "transform 100ms"
-                                    : "none",
+                                    ? "transform 50ms"
+                                    : "",
                             }}
                         ></div>
 
@@ -507,10 +514,8 @@ function Home({ mouseLeave, mouseEnter }) {
                                 transition: mouseLeave
                                     ? "transform 700ms"
                                     : isScrooling
-                                    ? "transform 200ms"
-                                    : mouseEnter
-                                    ? "transform 100ms"
-                                    : "none",
+                                    ? "transform 50ms"
+                                    : "",
                             }}
                         ></div>
 
@@ -522,10 +527,8 @@ function Home({ mouseLeave, mouseEnter }) {
                                 transition: mouseLeave
                                     ? "transform 700ms"
                                     : isScrooling
-                                    ? "transform 200ms"
-                                    : mouseEnter
-                                    ? "transform 100ms"
-                                    : "none",
+                                    ? "transform 50ms"
+                                    : "",
                             }}
                         ></div>
                         <div
@@ -536,10 +539,8 @@ function Home({ mouseLeave, mouseEnter }) {
                                 transition: mouseLeave
                                     ? "transform 700ms"
                                     : isScrooling
-                                    ? "transform 200ms"
-                                    : mouseEnter
-                                    ? "transform 100ms"
-                                    : "none",
+                                    ? "transform 50ms"
+                                    : "",
                             }}
                         ></div>
                         <div
@@ -550,10 +551,8 @@ function Home({ mouseLeave, mouseEnter }) {
                                 transition: mouseLeave
                                     ? "transform 700ms"
                                     : isScrooling
-                                    ? "transform 200ms"
-                                    : mouseEnter
-                                    ? "transform 100ms"
-                                    : "none",
+                                    ? "transform 50ms"
+                                    : "",
                             }}
                         ></div>
                         <div
@@ -564,10 +563,8 @@ function Home({ mouseLeave, mouseEnter }) {
                                 transition: mouseLeave
                                     ? "transform 700ms"
                                     : isScrooling
-                                    ? "transform 200ms"
-                                    : mouseEnter
-                                    ? "transform 100ms"
-                                    : "none",
+                                    ? "transform 50ms"
+                                    : "",
                             }}
                         ></div>
                         <div
@@ -578,10 +575,8 @@ function Home({ mouseLeave, mouseEnter }) {
                                 transition: mouseLeave
                                     ? "transform 700ms"
                                     : isScrooling
-                                    ? "transform 200ms"
-                                    : mouseEnter
-                                    ? "transform 100ms"
-                                    : "none",
+                                    ? "transform 50ms"
+                                    : "",
                             }}
                         ></div>
                         <div
@@ -592,10 +587,8 @@ function Home({ mouseLeave, mouseEnter }) {
                                 transition: mouseLeave
                                     ? "transform 700ms"
                                     : isScrooling
-                                    ? "transform 200ms"
-                                    : mouseEnter
-                                    ? "transform 100ms"
-                                    : "none",
+                                    ? "transform 50ms"
+                                    : "",
                             }}
                         ></div>
                     </div>

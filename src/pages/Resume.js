@@ -1,5 +1,38 @@
-function Resume() {
-    return <div>Resume</div>;
+import React from "react";
+
+import Header from "./Header";
+
+function Resume({
+    setDarkMode,
+    darkMode,
+    logo,
+    isClickable,
+    handleClick,
+    darkModeClick,
+    setDarkModeClick,
+    transitioned,
+    isDropdownOpen,
+    setIsDropdownOpen,
+}) {
+    return (
+        <React.Fragment>
+            <Header
+                logo={logo}
+                isClickable={isClickable}
+                handleClick={handleClick}
+                darkModeClick={darkModeClick}
+                setDarkModeClick={setDarkModeClick}
+                setDarkMode={setDarkMode}
+                darkMode={darkMode}
+                transitioned={transitioned}
+                isDropdownOpen={isDropdownOpen}
+                setIsDropdownOpen={setIsDropdownOpen}
+            ></Header>
+            <div>
+                <div>Resume</div>
+            </div>
+        </React.Fragment>
+    );
 }
 
 export default Resume;

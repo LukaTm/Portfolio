@@ -20,7 +20,7 @@ export default function Header({
         <div
             className={` ${styles.header_container} ${
                 transitioned ? styles.transitioned : ""
-            } `}
+            } bg-gradient-to-r from-white to-slate-100 `}
         >
             <DarkModeToggle
                 logo={logo}

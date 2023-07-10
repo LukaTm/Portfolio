@@ -1,0 +1,15 @@
+.tool_container {
+    /* background-color: aliceblue; */
+    background-color: rgb(153, 151, 151);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    padding: 2px 5px;
+    font-weight: 500;
+    border: 1px solid black;
+    margin: 2px;
+    font-size: 0.8em;
+}
+
+.tool_container:hover {
+    background-color: rgb(158, 157, 157);
+}

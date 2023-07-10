@@ -362,20 +362,26 @@ header a {
         font-size: 8vw;
     }
 }
-@media (max-width: 215px) {
-    main {
-        overflow-x: hidden;
-        flex: 0;
+@media (max-width: 285px) {
+    h1 {
+        font-size: 10vw;
     }
-    .dropdown li a {
-        color: black;
-        font-size: 1.1em;
+    h2 {
+        font-size: 4vw;
     }
 }
 @media (max-width: 165px) {
     .dark_mode_container {
         margin-top: 10px;
         margin-right: 20px;
+    }
+}
+@media (max-width: 149px) {
+    h1 {
+        font-size: 0.9em;
+    }
+    h2 {
+        font-size: 0.1em;
     }
 }
 

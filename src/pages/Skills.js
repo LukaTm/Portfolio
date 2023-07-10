@@ -27,7 +27,7 @@ function Skills({
                 // CALCULATES TO THE TOP OF THE VIEWPORT
                 const containerTop = container.getBoundingClientRect().top;
 
-                if (containerTop < windowHeight - 15) {
+                if (containerTop < windowHeight + 10) {
                     container.classList.add(styles.visible);
                 } else {
                     container.classList.remove(styles.visible);
@@ -73,13 +73,22 @@ function Skills({
                 <div className={styles.outside_container}>
                     <section className={styles.section_container}>
                         <a
+                            href="https://en.wikipedia.org/wiki/Python_(programming_language)"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
+                        >
+                            <div className={styles.python}></div>
+                            <span className="mt-2">Python</span>
+                        </a>
+                        <a
                             href="https://en.wikipedia.org/wiki/TypeScript"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={styles.typescript}></div>
-                            <span className="mt-2">Typescript</span>
+                            <span className="mt-3">Typescript</span>
                         </a>
                         <a
                             href="https://en.wikipedia.org/wiki/React_(JavaScript_library)"
@@ -88,7 +97,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={styles.react}></div>
-                            <span className="mt-1">React</span>
+                            <span className="mt-2">React</span>
                         </a>
                         <a
                             href="https://en.wikipedia.org/wiki/Redux_(JavaScript_library)"
@@ -97,7 +106,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={styles.redux}></div>
-                            <span className="mt-1">Redux</span>
+                            <span className="mt-2">Redux</span>
                         </a>
 
                         <a
@@ -107,7 +116,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white `}
                         >
                             <div className={styles.html}></div>
-                            <span>HTML5</span>
+                            <span className="mt-1">HTML5</span>
                         </a>
                         <a
                             href="https://en.wikipedia.org/wiki/JavaScript"
@@ -116,7 +125,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={styles.javascript}></div>
-                            <span>JavaScript</span>
+                            <span className="mt-1">JavaScript</span>
                         </a>
                         <a
                             href="https://en.wikipedia.org/wiki/CSS"
@@ -143,7 +152,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={styles.express}></div>
-                            <span className="mt-1"> Express.js</span>
+                            <span className="mt-2"> Express.js</span>
                         </a>
                         <a
                             href="https://en.wikipedia.org/wiki/Node.js"
@@ -152,7 +161,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={styles.node}></div>
-                            <span className="mt-1">Node.js</span>
+                            <span className="mt-3">Node.js</span>
                         </a>
                         <a
                             href="https://en.wikipedia.org/wiki/Representational_state_transfer"
@@ -161,7 +170,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={`${styles.restful}`}></div>
-                            <span className="mt-2"> RESTful API</span>
+                            <span className="mt-3"> RESTful API</span>
                         </a>
                         <a
                             href="https://en.wikipedia.org/wiki/Mongoose_(MongoDB)"
@@ -179,7 +188,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={styles.mongodb}></div>
-                            <span> MongoDb</span>
+                            <span className="mt-1"> MongoDb</span>
                         </a>
                         <a
                             href="https://en.wikipedia.org/wiki/Git"
@@ -188,7 +197,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={styles.git}></div>
-                            <span className="mt-1">Git</span>
+                            <span className="mt-2">Git</span>
                         </a>
                         <a
                             href="https://en.wikipedia.org/wiki/Webpack"
@@ -206,7 +215,7 @@ function Skills({
                             className={`${styles.skill_container} dark:shadow-custom dark:text-white`}
                         >
                             <div className={styles.vsscode}></div>
-                            <span className="mt-2">Visual Studio Code</span>
+                            <span className="mt-3">Visual Studio Code</span>
                         </a>
 
                         <a

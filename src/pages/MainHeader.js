@@ -20,7 +20,9 @@ function MainHeader({
             }}
         >
             {/*  ALL THE CHILDREN  */}
-            <main>{children}</main>
+            <main className="bg-gradient-to-r from-white to-slate-100 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-800">
+                {children}
+            </main>
             <footer
                 className={`${styles.footer} dark:!bg-slate-900 dark:!text-white`}
             >

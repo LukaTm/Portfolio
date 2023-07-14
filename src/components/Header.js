@@ -1,8 +1,10 @@
-import "./output.css";
+import "../pages/output.css";
 import styles from "./MainHeader.module.css";
 import { NavLink } from "react-router-dom";
 import DropDown from "./DropDown";
 import DarkModeToggle from "./DarkModeToggle";
+import { Link } from "react-scroll";
+import { useRef } from "react";
 
 export default function Header({
     setDarkMode,
@@ -15,7 +17,20 @@ export default function Header({
     transitioned,
     isDropdownOpen,
     setIsDropdownOpen,
+    isOnHome,
 }) {
+    const homePageRef = useRef(null);
+
+    const RouteToHome = () => {
+        if (homePageRef.current) {
+            homePageRef.current.click();
+            setTimeout(() => {
+                const project = document.querySelector("#projects_section");
+                project.click();
+            }, 100);
+        }
+    };
+
     return (
         <div
             className={` ${styles.header_container} ${
@@ -39,6 +54,7 @@ export default function Header({
                 <div className={`${styles.header_visible} dark:bg-gray-800`}>
                     <header className="flex w-full">
                         <NavLink
+                            ref={homePageRef}
                             className={(navData) => [
                                 `
                         dark:text-slate-50
@@ -70,7 +86,17 @@ export default function Header({
                         >
                             Skills
                         </NavLink>
-
+                        <Link
+                            id="projects_section"
+                            className={`${styles.default} dark:text-slate-50
+                            dark:after:bg-white`}
+                            to={isOnHome ? "projects" : ""}
+                            onClick={isOnHome ? null : RouteToHome}
+                            smooth={true}
+                            duration={2600}
+                        >
+                            Projects
+                        </Link>
                         <NavLink
                             className={(navData) => [
                                 `

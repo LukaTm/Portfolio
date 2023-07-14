@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
-import MainHeader from "./pages/MainHeader";
+import MainFooter from "./components/MainFooter";
 import Resume from "./pages/Resume";
 import { useEffect, useState } from "react";
 import Skills from "./pages/Skills";
-import styles from "../src/pages/MainHeader.module.css";
+import styles from "../src/components/MainHeader.module.css";
 
 import { IoMoonOutline } from "react-icons/io5";
 import { FiSun } from "react-icons/fi";
@@ -59,7 +59,7 @@ function App() {
             <div
                 className={`${isDropdownOpen ? "darker_background" : ""} `}
             ></div>
-            <MainHeader
+            <MainFooter
                 setMouseLeave={setMouseLeave}
                 setMouseEnter={setMouseEnter}
                 darkMode={darkMode}
@@ -125,9 +125,10 @@ function App() {
                             />
                         }
                     />
+
                     {/* ADD NON EXISTING ROUTE */}
                 </Routes>
-            </MainHeader>
+            </MainFooter>
         </div>
     );
 }

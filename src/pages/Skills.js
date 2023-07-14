@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./Skills.module.css";
 
-import Header from "./Header";
+import Header from "../components/Header";
 
 function Skills({
     setDarkMode,
@@ -27,7 +27,7 @@ function Skills({
                 // CALCULATES TO THE TOP OF THE VIEWPORT
                 const containerTop = container.getBoundingClientRect().top;
 
-                if (containerTop < windowHeight + 10) {
+                if (containerTop < windowHeight - 10) {
                     container.classList.add(styles.visible);
                 } else {
                     container.classList.remove(styles.visible);
@@ -63,10 +63,11 @@ function Skills({
                 transitioned={transitioned}
                 isDropdownOpen={isDropdownOpen}
                 setIsDropdownOpen={setIsDropdownOpen}
+                isOnHome={false}
             ></Header>
 
             <div className="flex flex-col items-center bg-gradient-to-r from-white to-slate-100 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-800 mt-6">
-                <h1 className="mb-8 mt-12 dark:bg-gradient-to-r from-white to-slate-100">
+                <h1 className="mb-8  dark:bg-gradient-to-r from-white to-slate-100">
                     My skillset
                 </h1>
 

@@ -1,16 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import PreviewBtn from "./PreviewBtn";
 import styles from "./Projecets.module.css";
 import ToolsUsed from "./ToolsUsed";
 
-function Projects() {
+function Projects({ handleProjectsClick }) {
+    const projectsElementRef = useRef(null);
+    const [hasAnimationBeen, setHasAnimationBeen] = useState(false);
+
     useEffect(() => {
         const projectContainers = document.querySelectorAll(
             `.${styles.project_container}`
         );
+        const projects_h3_container = document.querySelector(`#projects`);
+        const projects_h3 = document.querySelector(`.${styles.projects_h3}`);
 
         function revealProject() {
             const windowHeight = window.innerHeight;
 
+            // Projects h3 tag
+            const containerTopH3 =
+                projects_h3_container.getBoundingClientRect().top;
+            if (containerTopH3 < windowHeight - 10 && !hasAnimationBeen) {
+                projects_h3.classList.add(`${styles.visible}`);
+                setHasAnimationBeen(true);
+            }
             projectContainers.forEach((container) => {
                 // CALCULATES TO THE TOP OF THE VIEWPORT
                 const containerTop = container.getBoundingClientRect().top;
@@ -36,13 +49,14 @@ function Projects() {
             window.removeEventListener("scroll", revealProject);
             window.removeEventListener("resize", handleResize);
         };
-    }, []);
+    }, [hasAnimationBeen]);
 
     return (
         <div>
-            <div className={styles.title}>
+            <div className={styles.title} id="projects">
                 <h3
-                    className={`${styles.h3} dark:bg-gradient-to-br from-white to-slate-200`}
+                    ref={projectsElementRef}
+                    className={`${styles.projects_h3} dark:bg-gradient-to-br from-white to-slate-200`}
                 >
                     Projects
                 </h3>
@@ -67,7 +81,7 @@ function Projects() {
                             <ToolsUsed tool={"Next.js"} />
                             <ToolsUsed tool={"Node.js"} />
                             <ToolsUsed tool={"Tailwind"} />
-                            <ToolsUsed tool={"Typescript"} />
+                            {/* <ToolsUsed tool={"Typescript"} /> */}
                         </div>
                         <div className={styles.project_description}>
                             <p className="dark:text-white">
@@ -84,14 +98,14 @@ function Projects() {
                                 password length check. Hosted on Vercel
                             </p>
                         </div>
-                        <a
-                            className={`${styles.btn} dark:bg-slate-700 dark:border dark:border-black dark:shadow-none dark:text-white dark:hover:bg-slate-600 dark:rounded-[3px]`}
-                            href="https://final-charades.vercel.app/main?lang=eng"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            See Live
-                        </a>
+                        <PreviewBtn
+                            customHref={
+                                "https://final-charades.vercel.app/main?lang=eng"
+                            }
+                            customSourceCodeHref={
+                                "https://github.com/LukaTm/charades-nextjs"
+                            }
+                        />
                     </div>
 
                     <div
@@ -116,25 +130,27 @@ function Projects() {
                         <div className={styles.project_description}>
                             <p className="dark:text-white">
                                 This app transfers liked songs from Spotify to
-                                YouTube. Click the first button to log in with
-                                Spotify and provide the app with your liked
-                                songs from Spotify. Then, use the second button
-                                to log in with YouTube and provide the app with
-                                an OAuth2 access token, enabling the app to to
-                                like the spotify songs on YouTube. The app uses
-                                spotify song name along with the artist's name
-                                to search for YouTube videos using YouTube Data
-                                API and likes the most relevant video.
+                                YouTube liked playlist. Click the first button
+                                to log in with Spotify and provide the app with
+                                your liked songs from Spotify. Then, use the
+                                second button to log in with YouTube and provide
+                                the app with an OAuth2 access token, enabling
+                                the app to to like the spotify songs on YouTube.
+                                The app uses spotify song name along with the
+                                artist's name to search for YouTube videos using
+                                YouTube Data API and likes the most relevant
+                                video.
                             </p>
                         </div>
-                        <a
-                            className={`${styles.btn} dark:bg-slate-700 dark:border dark:border-black dark:shadow-none dark:text-white dark:hover:bg-slate-600 dark:rounded-[3px]`}
-                            href="https://lukatm.github.io/Project-Tic-Tac-Toe/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            See Live
-                        </a>
+
+                        <PreviewBtn
+                            // customHref={
+                            //     "https://lukatm.github.io/Project-Tic-Tac-Toe/"
+                            // }
+                            customSourceCodeHref={
+                                "https://github.com/LukaTm/Spotify-Songs-to-Youtube-Liked"
+                            }
+                        />
                     </div>
                     <div
                         className={`${styles.project_container} dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:shadow-md dark:shadow-slate-700`}
@@ -156,27 +172,15 @@ function Projects() {
                         </div>
                         <div className={styles.project_description}>
                             <p className="dark:text-white">
-                                This app transfers liked songs from Spotify to
-                                YouTube. Click the first button to log in with
-                                Spotify and provide the app with your liked
-                                songs from Spotify. Then, use the second button
-                                to log in with YouTube and provide the app with
-                                an OAuth2 access token, enabling the app to to
-                                like the spotify songs on YouTube. The app uses
-                                spotify song name along with the artist's name
-                                to search for YouTube videos using YouTube Data
-                                API and likes the most relevant video.
+                                Frontend todo list website
                             </p>
                         </div>
-
-                        <a
-                            className={`${styles.btn} dark:bg-slate-700 dark:border dark:border-black dark:shadow-none dark:text-white dark:hover:bg-slate-600 dark:rounded-[3px]`}
-                            href="https://todo-app-5d8b3.web.app/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            See Live
-                        </a>
+                        <PreviewBtn
+                            customHref={"https://todo-app-5d8b3.web.app/"}
+                            customSourceCodeHref={
+                                "https://github.com/LukaTm/Project-Todo-List"
+                            }
+                        />
                     </div>
                     <div
                         className={`${styles.project_container} dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:shadow-md dark:shadow-slate-700`}
@@ -200,14 +204,15 @@ function Projects() {
                                 Tic Tac Toe game against other person.
                             </p>
                         </div>
-                        <a
-                            className={`${styles.btn} dark:bg-slate-700 dark:border dark:border-black dark:shadow-none dark:text-white dark:hover:bg-slate-600 dark:rounded-[3px]`}
-                            href="https://lukatm.github.io/Project-Tic-Tac-Toe/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            See Live
-                        </a>
+
+                        <PreviewBtn
+                            customHref={
+                                "https://lukatm.github.io/Project-Tic-Tac-Toe/"
+                            }
+                            customSourceCodeHref={
+                                "https://github.com/LukaTm/Project-Tic-Tac-Toe"
+                            }
+                        />
                     </div>
                     <div
                         className={`${styles.project_container} dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:shadow-md dark:shadow-slate-700`}
@@ -232,14 +237,15 @@ function Projects() {
                                 to score 5 points wins the game.
                             </p>
                         </div>
-                        <a
-                            className={`${styles.btn} dark:bg-slate-700 dark:border dark:border-black dark:shadow-none dark:text-white dark:hover:bg-slate-600 dark:rounded-[3px]`}
-                            href="https://lukatm.github.io/rock-paper-scissors/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            See Live
-                        </a>
+
+                        <PreviewBtn
+                            customHref={
+                                "https://lukatm.github.io/rock-paper-scissors/"
+                            }
+                            customSourceCodeHref={
+                                "https://github.com/LukaTm/rock-paper-scissors"
+                            }
+                        />
                     </div>
 
                     <div
@@ -262,14 +268,15 @@ function Projects() {
                         <div className={styles.project_description}>
                             <p className="dark:text-white">Basic Calculator.</p>
                         </div>
-                        <a
-                            className={`${styles.btn} dark:bg-slate-700 dark:border dark:border-black dark:shadow-none dark:text-white dark:hover:bg-slate-600 dark:rounded-[3px]`}
-                            href="https://lukatm.github.io/Calculator-Project/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            See Live
-                        </a>
+
+                        <PreviewBtn
+                            customHref={
+                                "https://lukatm.github.io/Calculator-Project/"
+                            }
+                            customSourceCodeHref={
+                                "https://github.com/LukaTm/Calculator-Project"
+                            }
+                        />
                     </div>
                 </section>
             </div>

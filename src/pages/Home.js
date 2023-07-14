@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState, useReducer } from "react";
 import "./output.css";
-import AnimatedHeader from "./AnimatedHeader";
-import Projects from "./Projects";
+import AnimatedHeader from "../components/AnimatedHeader";
+import Projects from "../components/Projects";
 
-import Header from "./Header";
+import Header from "../components/Header";
 
 // Define initial state for the particle positions
 const initialState = [
@@ -202,6 +202,62 @@ function Home({
     const [particleScale, setParticleScale] = useState(0);
     const [opacities, setOpacities] = useState([]);
     const [runOnce, setRunOnce] = useState(true);
+    // Use Animation Once on Page
+    const [hasAnimationBeen, setHasAnimationBeen] = useState(false);
+    const [hasAnimationBeenH1, setHasAnimationBeenH1] = useState(false);
+
+    const handleProjectsClick = (element) => {
+        if (element.current) {
+            element.current.click();
+        }
+    };
+
+    // <h3 className="about-text">ABOUT</h3>
+    //                     <div>
+    //                         <p className="about_description"></p>
+    // PROJECT SLIDE ANIMATION
+    useEffect(() => {
+        const projectContainers = document.querySelector(`.about_description`);
+        const projectContainerHeader = document.querySelector(`.about-header`);
+        const homeH1 = document.querySelector(`#home_h1`);
+
+        function revealProject() {
+            const windowHeight = window.innerHeight;
+
+            // CALCULATES TO THE TOP OF THE VIEWPORT
+            const containerTop = projectContainers.getBoundingClientRect().top;
+            const containerTopH1 = homeH1.getBoundingClientRect().top;
+
+            // H1 Animation
+            if (containerTopH1 < windowHeight - 10 && !hasAnimationBeenH1) {
+                homeH1.classList.add("visible");
+                setHasAnimationBeenH1(true);
+            }
+
+            if (containerTop < windowHeight - 10 && !hasAnimationBeen) {
+                projectContainers.classList.add("visible");
+                projectContainerHeader.classList.add("visible");
+                setHasAnimationBeen(true);
+            } else if (!hasAnimationBeen) {
+                projectContainers.classList.remove("visible");
+                projectContainerHeader.classList.remove("visible");
+            }
+        }
+
+        function handleResize() {
+            revealProject();
+        }
+
+        window.addEventListener("scroll", revealProject);
+        window.addEventListener("resize", handleResize);
+        revealProject();
+
+        // CLEANUP
+        return () => {
+            window.removeEventListener("scroll", revealProject);
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [hasAnimationBeen, hasAnimationBeenH1]);
 
     useEffect(() => {
         if (runOnce) {
@@ -465,6 +521,7 @@ function Home({
                 // className="w-full flex items-center flex-col "
                 ref={blocksContainer}
                 onMouseMove={handleMouseMove}
+                className="flex flex-col items-center"
             >
                 <Header
                     logo={logo}
@@ -477,13 +534,15 @@ function Home({
                     transitioned={transitioned}
                     isDropdownOpen={isDropdownOpen}
                     setIsDropdownOpen={setIsDropdownOpen}
+                    isOnHome={true}
                 ></Header>
-                <div className="flex w-full flex-col items-center">
+                <div className="flex w-fullflex-col items-center">
                     <div
                         id="particle-container"
                         className=" relative flex justify-center items-center flex-col"
                     >
                         <h1
+                            id="home_h1"
                             className={
                                 "dark:bg-gradient-to-br from-white to-slate-200"
                             }
@@ -593,7 +652,42 @@ function Home({
                         ></div>
                     </div>
                 </div>
-                <Projects />
+                <div
+                    className={`project_outside ${
+                        darkMode ? "darkModeFilter" : ""
+                    }`}
+                >
+                    <div
+                        className={`project_container dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:text-white
+                            `}
+                    >
+                        <h3 className="about-header">ABOUT</h3>
+                        <div>
+                            <p className="about_description">
+                                My name is Markuss, and I'm a Full-Stack
+                                developer. Web development has become my primary
+                                focus and area of expertise. Starting with
+                                Python and gradually transitioning into the
+                                realm of web development, I have dedicated
+                                myself to mastering various front-end and
+                                back-end technologies.
+                                <br />I am driven by a desire for continuous
+                                improvement, I actively seek opportunities to
+                                enhance my coding skills and avoid falling into
+                                complacency with easy or repetitive tasks. I am
+                                open to taking on challenging projects that push
+                                me beyond my comfort zone, as they provide
+                                valuable opportunities to acquire new skills and
+                                expertise.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {/* PROJECTS */}
+                <Projects
+                    handleProjectsClick={handleProjectsClick}
+                    hasAnimationBeen={hasAnimationBeen}
+                />
             </div>
         </React.Fragment>
     );

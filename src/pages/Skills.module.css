@@ -30,7 +30,7 @@
     align-items: center;
     /* box-shadow: h-shadow v-shadow blur spread color */
     box-shadow: 1px 1px 15px 2px rgb(204, 203, 203);
-    transition: transform 500ms;
+    transition: transform 500ms, opacity 1s;
     cursor: pointer;
 }
 

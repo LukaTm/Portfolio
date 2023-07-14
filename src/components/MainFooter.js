@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styles from "./MainHeader.module.css";
 
-function MainHeader({
+function MainFooter({
     children,
     setMouseLeave,
     setMouseEnter,
@@ -27,7 +27,7 @@ function MainHeader({
                 className={`${styles.footer} dark:!bg-slate-900 dark:!text-white`}
             >
                 <div className={styles.left}>
-                    <div>Developed by Markuss Luka</div>
+                    <div>Developed by Markuss Lukašins</div>
                 </div>
                 <div className={styles.right}>
                     <div className={styles.github_container}>
@@ -63,4 +63,4 @@ function MainHeader({
     );
 }
 
-export default MainHeader;
+export default MainFooter;

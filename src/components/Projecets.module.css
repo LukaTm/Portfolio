@@ -34,13 +34,18 @@
     justify-content: center;
 }
 
-.h3 {
+.projects_h3 {
     font-size: 2.5em;
     font-family: my-custom-font5;
     font-weight: 700;
     background: linear-gradient(90deg, #888787, #1e1e22);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.projects_h3.visible {
+    opacity: 1;
 }
 
 .tools_container {
@@ -97,13 +102,35 @@
     border-radius: 7px;
     color: rgb(0, 0, 0);
     cursor: pointer;
-    padding: 5px 25px;
+    padding: 5px 20px;
     align-items: flex-start;
     max-width: 112px;
     text-decoration: none;
     font-family: my-custom-font2;
     box-shadow: 1px 1px 8px 0px rgb(207, 207, 207);
     margin-top: 10px;
+}
+
+.btnSourceCode {
+    display: flex;
+    position: relative;
+    /* background-color: aliceblue; */
+    background-color: rgb(245, 245, 245);
+    border-radius: 7px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    padding: 5px 20px;
+    align-items: flex-start;
+    max-width: 143px;
+    text-decoration: none;
+    font-family: my-custom-font2;
+    box-shadow: 1px 1px 8px 0px rgb(207, 207, 207);
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.btnSourceCode:hover {
+    background-color: rgb(240, 240, 240);
 }
 
 .btn:hover {
@@ -145,6 +172,7 @@
     padding: 10px;
     justify-content: center;
     position: relative;
+    margin-bottom: 10px;
 }
 
 .project_section > div > :first-child {
@@ -211,7 +239,7 @@
     h2 {
         font-size: 5vw;
     }
-    .h3 {
+    .projects_h3 {
         font-size: 11vw;
     }
 }
@@ -222,7 +250,7 @@
     h2 {
         font-size: 0.7em;
     }
-    .h3 {
+    .projects_h3 {
         font-size: 1.4em;
     }
 }

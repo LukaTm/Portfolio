@@ -16,13 +16,15 @@ const DarkModeToggle = ({
     }, [setDarkMode]);
 
     const toggleDarkMode = () => {
-        setDarkModeClick((prevDarkMode) => !prevDarkMode);
-        const newDarkMode = !darkMode;
-        setDarkMode(newDarkMode);
-        localStorage.setItem("darkMode", newDarkMode);
-        //  root element represented by the <html>
-        // toggle removes it IF it exists
-        document.documentElement.classList.toggle("dark");
+        setTimeout(() => {
+            setDarkModeClick((prevDarkMode) => !prevDarkMode);
+            const newDarkMode = !darkMode;
+            setDarkMode(newDarkMode);
+            localStorage.setItem("darkMode", newDarkMode);
+            //  root element represented by the <html>
+            // toggle removes it IF it exists
+            document.documentElement.classList.toggle("dark");
+        }, 30);
     };
 
     const dropdownBtnRef = useRef(null);

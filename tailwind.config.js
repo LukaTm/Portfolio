@@ -7,6 +7,9 @@ module.exports = {
                 custom: "1px 1px 10px 2px rgb(11, 20, 44)",
             },
             borderRadius: "3px",
+            filter: {
+                "drop-shadow": "drop-shadow(-1px 3px 5px rgb(11, 20, 44))",
+            },
         },
     },
     plugins: [

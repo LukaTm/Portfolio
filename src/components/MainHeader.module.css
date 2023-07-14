@@ -55,6 +55,7 @@ h2 {
     position: relative;
     font-weight: 500;
     z-index: 10;
+    cursor: pointer;
 }
 
 .default::after,
@@ -182,8 +183,8 @@ header a {
     box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.233);
     transform: rotateY(0deg);
     transition: transform 0.4s, padding 0.3s;
-    margin-top: 10px;
-    margin-right: 30px;
+    margin-top: 15px;
+    margin-right: 25px;
     z-index: 12;
 }
 
@@ -367,7 +368,12 @@ header a {
         font-size: 10vw;
     }
     h2 {
-        font-size: 4vw;
+        font-size: 5vw;
+    }
+}
+@media (max-width: 200px) {
+    h2 {
+        font-size: 0.6em;
     }
 }
 @media (max-width: 165px) {

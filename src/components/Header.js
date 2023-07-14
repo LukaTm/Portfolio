@@ -93,7 +93,7 @@ export default function Header({
                             to={isOnHome ? "projects" : ""}
                             onClick={isOnHome ? null : RouteToHome}
                             smooth={true}
-                            duration={2600}
+                            duration={5600}
                         >
                             Projects
                         </Link>

@@ -127,7 +127,7 @@ function DropDown({
                         </div>
                     </div>
                     <div className="flex flex-col justify-center  ">
-                        <ul className="flex flex-col items-center m-0">
+                        <ul className="flex flex-col items-center m-0 ">
                             <li>
                                 <NavLink
                                     onClick={(event) => {

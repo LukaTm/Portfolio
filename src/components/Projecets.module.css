@@ -212,24 +212,38 @@
     .project_section > div > :first-child {
         flex-shrink: 1;
         max-width: 100%;
-        min-width: calc(100vw - 220px);
-        min-height: calc(100vw / 2 + 40px);
+        min-width: calc(100vw - 200px);
+        min-height: calc(100vw / 2 + 70px);
         flex-basis: 100%;
         font-size: 3vw;
     }
 }
 
+@media (max-width: 520px) {
+    .project_section > div > :first-child {
+        min-width: 320px;
+        min-height: 330px;
+    }
+}
 @media (max-width: 460px) {
     .description {
         font-size: 1.1em;
     }
 }
-@media (max-width: 435px) {
+@media (max-width: 460px) {
+    .project_container {
+        min-width: 125px;
+    }
+    .project_container {
+        width: calc(100vw - 55px);
+    }
+}
+@media (max-width: 420px) {
     .project_section > div > :first-child {
         flex-shrink: 1;
         max-width: 100%;
-        min-width: 210px;
-        min-height: 250px;
+        min-width: calc(100vw - 100px);
+        min-height: calc(100vw - 100px);
         flex-basis: 100%;
         font-size: 3vw;
     }
@@ -247,7 +261,32 @@
         font-size: 12vw;
     }
 }
+@media (max-width: 310px) {
+    .source_code_text,
+    .see_live_text {
+        font-size: 4vw;
+    }
+}
+@media (max-width: 282px) {
+    .source_code_text,
+    .see_live_text {
+        font-size: 0.7em;
+        margin: 0px;
+    }
+    .preview_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btnSourceCode {
+        margin-left: 0px;
+    }
+}
 @media (max-width: 210px) {
+    .project_section > div > :first-child {
+        min-width: 100px;
+        min-height: 100px;
+    }
     h1 {
         font-size: 1.4em;
     }
@@ -257,9 +296,18 @@
     #projects_h3 {
         font-size: 1.5em;
     }
+    .tools_container {
+        max-width: 100px;
+    }
 }
+/* @media (max-width: 150px) {
+    .project_section > div > :first-child {
+        min-width: ;
+        min-height: calc(100vw - 100px);
+    }
+} */
 
-@media (max-width: 328px) {
+/* @media (max-width: 328px) {
     .project_container {
         width: calc(100vw - 45px);
     }
@@ -271,8 +319,8 @@
         flex-basis: 100%;
         font-size: 3vw;
     }
-}
-@media (max-width: 308px) {
+} */
+/* @media (max-width: 308px) {
     .project_container {
         width: calc(100vw - 45px);
     }
@@ -284,12 +332,23 @@
         flex-basis: 100%;
         font-size: 3vw;
     }
-}
-@media (max-width: 242px) {
+} */
+/* @media (max-width: 242px) {
     .project_container {
         min-width: 190px;
     }
-}
+    .project_container {
+        width: calc(100vw - 45px);
+    }
+    .project_section > div > :first-child {
+        flex-shrink: 1;
+        max-width: 100%;
+        min-width: 180px;
+        min-height: 250px;
+        flex-basis: 100%;
+        font-size: 3vw;
+    }
+} */
 
 .rock {
     background-image: url("../photos/rock.png");

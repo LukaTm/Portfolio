@@ -13,3 +13,14 @@
 .tool_container:hover {
     background-color: rgb(158, 157, 157);
 }
+
+@media (max-width: 210px) {
+    .tool_container {
+        font-size: 5vw;
+    }
+}
+@media (max-width: 187px) {
+    .tool_container {
+        font-size: 0.6em;
+    }
+}

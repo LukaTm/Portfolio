@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 7px;
-    font-weight: 500;
+    font-weight: 600;
     min-width: 180px;
     max-width: 180px;
     margin: 22px;
@@ -49,6 +49,7 @@
     box-shadow: 1px 1px 15px 2px rgb(204, 203, 203);
     transition: transform 500ms, opacity 1s;
     cursor: pointer;
+    color: black;
 }
 
 .section_container > a:hover {
@@ -66,6 +67,12 @@
 }
 
 /*  */
+
+@media (max-width: 700px) {
+    #skills_h1 {
+        margin-top: 80px;
+    }
+}
 
 @media (max-width: 620px) {
     #skills_h1 {

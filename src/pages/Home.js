@@ -204,8 +204,6 @@ function Home({
     const [opacities, setOpacities] = useState([]);
     const [runOnce, setRunOnce] = useState(true);
 
-    const homeH1Ref = useRef(null);
-
     const handleProjectsClick = (element) => {
         if (element.current) {
             element.current.click();
@@ -513,7 +511,6 @@ function Home({
                         className=" relative flex justify-center items-center flex-col"
                     >
                         <h1
-                            ref={homeH1Ref}
                             id="home_h1_id"
                             className={
                                 "home_h1 dark:bg-gradient-to-br from-white to-slate-200 "

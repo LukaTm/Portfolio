@@ -55,7 +55,7 @@ const Contact = ({ darkMode }) => {
 
         try {
             const response = await axios.post(
-                "https://starlit-pasca-7c111b.netlify.app/.netlify/functions/api/send-email/",
+                "https://main--starlit-pasca-7c111b.netlify.app/api/send-email/",
                 payload
             );
             if (response.status === 200) {

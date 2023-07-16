@@ -13,6 +13,8 @@ const DarkModeToggle = ({
     useEffect(() => {
         const isDarkMode = localStorage.getItem("darkMode") === "true";
         setDarkMode(isDarkMode);
+        // Set the class on initial load
+        document.documentElement.classList.toggle("dark", isDarkMode);
     }, [setDarkMode]);
 
     const toggleDarkMode = () => {
@@ -21,9 +23,7 @@ const DarkModeToggle = ({
             const newDarkMode = !darkMode;
             setDarkMode(newDarkMode);
             localStorage.setItem("darkMode", newDarkMode);
-            //  root element represented by the <html>
-            // toggle removes it IF it exists
-            document.documentElement.classList.toggle("dark");
+            document.documentElement.classList.toggle("dark", newDarkMode);
         }, 30);
     };
 

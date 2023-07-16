@@ -21,3 +21,7 @@ code {
         position: absolute;
     }
 }
+
+.unused_class {
+    background-color: #36485e;
+}

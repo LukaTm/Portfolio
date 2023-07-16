@@ -19,35 +19,18 @@ function Skills({
         const projectContainers = document.querySelectorAll(
             `.${styles.skill_container}`
         );
+        const skills_h1 = document.querySelector(`#${styles.skills_h1}`);
 
-        function revealProject() {
-            const windowHeight = window.innerHeight;
-
-            projectContainers.forEach((container) => {
-                // CALCULATES TO THE TOP OF THE VIEWPORT
-                const containerTop = container.getBoundingClientRect().top;
-
-                if (containerTop < windowHeight - 10) {
-                    container.classList.add(styles.visible);
-                } else {
-                    container.classList.remove(styles.visible);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(styles.visible);
                 }
             });
-        }
+        });
 
-        function handleResize() {
-            revealProject();
-        }
-
-        window.addEventListener("scroll", revealProject);
-        window.addEventListener("resize", handleResize);
-        revealProject();
-
-        // CLEANUP
-        return () => {
-            window.removeEventListener("scroll", revealProject);
-            window.removeEventListener("resize", handleResize);
-        };
+        projectContainers.forEach((el) => observer.observe(el));
+        observer.observe(skills_h1);
     }, []);
 
     return (
@@ -67,7 +50,10 @@ function Skills({
             ></Header>
 
             <div className="flex flex-col items-center bg-gradient-to-r from-white to-slate-100 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-800 mt-6">
-                <h1 className="mb-8  dark:bg-gradient-to-r from-white to-slate-100">
+                <h1
+                    id={styles.skills_h1}
+                    className=" mb-8 dark:bg-gradient-to-r from-white to-slate-100"
+                >
                     My skillset
                 </h1>
 

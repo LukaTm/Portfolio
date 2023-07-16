@@ -10,6 +10,11 @@ module.exports = {
             filter: {
                 "drop-shadow": "drop-shadow(-1px 3px 5px rgb(11, 20, 44))",
             },
+            backgroundColor: {
+                "slate-930": "#253549",
+                "slate-910": "#2a3b52",
+                "slate-905": "#36485e",
+            },
         },
     },
     plugins: [

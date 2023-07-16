@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import "../pages/output.css";
 
-function AnimatedHeader({ text, className }) {
+function AnimatedHeader({ text, className, id }) {
     const [animatedText, setAnimatedText] = useState("");
 
     useEffect(() => {
@@ -19,7 +20,11 @@ function AnimatedHeader({ text, className }) {
         return () => clearTimeout(timeout);
     }, [text]);
 
-    return <h2 className={className}>{animatedText}</h2>;
+    return (
+        <h2 id="home_h2_id" className={className}>
+            {animatedText}
+        </h2>
+    );
 }
 
 export default AnimatedHeader;

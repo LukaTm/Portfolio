@@ -1,0 +1,83 @@
+.card-title {
+    font-family: my-custom-font2;
+    font-size: 2.5em;
+    margin-bottom: 33px;
+}
+
+.error-message {
+    color: red;
+    font-weight: 500;
+}
+.success-message {
+    font-weight: 500;
+}
+.enter-email-error {
+    font-weight: 500;
+    color: red;
+}
+
+.custom-input.form-control {
+    border: 2px solid rgb(218, 218, 218);
+}
+
+.custom-input:focus {
+    outline: none;
+    border-color: #ced4da;
+    box-shadow: none;
+}
+
+.custom-card {
+    box-shadow: 1px 0px 12px 0px #b9b9b9;
+}
+
+.custom-card input:focus,
+.custom-card textarea:focus {
+    border-color: #5d5e5f;
+    box-shadow: none;
+}
+
+.text-center .btn {
+    background-color: #272727;
+    color: white;
+    font-family: my-custom-font;
+}
+.text-center .btn:hover {
+    background-color: #313131;
+    color: white;
+}
+
+.btn:active {
+    background-color: #313131 !important;
+    color: white !important;
+    border: 1px solid white;
+}
+.input_dark.btn:active {
+    border-color: rgb(25, 24, 46) !important;
+}
+
+.custom-input.form-control.input_dark {
+    border: 1px solid rgb(29, 27, 58);
+}
+.custom-input.form-control.input_dark.email-error {
+    border: 1px solid rgb(255, 0, 0);
+}
+.custom-input.form-control.input_dark:focus {
+    border: 1px solid rgb(18, 17, 34);
+}
+.custom-input.form-control.email-error.input_dark:focus {
+    border: 1px solid rgb(255, 0, 0);
+}
+div .form-control.email-error {
+    border: 1px solid rgb(255, 0, 0);
+}
+
+.form-control.input_dark::placeholder {
+    color: white;
+}
+.form-control.input_dark {
+    color: white;
+}
+
+/* div .input_dark:focus {
+    border-color: #151020;
+} */

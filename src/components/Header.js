@@ -21,11 +21,20 @@ export default function Header({
 }) {
     const homePageRef = useRef(null);
 
-    const RouteToHome = () => {
+    const RouteToHomeAndProjects = () => {
         if (homePageRef.current) {
             homePageRef.current.click();
             setTimeout(() => {
                 const project = document.querySelector("#projects_section");
+                project.click();
+            }, 100);
+        }
+    };
+    const RouteToHomeAndContact = () => {
+        if (homePageRef.current) {
+            homePageRef.current.click();
+            setTimeout(() => {
+                const project = document.querySelector("#contact_section");
                 project.click();
             }, 100);
         }
@@ -49,6 +58,9 @@ export default function Header({
             <DropDown
                 isDropdownOpen={isDropdownOpen}
                 setIsDropdownOpen={setIsDropdownOpen}
+                isOnHome={true}
+                RouteToHomeAndProjects={RouteToHomeAndProjects}
+                RouteToHomeAndContact={RouteToHomeAndContact}
             />
             <div>
                 <div className={`${styles.header_visible} dark:bg-gray-800`}>
@@ -91,11 +103,22 @@ export default function Header({
                             className={`${styles.default} dark:text-slate-50
                             dark:after:bg-white`}
                             to={isOnHome ? "projects" : ""}
-                            onClick={isOnHome ? null : RouteToHome}
+                            onClick={isOnHome ? null : RouteToHomeAndProjects}
                             smooth={true}
-                            duration={5600}
+                            duration={1000}
                         >
                             Projects
+                        </Link>
+                        <Link
+                            id="contact_section"
+                            className={`${styles.default} dark:text-slate-50
+                            dark:after:bg-white`}
+                            to={isOnHome ? "contact-form" : ""}
+                            onClick={isOnHome ? null : RouteToHomeAndContact}
+                            smooth={true}
+                            duration={1000}
+                        >
+                            Contact
                         </Link>
                         <NavLink
                             className={(navData) => [

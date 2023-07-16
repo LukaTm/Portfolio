@@ -5,58 +5,32 @@ import ToolsUsed from "./ToolsUsed";
 
 function Projects({ handleProjectsClick }) {
     const projectsElementRef = useRef(null);
-    const [hasAnimationBeen, setHasAnimationBeen] = useState(false);
 
     useEffect(() => {
         const projectContainers = document.querySelectorAll(
             `.${styles.project_container}`
         );
-        const projects_h3_container = document.querySelector(`#projects`);
-        const projects_h3 = document.querySelector(`.${styles.projects_h3}`);
+        const projects_h3 = document.querySelector(`#${styles.projects_h3}`);
 
-        function revealProject() {
-            const windowHeight = window.innerHeight;
-
-            // Projects h3 tag
-            const containerTopH3 =
-                projects_h3_container.getBoundingClientRect().top;
-            if (containerTopH3 < windowHeight - 10 && !hasAnimationBeen) {
-                projects_h3.classList.add(`${styles.visible}`);
-                setHasAnimationBeen(true);
-            }
-            projectContainers.forEach((container) => {
-                // CALCULATES TO THE TOP OF THE VIEWPORT
-                const containerTop = container.getBoundingClientRect().top;
-
-                if (containerTop < windowHeight - 10) {
-                    container.classList.add(styles.visible);
-                } else {
-                    container.classList.remove(styles.visible);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(`${styles.visible}`);
                 }
             });
-        }
+        });
+        projectContainers.forEach((el) => observer.observe(el));
 
-        function handleResize() {
-            revealProject();
-        }
-
-        window.addEventListener("scroll", revealProject);
-        window.addEventListener("resize", handleResize);
-        revealProject();
-
-        // CLEANUP
-        return () => {
-            window.removeEventListener("scroll", revealProject);
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [hasAnimationBeen]);
+        observer.observe(projects_h3);
+    }, []);
 
     return (
         <div>
             <div className={styles.title} id="projects">
                 <h3
                     ref={projectsElementRef}
-                    className={`${styles.projects_h3} dark:bg-gradient-to-br from-white to-slate-200`}
+                    className={`${styles.projects_h3_class} dark:bg-gradient-to-br from-white to-slate-200`}
+                    id={styles.projects_h3}
                 >
                     Projects
                 </h3>

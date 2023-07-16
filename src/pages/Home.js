@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState, useReducer } from "react";
 import "./output.css";
 import AnimatedHeader from "../components/AnimatedHeader";
 import Projects from "../components/Projects";
-import { debounce } from "lodash";
 
 import Header from "../components/Header";
+import Contact from "../components/Contact";
 
 // Define initial state for the particle positions
 const initialState = [
@@ -203,12 +203,7 @@ function Home({
     const [particleScale, setParticleScale] = useState(0);
     const [opacities, setOpacities] = useState([]);
     const [runOnce, setRunOnce] = useState(true);
-    // Use Animation Once on Page
-    const [hasAnimationBeen, setHasAnimationBeen] = useState(false);
-    const [hasAnimationBeenH1, setHasAnimationBeenH1] = useState(false);
 
-    const projectContainersRef = useRef(null);
-    const projectContainerHeaderRef = useRef(null);
     const homeH1Ref = useRef(null);
 
     const handleProjectsClick = (element) => {
@@ -218,52 +213,22 @@ function Home({
     };
 
     useEffect(() => {
-        const revealProject = () => {
-            const projectContainers = projectContainersRef.current;
-            const projectContainerHeader = projectContainerHeaderRef.current;
-            const homeH1 = homeH1Ref.current;
-            const windowHeight = window.innerHeight;
+        const projectContainers = document.querySelector(".about_description");
+        const header = document.querySelector(".about-header");
+        const homeH1 = document.querySelector(".home_h1");
 
-            // CALCULATES TO THE TOP OF THE VIEWPORT
-            const containerTop = projectContainers.getBoundingClientRect().top;
-            const containerTopH1 = homeH1.getBoundingClientRect().top;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add(`visible`);
+                }
+            });
+        });
 
-            // H1 Animation
-            if (containerTopH1 < windowHeight - 10 && !hasAnimationBeenH1) {
-                homeH1.classList.add("visible");
-                setHasAnimationBeenH1(true);
-            }
-
-            // Delay before applying the "about_description.visible" class
-            if (containerTop < windowHeight - 10 && !hasAnimationBeen) {
-                setTimeout(() => {
-                    projectContainers.classList.add("visible");
-                    projectContainerHeader.classList.add("visible");
-                    setHasAnimationBeen(true);
-                }, 200); // Adjust the delay time as needed
-            } else if (!hasAnimationBeen) {
-                projectContainers.classList.remove("visible");
-                projectContainerHeader.classList.remove("visible");
-            }
-        };
-
-        const debouncedRevealProject = debounce(revealProject, 100);
-
-        function handleResize() {
-            debouncedRevealProject();
-        }
-
-        window.addEventListener("scroll", debouncedRevealProject);
-        window.addEventListener("resize", handleResize);
-
-        revealProject();
-
-        // CLEANUP
-        return () => {
-            window.removeEventListener("scroll", debouncedRevealProject);
-            window.removeEventListener("resize", handleResize);
-        };
-    }, [hasAnimationBeen, hasAnimationBeenH1]);
+        observer.observe(projectContainers);
+        observer.observe(header);
+        observer.observe(homeH1);
+    }, []);
 
     useEffect(() => {
         if (runOnce) {
@@ -525,9 +490,9 @@ function Home({
         <React.Fragment>
             <div
                 // className="w-full flex items-center flex-col "
-                ref={blocksContainer}
                 onMouseMove={handleMouseMove}
                 className="flex flex-col items-center"
+                ref={blocksContainer}
             >
                 <Header
                     logo={logo}
@@ -548,15 +513,16 @@ function Home({
                         className=" relative flex justify-center items-center flex-col"
                     >
                         <h1
-                            id="home_h1"
                             ref={homeH1Ref}
+                            id="home_h1_id"
                             className={
-                                "dark:bg-gradient-to-br from-white to-slate-200"
+                                "home_h1 dark:bg-gradient-to-br from-white to-slate-200 "
                             }
                         >
                             Hi, I'm Markuss
                         </h1>
                         <AnimatedHeader
+                            id="home_h2_id"
                             className="font-semibold dark:text-white"
                             text="Full Stack Developer"
                         />
@@ -665,16 +631,12 @@ function Home({
                     }`}
                 >
                     <div
-                        ref={projectContainerHeaderRef}
-                        className={`project_container dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:text-white
+                        className={`project_container_about dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:text-white
                             `}
                     >
                         <h3 className="about-header">ABOUT</h3>
                         <div>
-                            <p
-                                className="about_description"
-                                ref={projectContainersRef}
-                            >
+                            <p className="about_description">
                                 My name is Markuss, and I'm a Full-Stack
                                 developer. Web development has become my primary
                                 focus and area of expertise. Starting with
@@ -695,10 +657,8 @@ function Home({
                     </div>
                 </div>
                 {/* PROJECTS */}
-                <Projects
-                    handleProjectsClick={handleProjectsClick}
-                    hasAnimationBeen={hasAnimationBeen}
-                />
+                <Projects handleProjectsClick={handleProjectsClick} />
+                <Contact darkMode={darkMode} />
             </div>
         </React.Fragment>
     );

@@ -34,17 +34,21 @@
     justify-content: center;
 }
 
-.projects_h3 {
-    font-size: 2.5em;
+.projects_h3_class {
+    background: linear-gradient(90deg, #888787, #1e1e22);
+}
+
+#projects_h3 {
+    font-size: 3em;
     font-family: my-custom-font5;
     font-weight: 700;
-    background: linear-gradient(90deg, #888787, #1e1e22);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     opacity: 0;
     transition: opacity 1s;
+    margin-bottom: 10px;
 }
-.projects_h3.visible {
+#projects_h3.visible {
     opacity: 1;
 }
 
@@ -239,8 +243,8 @@
     h2 {
         font-size: 5vw;
     }
-    .projects_h3 {
-        font-size: 11vw;
+    #projects_h3 {
+        font-size: 12vw;
     }
 }
 @media (max-width: 210px) {
@@ -250,8 +254,8 @@
     h2 {
         font-size: 0.7em;
     }
-    .projects_h3 {
-        font-size: 1.4em;
+    #projects_h3 {
+        font-size: 1.5em;
     }
 }
 

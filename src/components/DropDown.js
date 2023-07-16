@@ -1,16 +1,31 @@
 import styles from "./MainHeader.module.css";
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FiUser, FiFile } from "react-icons/fi";
+import {
+    FiHome,
+    FiClipboard,
+    FiMail,
+    FiUser,
+    FiFile,
+    FiFileText,
+} from "react-icons/fi";
+
+import { Link } from "react-scroll";
 import { Icon } from "@iconify/react";
 import homeIcon from "@iconify-icons/ri/home-4-line";
 
-function DropDown({ isDropdownOpen, setIsDropdownOpen }) {
+function DropDown({
+    isDropdownOpen,
+    setIsDropdownOpen,
+    isOnHome,
+    RouteToHomeAndProjects,
+    RouteToHomeAndContact,
+}) {
     const [closingDropdown, setClosingDropdown] = useState(false);
+    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
     const dropdownRef = useRef(null);
     const dropdownBtnRef = useRef(null);
-    const elementRef = useRef(null);
-    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+    const homePageRef = useRef(null);
 
     // IS OPEN
     const handleDropdownClick = () => {
@@ -112,7 +127,7 @@ function DropDown({ isDropdownOpen, setIsDropdownOpen }) {
                         </div>
                     </div>
                     <div className="flex flex-col justify-center  ">
-                        <ul className="flex flex-col items-center">
+                        <ul className="flex flex-col items-center m-0">
                             <li>
                                 <NavLink
                                     onClick={(event) => {
@@ -127,7 +142,13 @@ function DropDown({ isDropdownOpen, setIsDropdownOpen }) {
                                     to="/"
                                 >
                                     <div className="inline-flex justify-center items-center dark:text-white ">
-                                        <Icon icon={homeIcon} /> Home
+                                        <Icon
+                                            icon={homeIcon}
+                                            style={{
+                                                marginRight: "0.2rem",
+                                            }}
+                                        />
+                                        Home
                                     </div>
                                 </NavLink>
                             </li>
@@ -146,12 +167,78 @@ function DropDown({ isDropdownOpen, setIsDropdownOpen }) {
                                         to="/skills"
                                     >
                                         <div className="inline-flex justify-center items-center dark:text-white">
-                                            <FiUser /> Skills
+                                            <FiClipboard
+                                                style={{
+                                                    marginRight: "0.2rem",
+                                                }}
+                                            />
+                                            Skills
                                         </div>
                                     </NavLink>
                                 </div>
                             </li>
 
+                            <li>
+                                <div>
+                                    <Link
+                                        id="contact_section"
+                                        className={`${styles.default} dark:text-slate-50
+                            dark:after:bg-white`}
+                                        to={isOnHome ? "contact-form" : ""}
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            CloseDropdown();
+                                            if (isOnHome) {
+                                                RouteToHomeAndContact();
+                                            }
+                                        }}
+                                        smooth={true}
+                                        duration={1000}
+                                    >
+                                        <div className="inline-flex justify-center items-center dark:text-white">
+                                            <FiMail
+                                                style={{
+                                                    marginRight: "0.2rem",
+                                                }}
+                                            />
+                                            Contact
+                                        </div>
+                                    </Link>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <Link
+                                        id="projects_section"
+                                        className={`${styles.default} dark:text-slate-50
+                            dark:after:bg-white`}
+                                        to={isOnHome ? "projects" : ""}
+                                        // onClick={
+                                        //     isOnHome
+                                        //         ? null
+                                        //         : RouteToHomeAndProjects
+                                        // }
+                                        onClick={(event) => {
+                                            event.stopPropagation();
+                                            CloseDropdown();
+                                            if (isOnHome) {
+                                                RouteToHomeAndProjects();
+                                            }
+                                        }}
+                                        smooth={true}
+                                        duration={1000}
+                                    >
+                                        <div className="inline-flex justify-center items-center dark:text-white">
+                                            <FiUser
+                                                style={{
+                                                    marginRight: "0.2rem",
+                                                }}
+                                            />
+                                            Projects
+                                        </div>
+                                    </Link>
+                                </div>
+                            </li>
                             <li>
                                 <div>
                                     <NavLink
@@ -167,7 +254,12 @@ function DropDown({ isDropdownOpen, setIsDropdownOpen }) {
                                         to="/resume"
                                     >
                                         <div className="inline-flex justify-center items-center dark:text-white">
-                                            <FiFile /> Resume
+                                            <FiFile
+                                                style={{
+                                                    marginRight: "0.2rem",
+                                                }}
+                                            />{" "}
+                                            Resume
                                         </div>
                                     </NavLink>
                                 </div>

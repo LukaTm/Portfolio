@@ -5,6 +5,7 @@ import Projects from "../components/Projects";
 
 import Header from "../components/Header";
 import Contact from "../components/Contact";
+import About from "../About";
 
 // Define initial state for the particle positions
 const initialState = [
@@ -212,8 +213,6 @@ function Home({
     };
 
     useEffect(() => {
-        const projectContainers = document.querySelector(".about_description");
-        const header = document.querySelector(".about-header");
         const homeH1 = document.querySelector(".home_h1");
 
         const observer = new IntersectionObserver((entries) => {
@@ -224,8 +223,6 @@ function Home({
             });
         });
 
-        observer.observe(projectContainers);
-        observer.observe(header);
         observer.observe(homeH1);
     }, []);
 
@@ -628,31 +625,7 @@ function Home({
                         darkMode ? "darkModeFilter" : ""
                     }`}
                 >
-                    <div
-                        className={`project_container_about dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:text-white
-                            `}
-                    >
-                        <h3 className="about-header">ABOUT</h3>
-                        <div>
-                            <p className="about_description">
-                                My name is Markuss, and I'm a Full-Stack
-                                developer. Web development has become my primary
-                                focus and area of expertise. Starting with
-                                Python and gradually transitioning into the
-                                realm of web development, I have dedicated
-                                myself to mastering various front-end and
-                                back-end technologies.
-                                <br />I am driven by a desire for continuous
-                                improvement, I actively seek opportunities to
-                                enhance my coding skills and avoid falling into
-                                complacency with easy or repetitive tasks. I am
-                                open to taking on challenging projects that push
-                                me beyond my comfort zone, as they provide
-                                valuable opportunities to acquire new skills and
-                                expertise.
-                            </p>
-                        </div>
-                    </div>
+                    <About />
                 </div>
                 {/* PROJECTS */}
                 <Projects handleProjectsClick={handleProjectsClick} />

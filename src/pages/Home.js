@@ -187,8 +187,8 @@ function Home({
     const [secondParticleX, setSecondParticleX] = useState(0);
     const [thirdParticleX, setThirdParticleX] = useState(0);
     const [fourthParticleX, setFourthParticleX] = useState(0);
-    const [fifthParticleX, setFifthParticleX] = useState(0);
-    const [sixthParticleX, setSixthParticleX] = useState(0);
+    const [fifthParticleX, setFifthParticleX] = useState(0); // eslint-disable-line no-unused-vars
+    const [sixthParticleX, setSixthParticleX] = useState(0); // eslint-disable-line no-unused-vars
     const [seventhParticleX, setSeventhParticleX] = useState(0);
     const [eightParticleX, setEightParticleX] = useState(0);
 
@@ -199,7 +199,8 @@ function Home({
     const [fifthParticleY, setFifthParticleY] = useState(0);
     const [sixthParticleY, setSixthParticleY] = useState(0);
     const [seventhParticleY, setSeventhParticleY] = useState(0);
-    const [eightParticleY, setEightParticleY] = useState(0);
+    const [eightParticleY, setEightParticleY] = useState(0); // eslint-disable-line no-unused-vars
+
     const [particleScale, setParticleScale] = useState(0);
     const [opacities, setOpacities] = useState([]);
     const [runOnce, setRunOnce] = useState(true);

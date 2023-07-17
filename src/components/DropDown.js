@@ -1,14 +1,7 @@
 import styles from "./MainHeader.module.css";
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
-    FiHome,
-    FiClipboard,
-    FiMail,
-    FiUser,
-    FiFile,
-    FiFileText,
-} from "react-icons/fi";
+import { FiClipboard, FiMail, FiUser, FiFile } from "react-icons/fi";
 
 import { Link } from "react-scroll";
 import { Icon } from "@iconify/react";
@@ -25,7 +18,6 @@ function DropDown({
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
     const dropdownRef = useRef(null);
     const dropdownBtnRef = useRef(null);
-    const homePageRef = useRef(null);
 
     // IS OPEN
     const handleDropdownClick = () => {

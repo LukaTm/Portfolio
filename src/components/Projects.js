@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import PreviewBtn from "./PreviewBtn";
 import styles from "./Projecets.module.css";
 import ToolsUsed from "./ToolsUsed";

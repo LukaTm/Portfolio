@@ -74,7 +74,7 @@ function Projects({ handleProjectsClick }) {
                         </div>
                         <PreviewBtn
                             customHref={
-                                "https://final-charades.vercel.app/main?lang=eng"
+                                "https://memais-sovs.vercel.app/?lang=lv"
                             }
                             customSourceCodeHref={
                                 "https://github.com/LukaTm/charades-nextjs"

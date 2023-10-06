@@ -13,6 +13,10 @@ function Resume({
     transitioned,
     isDropdownOpen,
     setIsDropdownOpen,
+    toggleLanguageMode,
+    text,
+    languageSwitch,
+    lang,
 }) {
     return (
         <React.Fragment>
@@ -28,6 +32,10 @@ function Resume({
                 isDropdownOpen={isDropdownOpen}
                 setIsDropdownOpen={setIsDropdownOpen}
                 isOnHome={false}
+                toggleLanguageMode={toggleLanguageMode}
+                text={text}
+                languageSwitch={languageSwitch}
+                lang={lang}
             ></Header>
             <div>
                 <div>Resume</div>

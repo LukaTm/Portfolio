@@ -7,6 +7,7 @@ function MainFooter({
     setMouseEnter,
     darkMode,
     isDropdownOpen,
+    lang,
 }) {
     const containerRef = useRef(null);
 
@@ -27,7 +28,11 @@ function MainFooter({
                 className={`${styles.footer} dark:!bg-slate-900 dark:!text-white`}
             >
                 <div className={styles.left}>
-                    <div>Developed by Markuss Lukašins</div>
+                    <div>
+                        {lang === true
+                            ? "Izstrādāja Markuss Lukašins"
+                            : "Developed by Markuss Lukašins"}
+                    </div>
                 </div>
                 <div className={styles.right}>
                     <div className={styles.github_container}>

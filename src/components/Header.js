@@ -5,6 +5,7 @@ import DropDown from "./DropDown";
 import DarkModeToggle from "./DarkModeToggle";
 import { Link } from "react-scroll";
 import { useRef } from "react";
+import LanguageToggle from "./LanguageToggle";
 
 export default function Header({
     setDarkMode,
@@ -18,6 +19,10 @@ export default function Header({
     isDropdownOpen,
     setIsDropdownOpen,
     isOnHome,
+    toggleLanguageMode,
+    text,
+    languageSwitch,
+    lang,
 }) {
     const homePageRef = useRef(null);
 
@@ -46,6 +51,14 @@ export default function Header({
                 transitioned ? styles.transitioned : ""
             } bg-gradient-to-r from-white to-slate-100 `}
         >
+            <LanguageToggle
+                isClickable={isClickable}
+                handleClick={handleClick}
+                languageSwitch={languageSwitch}
+                text={text}
+                toggleLanguageMode={toggleLanguageMode}
+                lang={lang}
+            />
             <DarkModeToggle
                 logo={logo}
                 isClickable={isClickable}
@@ -61,6 +74,11 @@ export default function Header({
                 isOnHome={true}
                 RouteToHomeAndProjects={RouteToHomeAndProjects}
                 RouteToHomeAndContact={RouteToHomeAndContact}
+                handleClick={handleClick}
+                isClickable={isClickable}
+                languageSwitch={languageSwitch}
+                toggleLanguageMode={toggleLanguageMode}
+                lang={lang}
             />
             <div>
                 <div className={`${styles.header_visible} dark:bg-gray-800`}>
@@ -80,7 +98,7 @@ export default function Header({
                             ]}
                             to="/"
                         >
-                            Home
+                            {lang === true ? "Mājas" : "Home"}
                         </NavLink>
                         <NavLink
                             className={(navData) => [
@@ -96,7 +114,7 @@ export default function Header({
                             ]}
                             to="/skills"
                         >
-                            Skills
+                            {lang === true ? "Prasmes" : "Skills"}
                         </NavLink>
                         <Link
                             id="projects_section"
@@ -107,7 +125,7 @@ export default function Header({
                             smooth={true}
                             duration={1000}
                         >
-                            Projects
+                            {lang === true ? "Projekti" : "Projects"}
                         </Link>
                         <Link
                             id="contact_section"
@@ -118,7 +136,7 @@ export default function Header({
                             smooth={true}
                             duration={1000}
                         >
-                            Contact
+                            {lang === true ? "Kontakti" : "Contact"}
                         </Link>
                         <NavLink
                             className={(navData) => [
@@ -134,7 +152,7 @@ export default function Header({
                             ]}
                             to="/resume"
                         >
-                            Resume
+                            {lang === true ? "CV" : "Resume"}
                         </NavLink>
                     </header>
                 </div>

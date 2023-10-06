@@ -14,6 +14,10 @@ function Skills({
     transitioned,
     isDropdownOpen,
     setIsDropdownOpen,
+    toggleLanguageMode,
+    text,
+    languageSwitch,
+    lang,
 }) {
     useEffect(() => {
         const projectContainers = document.querySelectorAll(
@@ -47,6 +51,10 @@ function Skills({
                 isDropdownOpen={isDropdownOpen}
                 setIsDropdownOpen={setIsDropdownOpen}
                 isOnHome={false}
+                toggleLanguageMode={toggleLanguageMode}
+                text={text}
+                languageSwitch={languageSwitch}
+                lang={lang}
             ></Header>
 
             <div className="flex flex-col items-center bg-gradient-to-r from-white to-slate-100 dark:bg-gradient-to-r dark:from-gray-800 dark:to-gray-800 mt-6">
@@ -54,7 +62,7 @@ function Skills({
                     id={styles.skills_h1}
                     className=" mb-8 dark:bg-gradient-to-r from-white to-slate-100"
                 >
-                    My skillset
+                    {lang === true ? "Manas Prasmes" : "My skillset"}
                 </h1>
 
                 <div className={styles.outside_container}>

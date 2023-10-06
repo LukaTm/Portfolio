@@ -13,6 +13,11 @@ function DropDown({
     isOnHome,
     RouteToHomeAndProjects,
     RouteToHomeAndContact,
+    handleClick,
+    isClickable,
+    languageSwitch,
+    toggleLanguageMode,
+    lang,
 }) {
     const [closingDropdown, setClosingDropdown] = useState(false);
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -103,6 +108,39 @@ function DropDown({
                         !closingDropdown ? "" : styles.closing
                     } dark:bg-slate-800 dark:shadow-md dark:shadow-slate-900 `}
                 >
+                    <div>
+                        <div
+                            className={`dark:bg-slate-700 dark:text-white ${styles.language_container_small}`}
+                            style={{
+                                pointerEvents: isClickable ? "auto" : "none",
+                                transform: `translate3d(${
+                                    cursorPosition.x
+                                }px, ${cursorPosition.y}px, 0) rotateY(${
+                                    languageSwitch ? "180deg" : "0"
+                                })`,
+                            }}
+                            onClick={() => {
+                                handleClick();
+                                toggleLanguageMode();
+                            }}
+                            onMouseOut={() => setCursorPosition({ x: 0, y: 0 })}
+                        >
+                            <div
+                                className={`${
+                                    lang
+                                        ? styles.language_text_lv
+                                        : styles.language_text_eng
+                                }`}
+                                tabIndex="0"
+                                style={{
+                                    transform: `rotateY(${
+                                        languageSwitch ? "180deg" : "0"
+                                    })`,
+                                }}
+                            ></div>
+                        </div>
+                    </div>
+
                     <div
                         onClick={() => {
                             setTimeout(() => {

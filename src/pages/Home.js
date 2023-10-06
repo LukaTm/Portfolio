@@ -5,7 +5,7 @@ import Projects from "../components/Projects";
 
 import Header from "../components/Header";
 import Contact from "../components/Contact";
-import About from "../About";
+import About from "../components/About";
 
 // Define initial state for the particle positions
 const initialState = [
@@ -176,6 +176,10 @@ function Home({
     transitioned,
     isDropdownOpen,
     setIsDropdownOpen,
+    toggleLanguageMode,
+    text,
+    languageSwitch,
+    lang,
 }) {
     // Use the useReducer hook to manage particle positions
     const [particlePositions, dispatch] = useReducer(reducer, initialState);
@@ -502,24 +506,36 @@ function Home({
                     isDropdownOpen={isDropdownOpen}
                     setIsDropdownOpen={setIsDropdownOpen}
                     isOnHome={true}
+                    toggleLanguageMode={toggleLanguageMode}
+                    text={text}
+                    languageSwitch={languageSwitch}
+                    lang={lang}
                 ></Header>
                 <div className="flex w-fullflex-col items-center">
                     <div
                         id="particle-container"
                         className=" relative flex justify-center items-center flex-col"
                     >
-                        <h1
-                            id="home_h1_id"
-                            className={
-                                "home_h1 dark:bg-gradient-to-br from-white to-slate-200 "
-                            }
-                        >
-                            Hi, I'm Markuss
-                        </h1>
+                        <div id="h1_container">
+                            <h1
+                                id="home_h1_id"
+                                className={
+                                    "home_h1 dark:bg-gradient-to-br from-white to-slate-200 "
+                                }
+                            >
+                                {lang === true
+                                    ? "Sveiki, mani sauc Markuss"
+                                    : "Hi, I'm Markuss"}
+                            </h1>
+                        </div>
                         <AnimatedHeader
                             id="home_h2_id"
                             className="font-semibold dark:text-white"
-                            text="Full Stack Developer"
+                            text={
+                                lang === true
+                                    ? "Full Stack izstrādātājs"
+                                    : "Full Stack Developer"
+                            }
                         />
 
                         <div
@@ -625,11 +641,23 @@ function Home({
                         darkMode ? "darkModeFilter" : ""
                     }`}
                 >
-                    <About />
+                    {/* ABOUT SECTION */}
+                    <About
+                        toggleLanguageMode={toggleLanguageMode}
+                        text={text}
+                        languageSwitch={languageSwitch}
+                        lang={lang}
+                    />
                 </div>
                 {/* PROJECTS */}
-                <Projects handleProjectsClick={handleProjectsClick} />
-                <Contact darkMode={darkMode} />
+                <Projects
+                    handleProjectsClick={handleProjectsClick}
+                    toggleLanguageMode={toggleLanguageMode}
+                    text={text}
+                    languageSwitch={languageSwitch}
+                    lang={lang}
+                />
+                <Contact darkMode={darkMode} lang={lang} />
             </div>
         </React.Fragment>
     );

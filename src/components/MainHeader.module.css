@@ -144,6 +144,10 @@ header a {
     z-index: 50;
     margin-bottom: 7px;
 }
+.dropdown ul li:first-child {
+    z-index: 50;
+    margin-top: 17px;
+}
 
 .dropdown {
     display: none;
@@ -151,7 +155,7 @@ header a {
     right: 0;
     top: 0;
     width: 100vw;
-    height: 250px;
+    height: 260px;
     background-color: aliceblue;
     box-shadow: 0 4px 10px 0 rgba(92, 92, 92, 0.39);
     z-index: 1000;
@@ -177,7 +181,7 @@ header a {
     display: block;
     position: absolute;
     align-self: flex-end;
-    padding: 19px 19px 19px 19px;
+    padding: 27px;
     right: 0;
     border-radius: 50px;
     color: black;
@@ -191,12 +195,53 @@ header a {
     z-index: 12;
 }
 
+.language_container {
+    display: block;
+    position: absolute;
+    align-self: flex-end;
+    padding: 27px;
+    left: 0;
+    border-radius: 50px;
+    color: black;
+    cursor: pointer;
+    box-sizing: border-box;
+    box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.233);
+    transform: rotateY(0deg);
+    transition: transform 0.4s, padding 0.3s;
+    margin-top: 15px;
+    margin-left: 25px;
+    z-index: 100;
+}
+
 .dark_mode_container.dark_mode_active {
     transform: rotateY(180deg) !important;
 }
 
 .dark_mode_logo {
     cursor: pointer;
+    position: absolute;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.language_text_lv::after {
+    content: "LV";
+    cursor: pointer;
+    position: absolute;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.language_text_eng::after {
+    content: "ENG";
+    cursor: pointer;
+    position: absolute;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .dropdown_container:hover {
@@ -205,7 +250,11 @@ header a {
 }
 
 .dark_mode_container:hover {
-    padding: 18px;
+    padding: 26px;
+    transform: scale(0.98); /* Reduce the scale on hover */
+}
+.language_container:hover {
+    padding: 26px;
     transform: scale(0.98); /* Reduce the scale on hover */
 }
 
@@ -213,22 +262,14 @@ header a {
     display: none;
 }
 
-@media (max-width: 930px) {
+@media (max-width: 995px) {
     .home header {
         justify-content: center;
         align-items: center;
         margin-top: 10px;
-        padding-right: 145px;
+        padding-right: 60px;
     }
 }
-/* @media (max-width: 620px) {
-    h1 {
-        font-size: 10vw;
-    }
-    h2 {
-        font-size: 4vw;
-    }
-} */
 
 @keyframes slideIn {
     from {
@@ -240,6 +281,27 @@ header a {
 }
 
 @media (max-width: 700px) {
+    .language_container {
+        display: none;
+        cursor: none;
+    }
+    .language_container_small {
+        display: block;
+        position: absolute;
+        align-self: flex-end;
+        padding: 27px;
+        left: 17px;
+        top: 8px;
+        border-radius: 50px;
+        color: black;
+        cursor: pointer;
+        box-sizing: border-box;
+        box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.233);
+        transform: rotateY(0deg);
+        transition: transform 0.4s, padding 0.3s;
+        z-index: 1000;
+    }
+
     .dropdown li a {
         color: black;
         font-size: 1.3em;
@@ -355,22 +417,14 @@ header a {
         font-size: 0.74em;
     }
 }
-/* @media (max-width: 310px) {
-    h1 {
-        font-size: 1.9em;
-    }
-    h2 {
-        font-size: 0.8em;
-        margin-top: 4px;
-    }
-} */
+
 @media (max-width: 286px) {
     .home .footer {
         font-size: 5.3vw;
     }
     .dropdown li a {
         color: black;
-        font-size: 8vw;
+        font-size: 7.2vw;
     }
 }
 @media (max-width: 270px) {
@@ -388,6 +442,10 @@ header a {
         margin-top: 10px;
         margin-right: 22px;
     }
+    .language_container {
+        margin-top: 10px;
+        margin-left: 22px;
+    }
     .dropdown_container {
         left: 15px;
         top: 0px;
@@ -397,14 +455,6 @@ header a {
         right: 11px;
     }
 }
-/* @media (max-width: 149px) {
-    h1 {
-        font-size: 0.9em;
-    }
-    h2 {
-        font-size: 0.1em;
-    }
-} */
 
 @media (max-width: 145px) {
     .home .footer {
@@ -414,6 +464,9 @@ header a {
         padding: 9px;
     }
     .dark_mode_container {
+        padding: 10px;
+    }
+    .language_container {
         padding: 10px;
     }
     .dropdown_container:hover {
@@ -439,6 +492,9 @@ header a {
     .dark_mode_container {
         padding: 8px;
     }
+    .language_container {
+        padding: 8px;
+    }
 
     .dropdown_logo {
         width: 9px;
@@ -452,6 +508,9 @@ header a {
     .dark_mode_container {
         padding: 6px;
     }
+    .language_container {
+        padding: 6px;
+    }
 }
 @media (max-width: 75px) {
     .dropdown_container {
@@ -462,6 +521,9 @@ header a {
     .dark_mode_container {
         margin: 1px;
     }
+    .language_container {
+        margin: 1px;
+    }
 }
 
 @media (max-width: 40px) {
@@ -469,6 +531,9 @@ header a {
         padding: 4px 2px 4px 2px;
     }
     .dark_mode_container {
+        padding: 4px;
+    }
+    .language_container {
         padding: 4px;
     }
     .sun_container,

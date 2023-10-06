@@ -38,6 +38,13 @@ h2 {
     font-size: 1.6em;
 }
 
+#h1_container {
+    display: flex;
+    max-width: calc(95vw);
+
+    text-align: center;
+}
+
 .home_h1 {
     background: linear-gradient(141deg, #969699, #1e1e22);
     -webkit-background-clip: text;

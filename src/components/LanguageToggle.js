@@ -1,32 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./MainHeader.module.css";
 
-const DarkModeToggle = ({
-    setDarkMode,
-    setDarkModeClick,
-    darkModeClick,
+const LanguageToggle = ({
     handleClick,
-    logo,
     isClickable,
-    darkMode,
+    text,
+    languageSwitch,
+    toggleLanguageMode,
+    lang,
 }) => {
-    useEffect(() => {
-        const isDarkMode = localStorage.getItem("darkMode") === "true";
-        setDarkMode(isDarkMode);
-        // Set the class on initial load
-        document.documentElement.classList.toggle("dark", isDarkMode);
-    }, [setDarkMode]);
-
-    const toggleDarkMode = () => {
-        setTimeout(() => {
-            setDarkModeClick((prevDarkMode) => !prevDarkMode);
-            const newDarkMode = !darkMode;
-            setDarkMode(newDarkMode);
-            localStorage.setItem("darkMode", newDarkMode);
-            document.documentElement.classList.toggle("dark", newDarkMode);
-        }, 90);
-    };
-
     const dropdownBtnRef = useRef(null);
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
@@ -48,27 +30,37 @@ const DarkModeToggle = ({
     return (
         <div>
             <div
-                className={`dark:bg-slate-700 dark:text-white ${styles.dark_mode_container} dark_container`}
+                className={`dark:bg-slate-700 dark:text-white ${styles.language_container}`}
                 style={{
                     pointerEvents: isClickable ? "auto" : "none",
                     transform: `translate3d(${cursorPosition.x}px, ${
                         cursorPosition.y
-                    }px, 0) ${darkModeClick ? "rotateY(180deg)" : ""}`,
+                    }px, 0) rotateY(${languageSwitch ? "180deg" : "0"})`,
                 }}
                 onClick={() => {
-                    toggleDarkMode();
                     handleClick();
+                    toggleLanguageMode();
                 }}
                 onMouseMove={handleMouseMove}
                 onMouseOut={() => setCursorPosition({ x: 0, y: 0 })}
                 ref={dropdownBtnRef}
             >
-                <div className={`${styles.dark_mode_logo}`} tabIndex="0">
-                    {logo}
-                </div>
+                <div
+                    className={`${
+                        lang
+                            ? styles.language_text_lv
+                            : styles.language_text_eng
+                    }`}
+                    tabIndex="0"
+                    style={{
+                        transform: `rotateY(${
+                            languageSwitch ? "180deg" : "0"
+                        })`,
+                    }}
+                ></div>
             </div>
         </div>
     );
 };
 
-export default DarkModeToggle;
+export default LanguageToggle;

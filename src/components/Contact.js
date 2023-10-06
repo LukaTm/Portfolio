@@ -4,7 +4,7 @@ import axios from "axios";
 import validator from "email-validator";
 import { useInput } from "../hooks/use-input";
 
-const Contact = ({ darkMode }) => {
+const Contact = ({ darkMode, lang }) => {
     const [name, setName] = useState("");
     const [message, setMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
@@ -80,7 +80,9 @@ const Contact = ({ darkMode }) => {
                 id="contact-form"
             >
                 <div className="card-body">
-                    <h2 className="card-title text-center mb-4">CONTACT</h2>
+                    <h2 className="card-title text-center mb-4">
+                        {lang ? <>Sazinies ar mani</> : <>CONTACT ME</>}
+                    </h2>
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4 ">
                             <input
@@ -91,7 +93,7 @@ const Contact = ({ darkMode }) => {
                                 id="name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                placeholder="Name"
+                                placeholder={lang ? "Vārds" : "Name"}
                             />
                         </div>
                         <div className="mb-4">
@@ -108,7 +110,7 @@ const Contact = ({ darkMode }) => {
                                 value={email}
                                 onChange={emailChangeHandler}
                                 onBlur={emailBlutHandler}
-                                placeholder="Email"
+                                placeholder={lang ? "E-pasts" : "Email"}
                             />
                             {!hasEmailError ? (
                                 ""
@@ -139,7 +141,7 @@ const Contact = ({ darkMode }) => {
                                 id="message"
                                 value={message}
                                 onChange={(e) => setMessage(e.target.value)}
-                                placeholder="Message"
+                                placeholder={lang ? "Ziņa" : "Message"}
                                 rows={4}
                             ></textarea>
                             <span className="error-message">
@@ -158,7 +160,7 @@ const Contact = ({ darkMode }) => {
                                 }`}
                                 style={{ width: "50%", margin: "0 auto" }}
                             >
-                                Send
+                                {lang ? <>Sūtīt</> : <>Send</>}
                             </button>
                         </div>
                     </form>

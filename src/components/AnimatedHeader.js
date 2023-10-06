@@ -8,6 +8,7 @@ function AnimatedHeader({ text, className, id }) {
         let timeout;
 
         const typeText = (currentIndex) => {
+            if (currentIndex === 0) setAnimatedText("");
             if (currentIndex < text.length) {
                 const currentChar = text[currentIndex];
                 setAnimatedText((prevText) => prevText + currentChar);

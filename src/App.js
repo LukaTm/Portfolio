@@ -16,21 +16,22 @@ function App() {
     const [darkMode, setDarkMode] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+    const [transitioned, setTransitioned] = useState(false);
     const [darkModeClick, setDarkModeClick] = useState(false);
     const [isClickable, setIsClickable] = useState(true);
     const [logo, setLogo] = useState(<IoMoonOutline />);
 
-    const handleClick = () => {
-        if (isClickable) {
-            setIsClickable(false);
-
-            setTimeout(() => {
-                setIsClickable(true);
-            }, 200);
-        }
-    };
-
-    const [transitioned, setTransitioned] = useState(false);
+    // TRUE for LV | False for ENG
+    const [lang, setLang] = useState(
+        localStorage.getItem("lang") === "LV" ? true : false
+    );
+    const [languageSwitch, setLanguageSwitch] = useState(false);
+    const [text, setText] = useState(
+        localStorage.getItem("lang") === "LV" ? "LV" : "ENG"
+    );
+    useEffect(() => {
+        setLang(localStorage.getItem("lang") === "LV" ? true : false);
+    }, [languageSwitch]);
 
     useEffect(() => {
         setTransitioned(true);
@@ -54,6 +55,26 @@ function App() {
         return () => clearTimeout(timer);
     }, [darkModeClick, setLogo]);
 
+    const handleClick = () => {
+        if (isClickable) {
+            setIsClickable(false);
+
+            setTimeout(() => {
+                setIsClickable(true);
+            }, 200);
+        }
+    };
+
+    const toggleLanguageMode = () => {
+        const textString = text === "V⅃" ? "ENG" : text === "LV" ? "ӘИƎ" : "V⅃";
+        setLanguageSwitch((prevLang) => !prevLang);
+        localStorage.setItem("lang", textString === "V⅃" ? "LV" : "ENG");
+        setTimeout(() => {
+            // LV mirrored cause of 180 transform
+            setText(textString);
+        }, 90);
+    };
+
     return (
         <div>
             <div
@@ -63,6 +84,7 @@ function App() {
                 setMouseLeave={setMouseLeave}
                 setMouseEnter={setMouseEnter}
                 darkMode={darkMode}
+                lang={lang}
             >
                 <Routes>
                     <Route
@@ -82,6 +104,10 @@ function App() {
                                 transitioned={transitioned}
                                 isDropdownOpen={isDropdownOpen}
                                 setIsDropdownOpen={setIsDropdownOpen}
+                                toggleLanguageMode={toggleLanguageMode}
+                                text={text}
+                                languageSwitch={languageSwitch}
+                                lang={lang}
                             />
                         }
                     />
@@ -102,6 +128,10 @@ function App() {
                                 transitioned={transitioned}
                                 isDropdownOpen={isDropdownOpen}
                                 setIsDropdownOpen={setIsDropdownOpen}
+                                toggleLanguageMode={toggleLanguageMode}
+                                text={text}
+                                languageSwitch={languageSwitch}
+                                lang={lang}
                             />
                         }
                     />
@@ -122,6 +152,10 @@ function App() {
                                 transitioned={transitioned}
                                 isDropdownOpen={isDropdownOpen}
                                 setIsDropdownOpen={setIsDropdownOpen}
+                                toggleLanguageMode={toggleLanguageMode}
+                                text={text}
+                                languageSwitch={languageSwitch}
+                                lang={lang}
                             />
                         }
                     />

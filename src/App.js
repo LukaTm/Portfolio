@@ -135,30 +135,6 @@ function App() {
                             />
                         }
                     />
-                    <Route
-                        path="/resume"
-                        element={
-                            <Resume
-                                setDarkMode={setDarkMode}
-                                darkMode={darkMode}
-                                mouseLeave={mouseLeave}
-                                mouseEnter={mouseEnter}
-                                handleClick={handleClick}
-                                logo={logo}
-                                setLogo={setLogo}
-                                darkModeClick={darkModeClick}
-                                setDarkModeClick={setDarkModeClick}
-                                isClickable={isClickable}
-                                transitioned={transitioned}
-                                isDropdownOpen={isDropdownOpen}
-                                setIsDropdownOpen={setIsDropdownOpen}
-                                toggleLanguageMode={toggleLanguageMode}
-                                text={text}
-                                languageSwitch={languageSwitch}
-                                lang={lang}
-                            />
-                        }
-                    />
 
                     {/* ADD NON EXISTING ROUTE */}
                 </Routes>

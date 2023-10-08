@@ -426,6 +426,22 @@ header a {
         color: black;
         font-size: 7.2vw;
     }
+    .language_container_small {
+        display: block;
+        position: absolute;
+        align-self: flex-end;
+        padding: 20px;
+        left: 17px;
+        top: 8px;
+        border-radius: 50px;
+        color: black;
+        cursor: pointer;
+        box-sizing: border-box;
+        box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.233);
+        transform: rotateY(0deg);
+        transition: transform 0.4s, padding 0.3s;
+        z-index: 1000;
+    }
 }
 @media (max-width: 270px) {
     .home footer.footer {
@@ -450,10 +466,6 @@ header a {
         left: 15px;
         top: 0px;
     }
-    .closeBtnContainer {
-        top: 3px;
-        right: 11px;
-    }
 }
 
 @media (max-width: 145px) {
@@ -469,6 +481,7 @@ header a {
     .language_container {
         padding: 10px;
     }
+
     .dropdown_container:hover {
         padding: 9px;
         transform: scale(0.95); /* Reduce the scale on hover */

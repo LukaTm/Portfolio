@@ -176,6 +176,7 @@ function Projects({
                             customSourceCodeHref={
                                 "https://github.com/LukaTm/Spotify-Songs-to-Youtube-Liked"
                             }
+                            noLiveBtn={true}
                         />
                     </div>
                     <div

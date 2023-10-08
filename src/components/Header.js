@@ -138,22 +138,6 @@ export default function Header({
                         >
                             {lang === true ? "Kontakti" : "Contact"}
                         </Link>
-                        <NavLink
-                            className={(navData) => [
-                                `
-                        dark:text-slate-50
-                        dark:after:bg-white
-                            ${
-                                navData.isActive
-                                    ? `${styles.active} `
-                                    : `${styles.default} `
-                            }
-                        `,
-                            ]}
-                            to="/resume"
-                        >
-                            {lang === true ? "CV" : "Resume"}
-                        </NavLink>
                     </header>
                 </div>
             </div>

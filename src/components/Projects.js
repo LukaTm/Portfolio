@@ -73,10 +73,12 @@ function Projects({
                                         mājaslapa ar vieglu, vidēju, grūtu
                                         grūtību, ar izvēli ģēnerēt no 1 līdz 50
                                         vārdiem un atbalsta krievu, latviešu un
-                                        angļu valodu. Ietver izvēli izveidot
-                                        savu vārdu, kas tiek saglabāti MongoDB
-                                        databāzē. Veidojot savu vārdu ir kļūdu
-                                        pārbaude tukšiem un atkārtotiem vārdiem.
+                                        angļu valodu. Vārdi neatkārtosies kamēr
+                                        nav ģenērāti visi iespējamie vārdi.
+                                        Ietver izvēli izveidot savu vārdu, kas
+                                        tiek saglabāti MongoDB databāzē.
+                                        Veidojot savu vārdu ir kļūdu pārbaude
+                                        tukšiem un atkārtotiem vārdiem.
                                         Pierakstīšanās forma ietver e-pasta
                                         kļūdu pārbaudi un paroles garuma
                                         pārbaudi. Mājaslapa izvietota Vercel
@@ -88,14 +90,16 @@ function Projects({
                                         difficuly levels, customizable word
                                         generation (1 to 50 words), and support
                                         for Russian, Latvian, and English
-                                        languages. It includes an custom word
-                                        option where users can create their own
-                                        words after creating an account. Custom
-                                        words are saved in MongoDB. For creating
-                                        custom words it includes error handling
-                                        for empty and duplicate words. Sign-up
-                                        form includes email validation and
-                                        password length check. Hosted on Vercel
+                                        languages. Words will not repeat until
+                                        all possible words have been generated.
+                                        It includes an custom word option where
+                                        users can create their own words after
+                                        creating an account. Custom words are
+                                        saved in MongoDB. For creating custom
+                                        words it includes error handling for
+                                        empty and duplicate words. Sign-up form
+                                        includes email validation and password
+                                        length check. Hosted on Vercel
                                     </>
                                 )}
                             </p>

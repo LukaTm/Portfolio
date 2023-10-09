@@ -227,7 +227,7 @@ header a {
     transform: translate(-50%, -50%);
 }
 .language_text_lv::after {
-    content: "LV";
+    content: "ENG";
     cursor: pointer;
     position: absolute;
     font-size: 14px;
@@ -236,7 +236,7 @@ header a {
     transform: translate(-50%, -50%);
 }
 .language_text_eng::after {
-    content: "ENG";
+    content: "LV";
     cursor: pointer;
     position: absolute;
     font-size: 14px;

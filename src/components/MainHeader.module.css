@@ -263,7 +263,7 @@ header a {
     display: none;
 }
 
-@media (max-width: 995px) {
+@media (max-width: 895px) {
     .home header {
         justify-content: center;
         align-items: center;

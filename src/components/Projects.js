@@ -69,7 +69,7 @@ function Projects({
                             <p className="dark:text-white">
                                 {lang ? (
                                     <>
-                                        Full Stack Mēmā šova ģēnerators ir
+                                        Full Stack Mēmā šova vārdu ģenerators ir
                                         mājaslapa ar vieglu, vidēju, grūtu
                                         grūtību, ar izvēli ģēnerēt no 1 līdz 50
                                         vārdiem un atbalsta krievu, latviešu un

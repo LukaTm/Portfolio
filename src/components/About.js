@@ -40,7 +40,7 @@ function About({ lang, toggleLanguageMode, text, languageSwitch }) {
                             tehnoloģijas.
                             <br /> Nepārtraukti pilnveidojos un aktīvi meklēju
                             iespējas uzlabot savas kodēšanas prasmes. Visvairāk
-                            mācījies no personīgajiem projektiem un atradu
+                            iemācījos no personīgajiem projektiem un atradu
                             vislielāko prieku programmējot caur tiem.
                         </>
                     ) : (

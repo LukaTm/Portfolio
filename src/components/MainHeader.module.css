@@ -142,7 +142,8 @@ header a {
 
 .dropdown ul li {
     z-index: 50;
-    margin-bottom: 7px;
+    margin-bottom: 10px;
+    font-size: 18px;
 }
 .dropdown ul li:first-child {
     z-index: 50;

@@ -178,7 +178,7 @@ function DropDown({
                                                 marginRight: "0.2rem",
                                             }}
                                         />
-                                        Home
+                                        {lang ? <>Mājas</> : <>Home</>}
                                     </div>
                                 </NavLink>
                             </li>
@@ -202,7 +202,7 @@ function DropDown({
                                                     marginRight: "0.2rem",
                                                 }}
                                             />
-                                            Skills
+                                            {lang ? <>Prasmes</> : <>Skills</>}
                                         </div>
                                     </NavLink>
                                 </div>
@@ -231,7 +231,11 @@ function DropDown({
                                                     marginRight: "0.2rem",
                                                 }}
                                             />
-                                            Contact
+                                            {lang ? (
+                                                <>Kontakti</>
+                                            ) : (
+                                                <>Contact</>
+                                            )}
                                         </div>
                                     </Link>
                                 </div>
@@ -264,34 +268,13 @@ function DropDown({
                                                     marginRight: "0.2rem",
                                                 }}
                                             />
-                                            Projects
+                                            {lang ? (
+                                                <>Projekti</>
+                                            ) : (
+                                                <>Projects</>
+                                            )}
                                         </div>
                                     </Link>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <NavLink
-                                        onClick={(event) => {
-                                            event.stopPropagation();
-                                            CloseDropdown();
-                                        }}
-                                        className={(navData) => [
-                                            navData.isActive
-                                                ? `${styles.active} dark:after:bg-white`
-                                                : `${styles.default} dark:after:bg-white`,
-                                        ]}
-                                        to="/resume"
-                                    >
-                                        <div className="inline-flex justify-center items-center dark:text-white">
-                                            <FiFile
-                                                style={{
-                                                    marginRight: "0.2rem",
-                                                }}
-                                            />{" "}
-                                            Resume
-                                        </div>
-                                    </NavLink>
                                 </div>
                             </li>
                         </ul>

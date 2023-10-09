@@ -69,11 +69,11 @@ function Projects({
                             <p className="dark:text-white">
                                 {lang ? (
                                     <>
-                                        Full Stack Charades ir vārdu ģenerators
+                                        Full Stack Mēmā šova ģēnerators ir
                                         mājaslapa ar vieglu, vidēju, grūtu
-                                        grūtību, izvēle ģēnerēt no 1 līdz 50
-                                        vārdiem un atbalsts krievu, latviešu un
-                                        angļu valodā. Ietver izvēli izveidot
+                                        grūtību, ar izvēli ģēnerēt no 1 līdz 50
+                                        vārdiem un atbalsta krievu, latviešu un
+                                        angļu valodu. Ietver izvēli izveidot
                                         savu vārdu, kas tiek saglabāti MongoDB
                                         databāzē. Veidojot savu vārdu ir kļūdu
                                         pārbaude tukšiem un atkārtotiem vārdiem.
@@ -143,11 +143,11 @@ function Projects({
                                         un nodod lietotnei jūsu patīkamās
                                         dziesmas no Spotify. Pēc tam izmantojot
                                         otru pogu, piesakās pakalpojumā YouTube
-                                        un nodrošina lietotnei OAuth2 piekļuvi ,
+                                        un nodrošina lietotnei OAuth2 piekļuvi,
                                         ļaujot lietotnei sākt atzīmēt attiecīgas
                                         dziesmas ar "Patīk" vietnē YouTube.
                                         Lietotne izmanto spotify dziesmas
-                                        nosaukums kopā ar izpildītāja vārdu, lai
+                                        nosaukumu kopā ar izpildītāja vārdu, lai
                                         meklētu YouTube videoklipus(dziesmas),
                                         izmantojot YouTube Data API un atzīmē
                                         Patīk visatbilstošākos video.

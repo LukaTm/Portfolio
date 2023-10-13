@@ -77,7 +77,7 @@
 
     /* box-shadow: h-shadow v-shadow blur spread color */
     box-shadow: 2px 2px 15px 2px rgb(209, 205, 205);
-    padding: 5px 5px 60px 5px;
+    padding: 5px 5px 80px 5px;
 
     opacity: 0;
     transform: translateY(40px);
@@ -112,7 +112,6 @@
     text-decoration: none;
     font-family: my-custom-font2;
     box-shadow: 1px 1px 8px 0px rgb(207, 207, 207);
-    margin-top: 10px;
 }
 
 .btnSourceCode {
@@ -129,7 +128,6 @@
     text-decoration: none;
     font-family: my-custom-font2;
     box-shadow: 1px 1px 8px 0px rgb(207, 207, 207);
-    margin-top: 10px;
     margin-left: 10px;
 }
 
@@ -157,6 +155,7 @@
     font-weight: bold;
     margin-bottom: 12px;
 }
+
 .descriptionSmall {
     display: flex;
     padding-left: 40px;
@@ -300,58 +299,10 @@
         max-width: 100px;
     }
 }
-/* @media (max-width: 150px) {
-    .project_section > div > :first-child {
-        min-width: ;
-        min-height: calc(100vw - 100px);
-    }
-} */
-
-/* @media (max-width: 328px) {
-    .project_container {
-        width: calc(100vw - 45px);
-    }
-    .project_section > div > :first-child {
-        flex-shrink: 1;
-        max-width: 100%;
-        min-width: calc(100% - 70px);
-        min-height: 250px;
-        flex-basis: 100%;
-        font-size: 3vw;
-    }
-} */
-/* @media (max-width: 308px) {
-    .project_container {
-        width: calc(100vw - 45px);
-    }
-    .project_section > div > :first-child {
-        flex-shrink: 1;
-        max-width: 100%;
-        min-width: 180px;
-        min-height: 250px;
-        flex-basis: 100%;
-        font-size: 3vw;
-    }
-} */
-/* @media (max-width: 242px) {
-    .project_container {
-        min-width: 190px;
-    }
-    .project_container {
-        width: calc(100vw - 45px);
-    }
-    .project_section > div > :first-child {
-        flex-shrink: 1;
-        max-width: 100%;
-        min-width: 180px;
-        min-height: 250px;
-        flex-basis: 100%;
-        font-size: 3vw;
-    }
-} */
 
 .rock {
     background-image: url("../photos/rock.png");
+    background-color: #f1eded;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -363,6 +314,7 @@
 
 .calc {
     background-image: url("../photos/calc.png");
+    background-color: #f1eded;
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
@@ -374,6 +326,7 @@
 
 .todo {
     background-image: url("../photos/todo.png");
+    background-color: #f1eded;
     background-size: contain;
     background-position: center center;
     background-repeat: no-repeat;
@@ -385,6 +338,7 @@
 
 .tic_tac {
     background-image: url("../photos/tictactoe.png");
+    background-color: #f1eded;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -396,6 +350,19 @@
 
 .charades {
     background-image: url("../photos/charades.png");
+    background-color: #f1eded;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: 1px solid var(--border-color);
+    box-shadow: 0px 0px 15px 1px var(--box-shadow-color);
+    min-width: 320px;
+    min-height: 320px;
+}
+
+.spotify_yt {
+    background-image: url("../photos/yt-sp.png");
+    background-color: #f1eded;
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -404,14 +371,26 @@
     min-width: 320px;
     min-height: 320px;
 }
+.charades.dark_bg {
+    background-color: #273449;
+}
 
-.spotify_yt {
-    background-image: url("../photos/spotify_yt.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    border: 1px solid var(--border-color);
-    box-shadow: 0px 0px 10px 1px var(--box-shadow-color);
-    min-width: 310px;
-    min-height: 320px;
+.spotify_yt.dark_bg {
+    background-color: #273449;
+}
+
+.rock.dark_bg {
+    background-color: #273449;
+}
+
+.calc.dark_bg {
+    background-color: #273449;
+}
+
+.todo.dark_bg {
+    background-color: #273449;
+}
+
+.tic_tac.dark_bg {
+    background-color: #273449;
 }

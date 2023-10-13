@@ -9,6 +9,7 @@ function Projects({
     text,
     languageSwitch,
     lang,
+    darkMode,
 }) {
     const projectsElementRef = useRef(null);
 
@@ -48,7 +49,9 @@ function Projects({
                         className={`${styles.project_container} dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:shadow-md dark:shadow-slate-700`}
                     >
                         <div
-                            className={`${styles.charades} dark:shadow-custom`}
+                            className={`${styles.charades} dark:shadow-custom ${
+                                darkMode ? styles.dark_bg : ""
+                            }`}
                         ></div>
                         <div
                             className={`${styles.description} dark:text-white`}
@@ -118,7 +121,11 @@ function Projects({
                         className={`${styles.project_container} dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:shadow-md dark:shadow-slate-700`}
                     >
                         <div
-                            className={`${styles.spotify_yt} dark:shadow-custom`}
+                            className={`${
+                                styles.spotify_yt
+                            } dark:shadow-custom ${
+                                darkMode ? styles.dark_bg : ""
+                            }`}
                         ></div>
                         <div
                             className={`${styles.descriptionSmall} mt-1 dark:text-white `}
@@ -141,53 +148,92 @@ function Projects({
                             <p className="dark:text-white">
                                 {lang ? (
                                     <>
-                                        Šī lietotne pārsūta patīkamās dziesmas
-                                        no Spotify uz YouTube Patīk sarakstu.
-                                        Pirmās pogas klikšķis, piesakās Spotify
-                                        un nodod lietotnei jūsu patīkamās
-                                        dziesmas no Spotify. Pēc tam izmantojot
-                                        otru pogu, piesakās pakalpojumā YouTube
-                                        un nodrošina lietotnei OAuth2 piekļuvi,
-                                        ļaujot lietotnei sākt atzīmēt attiecīgas
-                                        dziesmas ar "Patīk" vietnē YouTube.
-                                        Lietotne izmanto spotify dziesmas
-                                        nosaukumu kopā ar izpildītāja vārdu, lai
-                                        meklētu YouTube videoklipus(dziesmas),
-                                        izmantojot YouTube Data API un atzīmē
-                                        Patīk visatbilstošākos video.
+                                        <span
+                                            className={styles.description_text}
+                                        >
+                                            Šī lietotne pārsūta patīkamās
+                                            dziesmas no Spotify uz YouTube Patīk
+                                            sarakstu. Pirmās pogas klikšķis,
+                                            piesakās Spotify un nodod lietotnei
+                                            jūsu patīkamās dziesmas no Spotify.
+                                            Pēc tam izmantojot otru pogu,
+                                            piesakās pakalpojumā YouTube un
+                                            nodrošina lietotnei OAuth2 piekļuvi,
+                                            ļaujot lietotnei sākt atzīmēt
+                                            attiecīgas dziesmas ar "Patīk"
+                                            vietnē YouTube. Lietotne izmanto
+                                            spotify dziesmas nosaukumu kopā ar
+                                            izpildītāja vārdu, lai meklētu
+                                            YouTube videoklipus(dziesmas),
+                                            izmantojot YouTube Data API un
+                                            atzīmē Patīk visatbilstošākos video.
+                                        </span>
+                                        <br />
+                                        <span style={{ fontWeight: "bold" }}>
+                                            Piezīme:&nbsp;
+                                        </span>
+                                        <span style={{ fontStyle: "italic" }}>
+                                            Izstrādes režīmā Spotify prasa
+                                            manuāli ievietot e-pasta adresi, lai
+                                            piekļūtu lietotnei. Tādēļ tas prasīs
+                                            manuālu apstiprinājumu no manis, ja
+                                            nolemjat izmanto šo mājaslapu.
+                                        </span>
                                     </>
                                 ) : (
                                     <>
-                                        This app transfers liked songs from
-                                        Spotify to YouTube liked playlist. The
-                                        first button logs in with Spotify and
-                                        provides the app with your liked songs
-                                        from Spotify. Then, the second button
-                                        logs in with YouTube and provides the
-                                        app with an OAuth2 access token,
-                                        enabling the app to to like the spotify
-                                        songs on YouTube. The app uses spotify
-                                        song name along with the artist's name
-                                        to search for YouTube videos using
-                                        YouTube Data API and likes the most
-                                        relevant video.
+                                        <span
+                                            className={styles.description_text}
+                                        >
+                                            This app transfers liked songs from
+                                            Spotify to YouTube liked playlist.
+                                            The first button logs in with
+                                            Spotify and provides the app with
+                                            your liked songs from Spotify. Then,
+                                            the second button logs in with
+                                            YouTube and provides the app with an
+                                            OAuth2 access token, enabling the
+                                            app to to like the spotify songs on
+                                            YouTube. The app uses spotify song
+                                            name along with the artist's name to
+                                            search for YouTube videos using
+                                            YouTube Data API and likes the most
+                                            relevant video.
+                                        </span>
+                                        <br />
+                                        <span style={{ fontWeight: "bold" }}>
+                                            Note:&nbsp;
+                                        </span>
+                                        <span style={{ fontStyle: "italic" }}>
+                                            In development mode, Spotify
+                                            requires manually inserted email
+                                            addresses for app access. So it will
+                                            require manual approval by me if you
+                                            decide to utilize this site.
+                                        </span>
                                     </>
                                 )}
                             </p>
                         </div>
 
                         <PreviewBtn
+                            customHref={
+                                "https://transfer-songs-luka.vercel.app/"
+                            }
                             customSourceCodeHref={
                                 "https://github.com/LukaTm/Spotify-Songs-to-Youtube-Liked"
                             }
-                            noLiveBtn={true}
                         />
                     </div>
                     <div
                         className={`${styles.project_container} dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:shadow-md dark:shadow-slate-700`}
                     >
                         <div
-                            className={`${styles.todo} dark:shadow-custom`}
+                            className={`${
+                                styles.todo
+                            } dark:shadow-custom dark:bg-slate-750 ${
+                                darkMode ? styles.dark_bg : ""
+                            }`}
                         ></div>
                         <div
                             className={`${styles.description} mt-1 dark:text-white`}
@@ -221,7 +267,11 @@ function Projects({
                         className={`${styles.project_container} dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:shadow-md dark:shadow-slate-700`}
                     >
                         <div
-                            className={`${styles.tic_tac} dark:shadow-custom`}
+                            className={`${
+                                styles.tic_tac
+                            } dark:shadow-custom dark:bg-slate-750 ${
+                                darkMode ? styles.dark_bg : ""
+                            }`}
                         ></div>
                         <div
                             className={`${styles.description} mt-1 dark:text-white`}
@@ -264,7 +314,11 @@ function Projects({
                         className={`${styles.project_container} dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:shadow-md dark:shadow-slate-700`}
                     >
                         <div
-                            className={`${styles.rock} dark:shadow-custom`}
+                            className={`${
+                                styles.rock
+                            } dark:shadow-custom dark:bg-slate-750 ${
+                                darkMode ? styles.dark_bg : ""
+                            }`}
                         ></div>
                         <div
                             className={`${styles.description} mt-1 dark:text-white`}
@@ -313,7 +367,11 @@ function Projects({
                         className={`${styles.project_container} dark:bg-gradient-to-bl from-slate-800 to-slate-700 dark:shadow-md dark:shadow-slate-700`}
                     >
                         <div
-                            className={`${styles.calc} dark:shadow-custom
+                            className={`${
+                                styles.calc
+                            } dark:shadow-custom dark:bg-slate-750 ${
+                                darkMode ? styles.dark_bg : ""
+                            }
                             `}
                         ></div>
                         <div

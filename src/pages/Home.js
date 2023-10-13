@@ -656,6 +656,7 @@ function Home({
                     text={text}
                     languageSwitch={languageSwitch}
                     lang={lang}
+                    darkMode={darkMode}
                 />
                 <Contact darkMode={darkMode} lang={lang} />
             </div>

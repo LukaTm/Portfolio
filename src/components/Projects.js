@@ -303,7 +303,7 @@ function Projects({
 
                         <PreviewBtn
                             customHref={
-                                "https://lukatm.github.io/Project-Tic-Tac-Toe/"
+                                "https://tic-tac-toe-lukatym.netlify.app/"
                             }
                             customSourceCodeHref={
                                 "https://github.com/LukaTm/Project-Tic-Tac-Toe"

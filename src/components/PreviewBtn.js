@@ -11,7 +11,7 @@ function PreviewBtn({ customHref, customSourceCodeHref, noLiveBtn }) {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <span className={styles.see_live_text}>See Live</span>
+                    <span className={styles.see_live_text}>Demo</span>
                 </a>
             ) : null}
 
@@ -21,7 +21,7 @@ function PreviewBtn({ customHref, customSourceCodeHref, noLiveBtn }) {
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                <span className={styles.source_code_text}>Source Code</span>
+                <span className={styles.source_code_text}>GitHub</span>
             </a>
         </div>
     );

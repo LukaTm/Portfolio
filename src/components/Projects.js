@@ -79,11 +79,12 @@ function Projects({
                                         angļu valodu. Vārdi neatkārtosies kamēr
                                         nav ģenērāti visi iespējamie vārdi.
                                         Ietver izvēli izveidot savu vārdu, kas
-                                        tiek saglabāti MongoDB databāzē.
-                                        Veidojot savu vārdu ir kļūdu pārbaude
-                                        tukšiem un atkārtotiem vārdiem.
-                                        Pierakstīšanās forma ietver e-pasta
-                                        kļūdu pārbaudi un paroles garuma
+                                        tiek saglabāti MongoDB databāzē. Ir
+                                        vajadzība pierakstīties, lai izmantotu
+                                        šo funkciju. Veidojot savu vārdu ir
+                                        kļūdu pārbaude tukšiem un atkārtotiem
+                                        vārdiem. Pierakstīšanās forma ietver
+                                        e-pasta kļūdu pārbaudi un paroles garuma
                                         pārbaudi. Mājaslapa izvietota Vercel
                                     </>
                                 ) : (
@@ -98,11 +99,12 @@ function Projects({
                                         It includes an custom word option where
                                         users can create their own words after
                                         creating an account. Custom words are
-                                        saved in MongoDB. For creating custom
-                                        words it includes error handling for
-                                        empty and duplicate words. Sign-up form
-                                        includes email validation and password
-                                        length check. Hosted on Vercel
+                                        saved in MongoDB. Need to login to use
+                                        this feature. For creating custom words
+                                        it includes error handling for empty and
+                                        duplicate words. Sign-up form includes
+                                        email validation and password length
+                                        check. Hosted on Vercel
                                     </>
                                 )}
                             </p>
@@ -138,10 +140,10 @@ function Projects({
                             <ToolsUsed tool={"Spotify Web API"} />
                             <ToolsUsed tool={"Javascript"} />
                             <ToolsUsed tool={"React"} />
+                            <ToolsUsed tool={"Next.js"} />
                             <ToolsUsed tool={"YouTube API"} />
                             <ToolsUsed tool={"OAuth2"} />
                             <ToolsUsed tool={"Node.js"} />
-                            <ToolsUsed tool={"Express.js"} />
                             <ToolsUsed tool={"CSS"} />
                         </div>
                         <div className={styles.project_description}>
@@ -238,7 +240,7 @@ function Projects({
                         <div
                             className={`${styles.description} mt-1 dark:text-white`}
                         >
-                            Todo List
+                            {lang ? <>Darāmo lietu saraksts</> : <>Todo List</>}
                         </div>
                         <div className={`${styles.tools_container} `}>
                             <ToolsUsed tool={"Javascript"} />
@@ -250,9 +252,9 @@ function Projects({
                         <div className={styles.project_description}>
                             <p className="dark:text-white">
                                 {lang ? (
-                                    <>Frontend uzdevumu saraksta vietne</>
+                                    <>Front-End Darāmo lietu saraksts</>
                                 ) : (
-                                    <>Frontend todo list website</>
+                                    <>Front-End Todo List Website</>
                                 )}
                             </p>
                         </div>
@@ -339,7 +341,7 @@ function Projects({
                             <p className="dark:text-white">
                                 {lang ? (
                                     <>
-                                        Akmens Šķēres Papīrīts spēle pret
+                                        Akmens, Šķēres, Papīrīts spēle pret
                                         datoru. Pirmais, kurš iegūst 5 punktus,
                                         uzvar spēli.
                                     </>

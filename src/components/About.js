@@ -39,9 +39,9 @@ function About({ lang, toggleLanguageMode, text, languageSwitch }) {
                             sevi apgūt dažādas front-end un back-end
                             tehnoloģijas.
                             <br /> Nepārtraukti pilnveidojos un aktīvi meklēju
-                            iespējas uzlabot savas kodēšanas prasmes. Visvairāk
-                            iemācījos no personīgajiem projektiem un atradu
-                            vislielāko prieku programmējot caur tiem.
+                            iespējas uzlabot savas programmēšanas prasmes.
+                            Visvairāk iemācījos no personīgajiem projektiem un
+                            atradu vislielāko prieku programmējot caur tiem.
                         </>
                     ) : (
                         <>
